@@ -1,0 +1,66 @@
+###############################################################################
+#                                                                             #
+#                       ILUMESOFT PHP DOCKER IMAGE                            #
+#                                                                             #
+###############################################################################
+
+
+version: "3.1"
+
+networks:
+  frontend:
+  backend:
+
+services:
+
+  php-fpm:
+    container_name: php-fpm
+    working_dir: /application
+    build:
+      context: './ilumedocker/php-fpm/'
+      args:
+        FPM_IMAGE: phpdockerio/php71-fpm:latest
+        PHP_MODULE_VERSION: "7.1"
+        PHP_MODULE_ORACLE: "false"
+        PHP_MODULE_OTHER_PACKAGES: "php-mcrypt php7.1-mcrypt mcrypt"
+    networks:
+    - backend
+    volumes:
+    - .:/application:cached
+    - ./ilumedocker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
+
+  mysql:
+    image: mysql:5.7
+    networks:
+    - frontend
+    - backend
+    container_name: mysql
+    working_dir: /application
+    volumes:
+    - .:/application:cached
+    - ~/docker/data/mysql:/var/lib/mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=sucuremadeilume
+    - MYSQL_USER=root
+    - MYSQL_PASSWORD=root
+    ports:
+    - "8083:3306"
+
+
+  apache2:
+    networks:
+    - frontend
+    - backend
+    build: './ilumedocker/apache2/'
+    depends_on:
+    - php-fpm
+    image: httpd:2.4-alpine
+    container_name: apache
+    working_dir: /application
+    volumes:
+    - .:/application:cached
+    - ./ilumedocker/apache2/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    ports:
+    - "8081:8080"
+    - "8082:80"

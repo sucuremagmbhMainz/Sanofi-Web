@@ -1,0 +1,42 @@
+<IfModule mod_headers.c>
+    <FilesMatch "\.(jpg|jpeg|png|gif|swf|js|css)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+FileETag All
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Adaptive-Images -----------------------------------------------------------------------------------
+
+    # Add any directories you wish to omit from the Adaptive-Images process on a new line, as follows:
+    # RewriteCond %{REQUEST_URI} !some-directory
+    # RewriteCond %{REQUEST_URI} !another-directory
+
+    # RewriteCond %{REQUEST_URI} !static_resources
+
+    # Send any GIF, JPG, or PNG request that IS NOT stored inside one of the above directories
+    # to adaptive-images.php so we can select appropriately sized versions
+    RewriteRule \.(?:jpe?g|gif|png)$ adaptive-images.php
+
+    # END Adaptive-Images -------------------------------------------------------------------------------
+
+    # Redirect Trailing Slashes...
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+<FilesMatch mp4>
+    Satisfy any
+    order allow,deny
+    allow from all
+</FilesMatch>
