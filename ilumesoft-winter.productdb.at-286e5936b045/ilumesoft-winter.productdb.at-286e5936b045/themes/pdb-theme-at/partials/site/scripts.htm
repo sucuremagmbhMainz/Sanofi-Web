@@ -1,0 +1,41 @@
+description = "Scripts"
+
+[viewBag]
+==
+<!-- Early Vendor JS -->
+
+<script src="{{ [
+   'assets/vendor/jquery/jquery-min.js',
+   'assets/vendor/bootstrap/js/bootstrap.min.js',
+   'assets/vendor/shuffle/shuffle.min.js',
+   'assets/vendor/waypoints/waypoints.min.js',
+   'assets/vendor/owl-carousel/js/owl.carousel.min.js',
+   'assets/vendor/counterup/jquery.counterup.min.js',
+   'assets/vendor/magnific-popup/js/jquery.magnific-popup.min.js',
+   'assets/vendor/vide/jquery.vide.min.js',
+   'assets/vendor/slick/slick.min.js'
+   ]|theme }}"></script>
+
+<!-- Addon JS -->
+{% if this.theme.aos_js %}
+<script type="text/javascript" src="{{ 'assets/vendor/aos/js/aos.js'|theme }}"></script>
+<script>
+   AOS.init({
+     duration: 1200,
+     once: true
+   })
+</script>
+{% endif %}
+
+{% if this.theme.smoothscroll_js %}
+<script type="text/javascript" src="{{ 'assets/vendor/smoothscroll/SmoothScroll.min.js'|theme }}"></script>
+{% endif %}
+
+<!-- Main JS -->
+<script type="text/javascript" src="{{ 'assets/js/main.js'|theme }}"></script>
+
+<!-- Core JS -->
+{% if this.theme.framework_js %}
+{% framework extras %}
+{% endif %}
+{% scripts %}

@@ -1,0 +1,12 @@
+name: Basic PDB Theme
+description: 'Das Basis Theme für die Sanofi Produktdatenbank AT'
+author: Sanofi
+homepage: 'https://www.sanofi-produktdatenbank.at/'
+code: pdb-theme
+form: config/fields.yaml
+require:
+    - Rainlab.User
+    - Rainlab.Pages
+    - Rainlab.Translate
+    - Utopigs.Seo
+    - Winter.Builder

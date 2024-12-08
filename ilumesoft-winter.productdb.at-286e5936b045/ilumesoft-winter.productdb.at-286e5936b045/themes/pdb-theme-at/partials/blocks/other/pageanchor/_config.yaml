@@ -1,0 +1,15 @@
+pageanchor:
+    name: Page Anchor
+    description: Defines a customizable anchor
+    icon: icon-link
+    fields:
+        section_section:
+            label: Page Anchor
+            type: section
+            containerAttributes:
+                data-icon: icon-link
+        section_section_id:
+            label: Anchor Id
+            comment: No Blanks ! - Can be used for direct linking
+            type: text
+            span: left

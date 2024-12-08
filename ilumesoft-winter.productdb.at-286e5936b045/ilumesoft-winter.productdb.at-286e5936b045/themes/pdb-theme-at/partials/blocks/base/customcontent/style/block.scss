@@ -1,0 +1,36 @@
+.custom-content {
+    ul {
+        list-style: none;
+        padding-left: 0px;
+
+        li {
+            list-style: none;
+            margin-left: 25px;
+        }
+
+        li::before {
+            content: '\2794';
+            padding-right: 10px;
+            margin-left: -25px;
+        }
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    a {
+        color: var(--microsite-color-base);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--microsite-color-highlight);
+            text-decoration: none;
+            border-bottom: 2px solid;
+        }
+    }
+}
+
+.container-fluid > .custom-content {
+    padding: 0;
+}

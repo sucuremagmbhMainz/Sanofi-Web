@@ -1,0 +1,40 @@
+description = "Headline"
+
+[viewBag]
+==
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+<style>
+    #{{ blockId }} h{{ data.headline_size|default(1) }} {
+        text-align: {{ data.section_headline_position|default('left') }};
+        padding-left: {{ data.headline_h_spacing }}px;
+        padding-right: {{ data.headline_h_spacing }}px;
+        {% if data.section_headline_font_weight == 'custom'%}
+        font-weight: {{ data.section_headline_custom_weight}};
+        {% else %}
+        font-weight: {{ data.section_headline_font_weight}};
+        {% endif %}
+
+        {% if data.blocks_use_custom_color == 1 %}
+            {% if data.section_headline_color != 'default-theme' %}color: {{ data.section_headline_color }};{% endif %}
+            {% if data.section_headline_text_coloring == 'gradient' %}
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-image: linear-gradient(90deg, {{ data.section_headline_color_a }}, {{ data.section_headline_color_b }});
+                display: inline-block;
+            {% endif %}
+        {% endif %}
+    }
+</style>
+
+{% if data.headline_url|length %}
+<a href="{{ data.headline_url }}">
+    {% endif %}
+    <h{{ data.headline_size|default(1) }}>
+    {{ data.headline_content }}
+    </h{{ data.headline_size|default(1) }}>
+    {% if data.headline_url|length %}
+</a>
+{% endif %}
+

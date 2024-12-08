@@ -1,0 +1,427 @@
+tabs:
+    fields:
+
+        ####################################################
+        # Tab: Info
+        ####################################################
+
+        info_section:
+            tab: Info
+            label: Info
+            type: section
+
+        site_name:
+            tab: Info
+            label: Website Name
+            type: text
+            default: "Foundation"
+            span: left
+
+        settings_favicon:
+            tab: Info
+            label: Favicon Image
+            type: mediafinder
+            mode: image
+            span: right
+
+        site_author:
+            tab: Info
+            label: Author
+            type: text
+            default: "Sanofi"
+            span: left
+
+        site_url:
+            tab: Info
+            label: URL
+            type: text
+            default: "https://www.sanofi-produktdatenbank.at/"
+
+        site_description:
+            tab: Info
+            label: Description
+            type: textarea
+            default: "Foundation - Modular OctoberCMS Theme."
+
+        site_keywords:
+            tab: Info
+            label: Keywords
+            type: taglist
+            separator: comma
+            default: Sanofi, Produktdatenbank
+
+        site_locale:
+            tab: Info
+            label: Website Locale
+            type: text
+            default: de
+
+        ####################################################
+        # Tab: Fonts
+        ####################################################
+
+        fonts_section:
+            tab: Fonts
+            label: Fonts
+            type: section
+
+        fonts_googlefonts:
+            tab: Fonts
+            label: Google Fonts
+            type: switch
+            default: true
+            span: left
+
+        fonts_google_fontfamily:
+            tab: Fonts
+            label: Google Font Family
+            type: text
+            comment: Separate each font with vertical slash |
+            default: "Raleway:100,600|Lato:300,400,900"
+            span: right
+            trigger:
+                action: show
+                field: fonts_googlefonts
+                condition: checked
+#
+#        fonts_first_font:
+#            tab: Fonts
+#            label: First Font
+#            type: text
+#            comment: Specify font family
+#            default: "'Lato', sans-serif"
+#            assetVar: "first_font"
+#            span: right
+#            trigger:
+#                action: show
+#                field: fonts_googlefonts
+#                condition: checked
+#
+#        fonts_second_font:
+#            tab: Fonts
+#            label: Second Font
+#            type: text
+#            comment: Specify font family
+#            default: "'Raleway', sans-serif"
+#            assetVar: "second_font"
+#            span: right
+#            trigger:
+#                action: show
+#                field: fonts_googlefonts
+#                condition: checked
+
+        fonts_fontawesome:
+            tab: Fonts
+            label: FontAwesome Icon Fonts
+            type: switch
+            default: true
+
+        fonts_lineicons:
+            tab: Fonts
+            label: Line Icon Fonts
+            type: switch
+            default: true
+
+        ####################################################
+        # Tab: Layout
+        ####################################################
+
+        layout_section:
+            tab: Layout
+            label: Layout Settings
+            type: section
+
+        layout_container:
+            tab: Layout
+            label: Container Type
+            type: balloon-selector
+            default: container
+            span: left
+            options:
+                container: Container
+                container-fluid: Fluid Container
+
+        layout_container_width:
+            tab: Layout
+            label: Container Width in pixels
+            type: number
+            placeholder: Minimum value must be 1200
+            span: left
+            trigger:
+                action: show
+                field: layout_container
+                condition: value[container]
+
+        ####################################################
+        # Tab: Footer
+        ####################################################
+
+#        header_menu_section:
+#            tab: Header
+#            label: Menu Header
+#            type: section
+#
+#        header_menu_type:
+#            tab: Header
+#            label: Select Header Type
+#            type: balloon-selector
+#            default: logo
+#            span: left
+#            options:
+#                logo: Logo
+#                text: Text
+#
+#        header_menu_logo:
+#            tab: Header
+#            label: Header Logo
+#            type: mediafinder
+#            mode: image
+#            span: right
+#            trigger:
+#                action: show
+#                field: header_menu_type
+#                condition: value[logo]
+#
+#        header_menu_text:
+#            tab: Header
+#            label: Brand Name
+#            type: text
+#            span: right
+#            trigger:
+#                action: show
+#                field: header_menu_type
+#                condition: value[text]
+#
+#        header_menu_color:
+#            tab: Header
+#            label: Menu Header Coloring
+#            type: balloon-selector
+#            default: theme
+#            options:
+#                theme: Theme Based
+#                custom: Custom
+#
+#        header_menu_bg_color:
+#            tab: Header
+#            label: Menu BG Color
+#            type: colorpicker
+#            availableColors: ["#f44336","#9c27b0","#2196f3","#cddc39","#ffc107","#607d8b","#db4e22","#2590a7","#a5b423","#f8fb3a"]
+#            default: "#f44336"
+#            trigger:
+#                action: show
+#                field: header_menu_color
+#                condition: value[custom]
+#
+#        header_menu_text_color_base:
+#            tab: Header
+#            label: Menu Text Base Color
+#            type: colorpicker
+#            availableColors: ["#f44336","#9c27b0","#2196f3","#cddc39","#ffc107","#607d8b","#db4e22","#2590a7","#a5b423","#f8fb3a"]
+#            default: "#9c27b0"
+#            trigger:
+#                action: show
+#                field: header_menu_color
+#                condition: value[custom]
+#
+#        header_menu_text_color_hover:
+#            tab: Header
+#            label: Menu Text Hover Color
+#            type: colorpicker
+#            availableColors: ["#f44336","#9c27b0","#2196f3","#cddc39","#ffc107","#607d8b","#db4e22","#2590a7","#a5b423","#f8fb3a"]
+#            default: "#2196f3"
+#            trigger:
+#                action: show
+#                field: header_menu_color
+#                condition: value[custom]
+#
+#        header_menu_text_color_select:
+#            tab: Header
+#            label: Menu Text Selected Color
+#            type: colorpicker
+#            availableColors: ["#f44336","#9c27b0","#2196f3","#cddc39","#ffc107","#607d8b","#db4e22","#2590a7","#a5b423","#f8fb3a"]
+#            default: "#cddc39"
+#            trigger:
+#                action: show
+#                field: header_menu_color
+#                condition: value[custom]
+
+        settings_pageheader_section:
+            tab: Header
+            label: Page Header
+            type: section
+
+#        settings_pageheader_active:
+#            tab: Header
+#            label: Active
+#            type: switch
+
+        settings_pageheader:
+            tab: Header
+            label: Pageheader Image
+            type: mediafinder
+            imageWidth: 350
+            imageHeight: 200
+            mode: image
+            span: left
+
+        settings_pageheader_url:
+            tab: Header
+            label: Pageheader URL
+            type: text
+            span: left
+
+        ####################################################
+        # Tab: Footer
+        ####################################################
+
+        footer_section:
+            tab: Footer
+            label: Footer Settings
+            type: section
+
+        footer_text:
+            tab: Footer
+            label: Additional Text
+            type: text
+            span: left
+
+#        footer_brand_image:
+#            tab: Footer
+#            label: Brand Image
+#            type: mediafinder
+#            mode: image
+#            span: left
+
+#        footer_menu_color:
+#            tab: Footer
+#            label: Menu Footer Coloring
+#            type: balloon-selector
+#            default: theme
+#            options:
+#                theme: Theme Based
+#                custom: Custom
+
+        footer_menu_bg_color:
+            tab: Footer
+            label: Menu BG Color
+            type: colorpicker
+            availableColors: ["default-theme", "transparent", "#f44336","#9c27b0","#2196f3","#cddc39","#ffc107","#607d8b","#db4e22","#2590a7","#a5b423","#f8fb3a"]
+            default: "default-theme"
+            trigger:
+                action: show
+                field: footer_menu_color
+                condition: value[custom]
+
+        footer_menu_text_color_base:
+            tab: Footer
+            label: Menu Text Base Color
+            type: colorpicker
+            availableColors: ["default-theme","#f44336","#9c27b0","#2196f3","#cddc39","#ffc107","#607d8b","#db4e22","#2590a7","#a5b423","#f8fb3a"]
+            default: "default-theme"
+            trigger:
+                action: show
+                field: footer_menu_color
+                condition: value[custom]
+
+        footer_menu_text_color_hover:
+            tab: Footer
+            label: Menu Text Hover Color
+            type: colorpicker
+            availableColors: ["default-theme","#f44336","#9c27b0","#2196f3","#cddc39","#ffc107","#607d8b","#db4e22","#2590a7","#a5b423","#f8fb3a"]
+            default: "default-theme"
+            trigger:
+                action: show
+                field: footer_menu_color
+                condition: value[custom]
+
+        ####################################################
+        # Tab: Settings
+        ####################################################
+
+        scrolltop_section:
+            tab: Settings
+            label: Scroll-To-Top
+            type: section
+
+        scrolltop_js:
+            tab: Settings
+            label: Scroll-To-Top
+            type: switch
+            default: true
+
+        scrolltop_js_form:
+            tab: Settings
+            label: Form
+            type: balloon-selector
+            default: squared
+            options:
+                squared: Square
+                circled: Circle
+
+        ####################################################
+        # Tab: Addons
+        ####################################################
+
+        addons_section:
+            tab: Addons
+            label: Addons
+            type: section
+
+        animate_css:
+            tab: Addons
+            label: Animate CSS
+            type: switch
+            default: true
+
+        aos_js:
+            tab: Addons
+            label: AOS JS
+            type: switch
+            default: true
+
+        normalize_css:
+            tab: Addons
+            label: Normalize CSS
+            type: switch
+            default: true
+
+        smoothscroll_js:
+            tab: Addons
+            label: Smooth Scroll
+            type: switch
+            default: true
+
+        loader_js:
+            tab: Addons
+            label: Page Loader
+            type: switch
+            default: true
+
+        framework_js:
+            tab: Addons
+            label: OctoberCMS Javascript Framework
+            type: switch
+            default: true
+
+        ####################################################
+        # Tab: Custom / Analytics
+        ####################################################
+
+        advanced_code_section:
+            tab: Code / Analytics
+            label: Custom Code
+            type: section
+
+        custom_css:
+            tab: Code / Analytics
+            label: Custom CSS
+            type: codeeditor
+            size: huge
+            language: css
+
+        custom_js:
+            tab: Code / Analytics
+            label: Custom JS / Analytics
+            type: codeeditor
+            size: huge
+            language: javascript

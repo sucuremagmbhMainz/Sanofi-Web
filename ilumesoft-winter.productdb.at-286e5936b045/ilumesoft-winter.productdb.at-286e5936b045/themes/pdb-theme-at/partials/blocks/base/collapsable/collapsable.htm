@@ -1,0 +1,41 @@
+description = "Collapsable"
+
+[viewBag]
+==
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockJS]|theme|embedJS}}
+
+<style>
+    #{{ blockId}}.collapsable-block .ac_wrap .ac_title  {
+        {{ data.use_custom_headline_size == 'yes' ? 'font-size:' ~ data.headline_size|default() ~ 'em ;' : '' }}
+    }
+
+    {% if data.blocks_use_custom_color == 1 %}
+        #{{ blockId }} .ac_title span.arrow {
+            color: {{ data.headline_color }};
+        }
+        #{{ blockId }} .ac_title span.title {
+            {{ data.headline_color != 'default-theme' ? 'color:' ~ data.headline_color ~ ';' : '' }};
+        }
+    {%endif%}
+</style>
+
+<div class="ac_wrap arrow">
+    {% for key, dataEntry in data.section_collapse_content_repeater %}
+    <div class="ac_title {{ dataEntry.section_collapse_entry_display_type != 'fixed' ? 'collapsable' }} {{ dataEntry.section_collapse_entry_display_type != 'collapsed' ? 'active'}} {{ data.auto_collapse_tabs }}">
+        {% if dataEntry.section_collapse_entry_display_type != 'fixed' %}
+        <span class="arrow"></span>
+        {% endif %}
+        <span class="title">{{ dataEntry.section_collapse_title }}</span>
+    </div>
+    <div class="ac_content {{ dataEntry.section_collapse_entry_display_type != 'fixed' ? 'collapsable' }} {{ dataEntry.section_collapse_entry_display_type != 'collapsed' ? 'active'}} {{ data.auto_collapse_tabs }} " style="{{ dataEntry.section_collapse_entry_display_type == 'collapsed' ? 'display: none;' }}">
+
+
+        {% set availableBlockPaths = getAvailableBlockPaths("pdb-theme-at/partials/blocks", "base") %}
+        {% if availableBlockPaths[dataEntry._group] is defined %}
+            {% partial "blocks/block-wrapper" wrappedBlock=dataEntry._group wrappedBlockPath=availableBlockPaths[dataEntry._group] data=dataEntry availableBlockPaths=availableBlockPaths spacing=dataEntry.section_collapse_spacing %}
+        {% endif %}
+
+    </div><!-- .ac_content active-->
+    {% endfor %}
+</div>

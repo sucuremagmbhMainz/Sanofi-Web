@@ -1,0 +1,83 @@
+.tabbutton-section {
+    &.top {
+        padding-top: 3.125em !important;
+        padding-bottom: 3.125em !important;
+    }
+
+    &.bottom {
+        padding: 2em 0;
+    }
+
+    img {
+        width: 100%;
+    }
+    .tabs-intro-image {
+        margin-bottom: 20px;
+    }
+    .tabs-title {
+        font-weight: 600;
+        font-size: 22px;
+        position: relative;
+        text-align: left;
+    }
+    #default-tab {
+        ul.nav-tabs {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: stretch;
+            align-items: flex-start;
+            list-style: none;
+            border-bottom: 0px;
+            padding: 0px;
+
+            li {
+                float: left;
+                position: relative;
+                display: block;
+                min-width: 10em;
+                margin: 1.25em 2%;
+                font-size: 1.25em;
+                line-height:1.6;
+
+                a {
+                    position: relative;
+                    display: block;
+                    padding: 0.625em 1.5625em !important;
+                    text-decoration: none;
+                    text-align: center;
+                    border: 0.125em solid #e3e3e3;
+                    color: #72858e !important;
+                    background-color: white;
+
+                    &:hover {
+                        background-color: $theme_color_base;
+                        border: 0.125em solid $theme_color_base;
+                        color: #ffffff !important;
+                    }
+                }
+            }
+        }
+        .nav-tabs > li {
+            > a.active {
+                border: 0.125em solid $theme_color_base !important;
+                position: relative;
+                background-color: $theme_color_base;
+                color: white !important;
+            }
+            a.active {
+                &:focus {
+                    border: 0.125em solid $theme_color_base !important;
+                    position: relative;
+                }
+            }
+        }
+        .tab-content {
+            padding-top: 20px;
+        }
+        a.nav-link {
+            background: none;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+columns:
+    is_active:
+        label: Aktiv
+        type: switch
+    name:
+        label: Bezeichnung
+        type: text
+        searchable: true
+    created_at:
+        label: 'Erstellt am'
+        type: datetime

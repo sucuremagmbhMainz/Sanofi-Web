@@ -1,0 +1,48 @@
+:root {
+    // Theme colors
+    --theme_color_lightest: #f9f9f9;
+    --theme_color_light: #aaa;
+    --theme_sanofi_purple_miracle: #23004C;
+    --theme_sanofi_purple_chasing: #7A00E6;
+    --theme_digital_only_gray: #E4E4E4;
+    --theme_sanofi_black: black;
+
+    --theme_color_base: #acb317;
+    --theme_color_highlight: #989f15;
+
+
+    // Text colors
+    --text_color_base: #000;
+
+    // General colors
+    --white: #fff;
+    --black: #000;
+
+    // Font
+    --font_0: 'Lato', 'Arial', Helvetica Neue, Helvetica, sans-serif;
+    --font_1: $second_font;
+
+    // Border radius
+    --border_radius: 14px;
+}
+
+// Theme/Text colors fallback
+$theme_color_lightest: var(--theme_color_lightest);
+$theme_color_light: var(--theme_color_light);
+$theme_color_dark: var(--theme_color_dark);
+$theme_sanofi_purple_miracle: var(--theme_sanofi_purple_miracle);
+$theme_sanofi_purple_chasing: var(--theme_sanofi_purple_chasing);
+$theme_sanofi_black: var(--theme_sanofi_black);
+
+$text_color_base: var(--text_color_base);
+
+// General colors fallback
+$white: var(--white);
+$black: var(--black);
+
+// Fonts fallback
+$font_0: var(--font_0);
+$font_1: var(--font_1);
+
+// Border radius
+$rounded: var(--border_radius);

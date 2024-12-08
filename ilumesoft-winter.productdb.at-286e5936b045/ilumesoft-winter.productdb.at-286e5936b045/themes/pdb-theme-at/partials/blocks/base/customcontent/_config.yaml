@@ -1,0 +1,17 @@
+customcontent:
+    name: Custom Content
+    description: Custom Content
+    icon: icon-file-text-o
+    fields:
+        section_customcontent_section:
+            label: Custom Content
+            type: section
+            containerAttributes:
+                data-icon: icon-file-text-o
+        section_custom_content:
+            label: Custom Content
+            type: richeditor
+            size: large
+            span: full
+            toolbarButtons: fullscreen|color|||insertLink|||bold|italic|underline|strikeThrough|subscript|superscript|||formatOL|formatUL|-|undo|redo|||clearFormatting|selectAll|||align|outdent|indent|||html
+

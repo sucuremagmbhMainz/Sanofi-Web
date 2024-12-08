@@ -1,0 +1,85 @@
+description = "Product details variant"
+
+[viewBag]
+==
+<!-- For each variant -->
+<!-- Style tags are placeholders for customization options -->
+<h3 class="product-details-variant-title">{{ variant.name|replace({'®' : '<sup>®</sup>'})|raw }}</h3>
+{% if variant.is_nutritional_supplement or variant.is_cosmetic or variant.is_medicine %}
+    {% if variant.is_nutritional_supplement %}
+        <p>Nahrungsergänzungsmittel</p>
+    {% endif %}
+    {% if variant.is_cosmetic %}
+        <p>Kosmetikum</p>
+    {% endif %}
+    {% if variant.is_medicine %}
+        <p>Medizinprodukt</p>
+    {% endif %}
+{% else %}
+    {% if variant.is_pharmacy_required and variant.is_prescription_required %}
+        <p>Arzneimittel, rezeptpflichtig</p>
+    {% elseif variant.is_prescription_required %}
+        <p>Arzneimittel, rezeptpflichtig</p>
+    {% elseif variant.is_pharmacy_required %}
+        <p>Arzneimittel, rezeptfrei</p>
+    {% endif %}
+{% endif %}
+
+<div class="product-details-variant-files">
+    {% for file in variant.pdfFiles %}
+        <div class="pdf-file-ref">
+            <a href="{{ file.path }}"
+               target="_blank">
+                <i class="fa fa-file-pdf-o"></i>
+                <span>
+                    <span class="part-name">{{ file.fileName|raw }}</span>
+                    <span class="part-size">{{ file.fileSize|raw }}</span>
+                    {% if file.fileDate|length > 0 %}
+                    <span class="part-date">{{ file.fileDate|raw }}</span>
+                    {% endif %}
+                </span>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="product-details-variant-details">
+    <!-- Placeholder "image"-->
+    <div class="placeholder-image">
+        <img src="{{ variant.imagePath }}" title="" alt="">
+
+        <i class="fa fa-search-plus item-magnifier"></i>
+    </div>
+    <div class="variant-details-wrapper">
+        {% if variant.description %}
+        <div class="product-details-variant-information">
+            <h4>Weitere Informationen</h4>
+            <!-- li for each ingredient -->
+            <div class="product-details-variants-ingredients">
+                {{ variant.description|raw }}
+            </div>
+        </div>
+        {% endif %}
+        <div class="product-details-variant-lists">
+            <div class="variant-list-wrapper">
+                <h4>Menge</h4>
+                <!-- li for each amount -->
+                <ul class="product-details-variant-list">
+                    {% for type in variant.types %}
+                    <li>{{ type.amount }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="variant-list-wrapper">
+                <h4>PZN</h4>
+                <!-- li for each PZN -->
+
+                <ul class="product-details-variant-list">
+                    {% for type in variant.types %}
+                    <li>{{ type.pzn }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

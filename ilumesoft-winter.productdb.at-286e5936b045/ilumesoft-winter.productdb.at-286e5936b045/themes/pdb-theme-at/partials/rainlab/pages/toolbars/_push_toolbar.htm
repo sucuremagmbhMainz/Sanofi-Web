@@ -1,0 +1,44 @@
+<?php
+    $pageUrlParts = explode('/', (isset($pageUrl) ? $pageUrl : ''));
+    $pushBtnId = 'modal_' . time();
+    $revSelectId = 'rev_select_id_' . time();
+    $revPageLoadFunc = 'loadPageRev_' . time();
+?>
+
+<div class="form-buttons loading-indicator-container <?php if (!$canPublish): ?>hide<?php endif ?>" data-toolbar-type="content" data-control="push-toolbar">
+    <a
+        href="javascript:;"
+        data-request="onPush"
+
+        data-push-prod-btn="<?= $pushBtnId ?>"
+        data-toolbar-action="push-prod"
+        data-target-url="/publish/<?= isset($pageRef) ? $pageRef : 'undefined-page-ref' ?>"
+        class="btn btn-primary oc-icon-cloud-upload"
+        data-load-indicator="<?= e(trans('ilume.backend::lang.prod.publishing')) ?>"
+
+        data-control="publish-button">
+        <?= e(trans('ilume.backend::lang.prod.publish')) ?>
+    </a>
+
+    <script>
+        prepareExportToolbar('<?= $pushBtnId ?>');
+    </script>
+
+    <?php /*if (isset($creator)): ?>
+        <span
+            class="btn empty oc-icon-user"
+            title="<?= e(trans('ilume.backend::lang.page.created_by')) ?> <?= e($creator) ?>   "
+            data-toggle="tooltip"
+            data-placement="right">
+        </span>
+    <?php endif ?>
+
+    <?php if (isset($lastEditor)): ?>
+        <span
+            class="btn empty oc-icon-calendar"
+            title="<?= e(trans('ilume.backend::lang.page.last_edited_by')) ?> <?= e($lastEditor) ?> // <?= $lastModified ?>"
+            data-toggle="tooltip"
+            data-placement="right">
+        </span>
+    <?php endif */?>
+</div>

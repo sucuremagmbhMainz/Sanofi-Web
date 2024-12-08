@@ -1,0 +1,95 @@
+collapsable:
+    name: Collapsable
+    description: A Collapsable with foldable content
+    icon: icon-compress
+    fields:
+        section_collapse_section:
+            label: Collapsable
+            type: section
+            containerAttributes:
+                data-icon: icon-compress
+
+        use_custom_headline_size:
+            label: Use custom size for headline entries
+            type: balloon-selector
+            options:
+                no: No
+                yes: Yes
+            span: right
+            default: no
+        auto_collapse_tabs:
+            label: Auto collapse tabs on opening another tab
+            type: balloon-selector
+            options:
+                keep-open: No
+                auto-collapse: Yes
+            span: left
+            default: auto-collapse
+        headline_size:
+            label: Headline Size (em)
+            type: number
+            default: 1
+            comment: A value of 1 em equals 16px on Desktop Screen Size
+            trigger:
+                action: show
+                field: use_custom_headline_size
+                condition: value[yes]
+            span: right
+
+        section_entries_head:
+            label: Content Entries
+            span: full
+            type: section
+            containerAttributes: ['ilume-toggle','ilume-hidden']
+        section_collapse_content_repeater:
+            prompt: Insert content block
+            span: full
+            additional-group-fields:
+                prepend:
+                    section_collapse_section:
+                        label: Collapsable Data
+                        type: section
+                        containerAttributes:
+                            data-icon: icon-circle-o
+                    section_collapse_entry_display_type:
+                        label: Initial Display Type
+                        type: balloon-selector
+                        options:
+                            collapsed: Collapsed
+                            expanded: Expanded
+                            fixed: Expanded (fixed)
+                        span: left
+                        default: collapsed
+                    section_collapse_title:
+                        label: Collapsable Header
+                        type: text
+                        span: left
+                    section_collapse_spacing:
+                        label: Spacing (px)
+                        type: number
+                        default: 20
+                        span: right
+            type: ilumerepeater
+
+            groups:
+                /_extensions/groups/collapsable/_config.yaml
+
+        section_coloring:
+            label: Coloring
+            type: section
+            containerAttributes: [ 'ilume-toggle','ilume-hidden' ]
+        blocks_use_custom_color:
+            label: Use custom colors
+            type: checkbox
+            default: 0
+            span: left
+        headline_color:
+            label: Headline Color
+            type: colorpicker
+            span: right
+            availableColors: [ "default-theme", "#0b1e61", "#004a98" ]
+            default: "default-theme"
+            trigger:
+                action: show
+                field: blocks_use_custom_color
+                condition: checked

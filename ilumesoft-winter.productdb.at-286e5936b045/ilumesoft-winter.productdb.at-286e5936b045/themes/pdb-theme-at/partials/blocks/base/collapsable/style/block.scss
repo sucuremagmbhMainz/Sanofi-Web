@@ -1,0 +1,89 @@
+.ac_wrap {
+    width: 100%;
+}
+
+.ac_title {
+    margin-bottom: 2px;
+    color: var(--microsite-color-base);
+}
+
+.ac_wrap .ac_title, .toggle-title {
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 0.6em 1em;
+    padding: 1.125rem 2.5rem 1rem 1.65rem;
+    background-color: var(--microsite-color-base);
+    -webkit-transition: all 0.2s linear 0s;
+    -moz-transition: all 0.2s linear 0s;
+    transition: all 0.2s linear 0s;
+}
+
+.ac_title.collapsable {
+    cursor: pointer;
+}
+
+.ac_wrap .ac_title.active {
+    background-color: var(--microsite-color-highlight);
+}
+
+.ac_title.collapsable:hover, .ac_title.collapsable.active:hover {
+    background-color: var(--microsite-color-highlight);
+}
+
+.ac_wrap .ac_content, .ac_wrap .toggle_content {
+    background-color: #ffffff;
+    border: 1px solid #E1E1E1;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ac_content .container-fluid {
+    padding: 0;
+}
+
+.ac_title .arrow, .toggle-title .arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    float: right;
+    height: 100%;
+    font-weight: normal;
+    font-size: 22px;
+    margin-top: -14px;
+    width: 44px;
+    text-align: center;
+}
+
+.ac_title.active .arrow, .toggle-title.active .arrow {
+    font-size: 40px;
+    margin-top: -29px;
+}
+
+.ac_title .arrow::after, .toggle-title .arrow::after {
+    content: '+';
+}
+
+.ac_title.active .arrow::after, .toggle-title.active .arrow::after {
+    content: '-';
+}
+
+.ac_wrap ul li::before {
+    content: '\2794';
+    padding-right: 10px;
+}
+
+//Customcontent inside Collapsable
+.collapsable .custom-content {
+    padding: 1em;
+    p {
+        margin-bottom: 1em;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}

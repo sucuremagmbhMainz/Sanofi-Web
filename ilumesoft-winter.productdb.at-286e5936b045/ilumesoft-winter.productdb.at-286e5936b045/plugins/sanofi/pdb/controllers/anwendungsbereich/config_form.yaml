@@ -1,0 +1,10 @@
+name: Anwendungsbereich
+form: $/sanofi/pdb/models/pdbarea/fields.yaml
+modelClass: Sanofi\Pdb\Models\PDBArea
+defaultRedirect: sanofi/pdb/anwendungsbereich
+create:
+    redirect: 'sanofi/pdb/anwendungsbereich/update/:id'
+    redirectClose: sanofi/pdb/anwendungsbereich
+update:
+    redirect: sanofi/pdb/anwendungsbereich
+    redirectClose: sanofi/pdb/anwendungsbereich

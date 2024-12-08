@@ -1,0 +1,7 @@
+fields:
+    name:
+        label: Bezeichnung
+        span: full
+        type: richeditor
+        toolbarButtons: 'subscript,superscript,|||,clearFormatting'
+        size: small

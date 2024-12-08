@@ -1,0 +1,142 @@
+tabbuttons:
+    name: TabButtons
+    description: Tab Buttons
+    icon: icon-folder-o
+    fields:
+        section_tabbuttons_section:
+            label: Tab Buttons
+            type: section
+            containerAttributes:
+                data-icon: icon-folder-o
+        section_tabbuttons_container:
+            label: Container Type
+            type: balloon-selector
+            options:
+                container: Container
+                container-fluid: Fluid Container
+            span: left
+            default: container
+        section_tabbuttons_type:
+            label: Button Type
+            type: balloon-selector
+            options:
+                1.5625em: round
+                0px: square
+            span: left
+            default: "1.5625em"
+        section_tabbuttons_min_height:
+            label: Minimum Height Tab Container (optional)
+            type: text
+            span: right
+            default: 100
+        section_tabbuttons_bg:
+            label: Background Color
+            type: colorpicker
+            availableColors: ["transparent", "#ffffff","#000000", "#5cb57e"]
+            default: "transparent"
+            span: left
+        section_tabcontent_bg:
+            label: Tab Content Background Color
+            type: colorpicker
+            availableColors: ["transparent", "#ffffff","#000000", "#5cb57e"]
+            default: "transparent"
+            span: right
+
+        section_entries_head:
+            label: TabButton Entries
+            span: full
+            type: section
+            containerAttributes: ['ilume-toggle', 'ilume-hidden']
+        section_tabbuttons:
+            type: repeater
+            prompt: Add Tab
+            form:
+                fields:
+                    section_tabs_line:
+                        label: Tab
+                        type: section
+                        containerAttributes:
+                            data-icon: icon-circle-o
+                    section_tabs_title:
+                        label: Tab Title
+                        type: text
+                        span: full
+                    section_tabbuttoncontent:
+                        type: repeater
+                        groups:
+                            $/../themes/pdb-theme-at/partials/blocks/base/headline/_config.yaml,
+                            $/../themes/pdb-theme-at/partials/blocks/base/customcontent/_config.yaml,
+                            $/../themes/pdb-theme-at/partials/blocks/base/collapsable/_config.yaml,
+                            $/../themes/pdb-theme-at/partials/blocks/base/featureblock/_config.yaml
+
+        section_block_bg:
+            label: Block Background
+            type: section
+            span: full
+            containerAttributes: ['ilume-toggle','ilume-hidden']
+        block_bg_color_type:
+            label: Background Color
+            type: balloon-selector
+            options:
+                single: Single Color
+                double: Two Colors
+            span: left
+            default: single
+        block_bg_color_width:
+            label: Background Color Fill
+            type: balloon-selector
+            options:
+                block-only: Block Only
+                container-fluid: Fill Parent
+            span: right
+            default: container-fluid
+        bg_color_single:
+            label: BG Color
+            type: colorpicker
+            span: left
+            availableColors: ["default-theme", "#000", "#fafafa"]
+            default: "default-theme"
+            trigger:
+                action: show
+                field: block_bg_color_type
+                condition: value[single]
+        bg_color_double_a:
+            label: BG Color Top
+            type: colorpicker
+            span: left
+            availableColors: ["default-theme", "#000", "#fafafa"]
+            default: "default-theme"
+            trigger:
+                action: show
+                field: block_bg_color_type
+                condition: value[double]
+        bg_color_double_b:
+            label: BG Color Bot
+            type: colorpicker
+            span: right
+            availableColors: ["default-theme", "#000", "#fafafa"]
+            default: "default-theme"
+            trigger:
+                action: show
+                field: block_bg_color_type
+                condition: value[double]
+
+        section_block_spacing:
+            label: Block Spacing
+            type: section
+            span: full
+            containerAttributes: ['ilume-toggle','ilume-hidden']
+        block_spacing_top:
+            label: Spacing Top (<value> em)
+            type: number
+            min: 0
+            span: left
+            default: 0
+            comment: A value of 1 em equals 16px on Desktop Screen Size
+        block_spacing_bot:
+            label: Spacing Bot (<value> em)
+            type: number
+            min: 0
+            span: right
+            default: 0
+            comment: A value of 1 em equals 16px on Desktop Screen Size

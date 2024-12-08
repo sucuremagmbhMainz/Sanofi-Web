@@ -1,0 +1,85 @@
+description = "Product Overview"
+
+[viewBag]
+==
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+<style>
+    /* General Block Settings */
+    @media (max-width: {% if data.switch_to_mobile_bp|default('md') == 'md' %}768{% else %}991{% endif %}px) {
+        #{{ blockId }} .hide-mobile-img { display: none; }
+        #{{ blockId }} .show-mobile-img { display: flex; }
+        #{{ blockId }} .product-short span { text-align: center !important; }
+    }
+
+    #{{ blockId }} .product-head > .product-title > {{ data.section_header_size|default('h1') }} {
+        text-align: {{ data.section_header_align|default('center') }};
+    }
+
+    #{{ blockId }} .overview-img {
+        width: {{ data.section_productoverview_img_desktop_width|default('80') }}%;
+        margin: {{ data.section_productoverview_img_desktop_v_spacing|default('0') }}px auto;
+    }
+
+    {% if data.blocks_use_custom_color == 1 %}
+        #{{ blockId }} .product-head > .row {
+            background-color: {{ data.section_productoverview_background }};
+        }
+        #{{ blockId }}
+    {%endif%}
+</style>
+
+<div class="product-head">
+    {% if data.section_productoverview_header %}
+    <div class="product-title">
+        <{{ data.section_header_size|default('h1') }}>{{ data.section_productoverview_header }}</{{ data.section_header_size|default('h1') }}>
+    </div>
+    {% endif %}
+    <div class="row">
+        {% if data.section_productoverview_image_mobile %}
+        <!-- Desktop Img -->
+        <div class="col-{{ data.switch_to_mobile_bp|default('md') }}-6 hide-mobile-img">
+            <img class="overview-img" src="{{ data.section_productoverview_image|media }}" alt="{{ data.section_productoverview_header }}">
+        </div>
+        <!-- Mobile Img -->
+        <div class="col-{{ data.switch_to_mobile_bp|default('md') }}-6 show-mobile-img">
+            <img class="overview-img" src="{{ data.section_productoverview_image_mobile|media }}" alt="{{ data.section_productoverview_header }}"
+                 style="">
+        </div>
+        {% else %}
+        <!-- Desktop Img -->
+        <div class="col-{{ data.switch_to_mobile_bp|default('md') }}-6 hide-mobile-img">
+            <img class="overview-img" src="{{ data.section_productoverview_image|media }}" alt="{{ data.section_productoverview_header }}"
+                 style="width: {{ data.section_productoverview_img_desktop_width|default('80') }}%;
+                                        margin: {{ data.section_productoverview_img_desktop_v_spacing|default('0') }}px auto;">
+        </div>
+        <!-- Mobile Img -->
+        <div class="col-{{ data.switch_to_mobile_bp|default('md') }}-6 show-mobile-img">
+            <img class="overview-img" src="{{ data.section_productoverview_image|media }}" alt="{{ data.section_productoverview_header }}"
+                 style="width: {{ data.section_productoverview_img_mobile_width|default('80') }}%;
+                                        margin: {{ data.section_productoverview_img_mobile_v_spacing|default('0') }}px auto;">
+        </div>
+        {% endif %}
+        <div class="col-{{ data.switch_to_mobile_bp|default('md') }}-6">
+            <div class="product-details">
+                {% if data.section_productoverview_subheader %}
+                <div class="product-short">
+                    <p>
+                        <strong>
+                            <span >{{ data.section_productoverview_subheader }}</span>
+                        </strong>
+                    </p>
+                </div>
+                {% endif %}
+                <div class="product-properties">
+                    <ul>
+                        {% for fields in data.section_productoverview_properties %}
+                        <li>{{ fields.section_productoverview_property_caption }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

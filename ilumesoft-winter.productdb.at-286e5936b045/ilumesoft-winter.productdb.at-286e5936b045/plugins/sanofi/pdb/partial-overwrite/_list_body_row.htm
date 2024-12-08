@@ -1,0 +1,55 @@
+<?php
+    $expanded = $showTree ? $this->isTreeNodeExpanded($record) : null;
+    $childRecords = $showTree ? $record->getChildren() : null;
+    $treeLevelClass = $showTree ? 'list-tree-level-'.$treeLevel : '';
+?>
+<tr class="<?= $treeLevelClass ?> <?= $this->getRowClass($record) ?>">
+    <?php if ($showCheckboxes): ?>
+        <?= $this->makePartial('list_body_checkbox', ['record' => $record]) ?>
+    <?php endif ?>
+
+    <?php if ($showTree): ?>
+        <?= $this->makePartial('list_body_tree', [
+            'record' => $record,
+            'expanded' => $expanded,
+            'childCount' => $record->getChildCount()
+        ]) ?>
+    <?php endif ?>
+
+    <?php $index = $url = 0; foreach ($columns as $key => $column): ?>
+        <?php $index++; ?>
+
+        <?php
+            $switchValueClass = ($column->type == 'switch') && in_array($this->getColumnValue($record, $column), array('Ja', 'Yes')) ? 'switch-active' : '';
+        ?>
+        <td class="list-cell-index-<?= $index ?> list-cell-name-<?= $column->getName() ?> list-cell-type-<?= $column->type ?> <?= $column->clickable ? '' : 'nolink' ?> <?= $column->getAlignClass() ?> <?= $column->cssClass ?>">
+            <?php if ($column->clickable && !$url && ($url = $this->getRecordUrl($record))): ?>
+                <a <?= $this->getRecordOnClick($record) ?> href="<?= $url ?>">
+                    <?php if ($column->type == 'switch'): ?>
+                        <div class="switch-pin <?= $switchValueClass ?>">
+                    <?php endif ?>
+                            <?= htmlspecialchars_decode($this->getColumnValue($record, $column)) ?>
+                    <?php if ($column->type == 'switch'): ?>
+                         </div>
+                    <?php endif ?>
+                </a>
+            <?php else: ?>
+                <?php if ($column->type == 'switch'): ?>
+                    <div class="switch-pin <?= $switchValueClass ?>">
+                <?php endif ?>
+                        <?= htmlspecialchars_decode($this->getColumnValue($record, $column)) ?>
+                <?php if ($column->type == 'switch'): ?>
+                    </div>
+                <?php endif ?>
+            <?php endif ?>
+        </td>
+    <?php endforeach ?>
+
+    <?php if ($showSetup): ?>
+        <td class="list-setup">&nbsp;</td>
+    <?php endif ?>
+</tr>
+
+<?php if ($showTree && $expanded): ?>
+    <?= $this->makePartial('list_body_rows', ['records' => $childRecords, 'treeLevel' => $treeLevel+1]) ?>
+<?php endif ?>

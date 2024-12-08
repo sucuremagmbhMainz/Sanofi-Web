@@ -1,0 +1,75 @@
+
+.layout-sidenav-container {
+    width: 191px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .layout-sidenav-container {
+        width: 150px;
+    }
+}
+
+@media (max-width: 767px) {
+    .layout-sidenav-container {
+        width: 120px;
+    }
+}
+
+/*** Backend List Row Switch Highlight ***/
+.list-cell-type-switch, .list-cell-type-number {
+    width: 1%;
+}
+
+.list-cell-type-text p, .field-checkboxlist label p, .list-widget table td p {
+    margin: 0;
+}
+
+.field-repeater li.field-repeater-item:after {
+    font-size: 15px !important;
+    color: black !important;
+}
+
+.switch-pin {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #F55;
+    border: 2px solid black;
+    color: transparent;
+    border-radius: 50px;
+}
+
+.switch-pin.switch-active {
+    background-color: #5F5;
+}
+
+
+@media (max-width: 650px) {
+    .grid-block ul.tabs-filter-items {
+        display: block;
+    }
+
+    .grid-block ul.tabs-filter-tab {
+        padding: 7px 0;
+    }
+}
+
+#pdb-product-toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.pdb-tool-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.space-left {
+    margin-left: 20px;
+}
+
+.rich-extended ul {
+    padding-inline-start: 20px;
+}

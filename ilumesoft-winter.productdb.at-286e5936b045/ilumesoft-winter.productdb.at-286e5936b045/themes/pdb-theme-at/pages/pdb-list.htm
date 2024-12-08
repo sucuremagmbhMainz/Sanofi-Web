@@ -1,0 +1,27 @@
+title = "Produktfinder"
+url = "/pdb/list/:params"
+layout = "_static-base"
+is_hidden = 0
+==
+<?php
+    use \Sanofi\Pdb\Classes\PDBDetailsPage;
+
+    function onStart() {
+        PDBDetailsPage::feedParamData(get());
+
+        $this['is_preview'] = PDBDetailsPage::hasParam('preview') && (BackendAuth::getUser() != null);
+    }
+?>
+==
+<div class="page-section-top">
+    <p> Informationen über die Wirkstoffe und die Anwendung der Produkte von Sanofi in Österreich. </p>
+</div>
+
+{% partial "react/react-assets" %}
+
+<link href="{{ ['assets/scss/pdb/pdb-list.scss',
+                'assets/scss/pdb/pdb-list-responsive.scss']|theme }}" rel="stylesheet">
+
+<div class="page-section-content">
+    <div id="pdb-list" {{ is_preview ? 'preview="active"' : ''}}></div>
+</div>

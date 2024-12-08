@@ -1,0 +1,10 @@
+1.0.1: 'Initial Release'
+1.0.2:
+    - 'Created table ilume_backend_rainlab_page_access'
+    - 1_0_2_builder_table_create_ilume_backend_rainlab_pages.php
+1.0.3:
+    - 'Updated table ilume_backend_rainlab_page_revisions'
+    - 1_0_3_builder_table_create_ilume_backend_rainlab_page_revisions.php
+1.0.4:
+    - 'Updated table ilume_backend_rainlab_pages_user_sort'
+    - 1_0_4_builder_table_update_ilume_backend_rainlab_pages_user_sort.php

@@ -1,0 +1,51 @@
+producttrio:
+    name: Product Trio
+    description: Product Trio
+    icon: icon-ellipsis-h
+    fields:
+        section_producttrio_section:
+            label: Product Trio
+            type: section
+            containerAttributes:
+                data-icon: icon-ellipsis-h
+        section_visible_img_height:
+            label: Min. Image Height
+            type: number
+            default: 300
+            span: left
+        section_product_entries_head:
+            label: Trio Entries (max. 3)
+            span: full
+            type: section
+            containerAttributes: ['ilume-toggle', 'ilume-hidden']
+        section_producttrio_carousel:
+            type: repeater
+            prompt: Add Entry
+            minItems: 1
+            maxItems: 3
+            form:
+                fields:
+                    section_carousel_line:
+                        label: Trio-Element
+                        type: section
+                        containerAttributes:
+                            data-icon: icon-circle-o
+                    section_carousel_title:
+                        label: Title
+                        type: text
+                        span: left
+                    section_carousel_title_color:
+                        label: Title Color
+                        type: colorpicker
+                        span: right
+                        availableColors: ['#000', '#FFF']
+                        default: #000
+                    section_carousel_button_url:
+                        label: Open Url
+                        type: text
+                        span: full
+                    section_carousel_image:
+                        label: Image
+                        type: mediafinder
+                        mode: image
+                        span: left

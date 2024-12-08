@@ -1,0 +1,98 @@
+fields:
+    is_visible:
+        label: Sichtbar
+        span: full
+        default: 1
+        type: switch
+        comment: 'Wichtig: Versteckte Packungsarten werden im Frontend ausgeblendet ! (Änderung muss auch durch Produkt veröffentlicht werden)'
+    name:
+        label: Bezeichnung
+        span: full
+        type: text
+        required: true
+    description:
+        label: 'Weitere Informationen'
+        size: large
+        span: left
+        type: richeditor
+        cssClass: "rich-extended"
+        toolbarButtons: 'paragraphFormat,align,|||,formatUL,formatOL,|||,insertLink,|||,bold,italic,underline,strikeThrough,|||,subscript,superscript|||,color,|||,clearFormatting'
+    raw_image:
+        label: 'Bild (Produktvariante)'
+        span: right
+        type: mediafinder
+        mode: image
+        required: true
+        maxFilesize: '10'
+    section_properties:
+        label: ''
+        span: full
+        type: section
+    is_prescription_required:
+        label: 'Rezeptpflichtig'
+        span: left
+        type: checkbox
+    is_pharmacy_required:
+        label: 'Arzneimittel'
+        span: right
+        type: checkbox
+    is_nutritional_supplement:
+        label: 'Nahrungsergänzungsmittel'
+        span: left
+        type: checkbox
+    is_cosmetic:
+        label: 'Kosmetikum'
+        span: right
+        type: checkbox
+    is_medicine:
+        label: 'Medizinprodukt'
+        span: left
+        type: checkbox
+    section_pdfs:
+        label: ''
+        span: full
+        type: section
+    pdf_file_one:
+        label: 'PDF #1'
+        type: fileupload
+        mode: file
+        mimeTypes: 'pdf'
+        maxFilesize: '10'
+        span: left
+#        finalFilename: 'Gebrauchsinformation.pdf'
+    pdf_file_two:
+        label: 'PDF #2'
+        type: fileupload
+        mode: file
+        mimeTypes: 'pdf'
+        maxFilesize: '10'
+        span: right
+#        finalFilename: 'Fachinformation.pdf'
+    pdf_one_date:
+        label: 'Datum (PDF #1)'
+        type: text
+        span: left
+    pdf_two_date:
+        label: 'Datum (PDF #2)'
+        type: text
+        span: right
+    section_sizes:
+        label: ''
+        span: full
+        type: section
+    typesRaw:
+        label: 'Packungsgrößen'
+        type: repeater
+        prompt: 'Neue Produktgröße hinzufügen'
+        form:
+            fields:
+                pzn:
+                    label: PZN
+                    span: auto
+                    type: text
+                amount:
+                    label: Packungsgröße
+                    span: auto
+                    placeholder: 'z.B.: 20 Stück'
+                    required: true
+                    type: text

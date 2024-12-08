@@ -1,0 +1,22 @@
+title = "Produktdetails"
+url = "/login/process"
+layout = "_static-doccheck"
+is_hidden = 0
+==
+<?php
+    use \Sanofi\Pdb\Classes\PDBDocCheck;
+    use Cms\Classes\Controller;
+
+    function onStart() {
+        if (!PDBDocCheck::hasDocCheckPageRef()) {
+            return PDBDocCheck::showDocCheckLogin();
+        }
+
+        if (!PDBDocCheck::verifyDocCheckLogin()) {
+            return App::make(Controller::class)->setStatusCode(404)->run('/404');
+        }
+
+        return PDBDocCheck::showLastDocCheckPageRef();
+    }
+?>
+==

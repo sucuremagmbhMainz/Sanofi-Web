@@ -1,0 +1,103 @@
+description = "Feature Block"
+
+[viewBag]
+==
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+{% set blockId = "unique-block"|uniqueID %}
+
+<style>
+    /* Block Spacing Style */
+    #{{ blockId }} { padding: {{ data.block_spacing_top|default(0) }}em 0 {{ data.block_spacing_bot|default(0) }}em 0; }
+    @media (max-width: 1200px) {  #{{ blockId }} { padding: calc(0.75 * {{ data.block_spacing_top|default(0) }}em) 0 calc(0.75 * {{ data.block_spacing_bot|default(0) }}em) 0; } }
+    @media (max-width: 600px) { #{{ blockId }} { padding: calc(0.5 * {{ data.block_spacing_top|default(0) }}em) 0 calc(0.5 * {{ data.block_spacing_bot|default(0) }}em) 0; } }
+
+    /* Block Background Style */
+    #{{ blockId }} {
+    {% if data.block_bg_color_type == 'single' %} background-color: {{ data.bg_color_single == 'default-theme' ? 'transparent' : data.bg_color_single|default('transparent') }};
+    {% else %} background: linear-gradient(180deg, {{ data.bg_color_double_a == 'default-theme' ? 'transparent' : data.bg_color_double_a|default('transparent') }} {{ data.block_bg_color_double_split|default(50) }}%, {{ data.bg_color_double_b == 'default-theme' ? 'transparent' : data.bg_color_double_b|default('transparent') }} {{ data.block_bg_color_double_split|default(50) }}%);
+    {% endif %} }
+</style>
+
+<div id="{{ blockId }}" class="feature-block block-bg {% if data.block_bg_color_width == 'block-only' %}{{ data.container|default('container') }}{% else %}container-fluid{% endif %}">
+    <!-- Block Content Start -->
+
+    {% if data.section_section_container %}
+    <div class="{{ data.section_section_container }}">
+        {% else %}
+        <div class="container">
+            {% endif %}
+            {% if data.section_featureblock_image %}
+            <div class="row"">
+                <div class="col-md-3 col-sm-12 col-xs-12
+            {% if data.section_featureblock_image_position == 'left' %}order-1{% endif %}
+            {% if data.section_featureblock_image_position == 'right' %}order-2{% endif %}
+            " {% if data.section_featureblock_zoom == 'zoom' %}" data-aos="zoom-in" data-aos-delay="300"{% endif %}>
+                    <div class="images">
+                        {% if data.section_featureblock_image %}
+                        <img src="{{ data.section_featureblock_image|media }}" alt="{{ data.section_featureblock_title }}" style="max-height:100%; max-width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-12 col-xs-12
+            {% if data.section_featureblock_image_position == 'left' %}order-2{% endif %}
+            {% if data.section_featureblock_image_position == 'right' %}order-1{% endif %}
+            " {% if data.section_featureblock_zoom == 'zoom' %}" data-aos="zoom-in" data-aos-delay="300"{% endif %}>
+                    <div class="content-inner">
+                        <div class="featureblock-container">
+                            {% if data.section_featureblock_title %}
+                            {% if data.section_featureblock_title_size == 1 %}
+                            <h1 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h1>
+                            {% elseif data.section_featureblock_title_size == 2 %}
+                            <h2 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h2>
+                            {% elseif data.section_featureblock_title_size == 3 %}
+                            <h3 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h3>
+                            {% elseif data.section_featureblock_title_size == 4 %}
+                            <h4 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h4>
+                            {% elseif data.section_featureblock_title_size == 5 %}
+                            <h5 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h5>
+                            {% elseif data.section_featureblock_title_size == 6 %}
+                            <h6 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h6>
+                            {% endif %}
+                            {% endif %}
+                            {% if data.section_featureblock_desc %}
+                            <div class="lead" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_desc|raw }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12" {% if data.section_featureblock_zoom == 'zoom' %} data-aos="zoom-in" data-aos-delay="300"{% endif %}>
+                    <div class="content-inner">
+                        <div class="featureblock-container">
+                            {% if data.section_featureblock_title %}
+                            {% if data.section_featureblock_title_size == 1 %}
+                            <h1 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h1>
+                            {% elseif data.section_featureblock_title_size == 2 %}
+                            <h2 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h2>
+                            {% elseif data.section_featureblock_title_size == 3 %}
+                            <h3 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h3>
+                            {% elseif data.section_featureblock_title_size == 4 %}
+                            <h4 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h4>
+                            {% elseif data.section_featureblock_title_size == 5 %}
+                            <h5 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h5>
+                            {% elseif data.section_featureblock_title_size == 6 %}
+                            <h6 class="title" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_title }}</h6>
+                            {% endif %}
+                            {% endif %}
+                            {% if data.section_featureblock_desc %}
+                            <div class="lead" style="color: {{ data.section_featureblock_textcolor }};">{{ data.section_featureblock_desc|raw }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+
+<!-- Block Content End -->
+</div>

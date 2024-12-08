@@ -1,0 +1,86 @@
+headline:
+    name: Headline
+    description: Headline
+    icon: icon-flag
+    fields:
+        section_head:
+            label: Headline
+            type: section
+            containerAttributes:
+                data-icon: icon-flag
+        section_headline_position:
+            label: Headline Position
+            type: balloon-selector
+            span: right
+            options:
+                left: Left
+                center: Center
+                right: Right
+            default: left
+        headline_content:
+            label: Headline
+            type: text
+            span: left
+        headline_url:
+            label: Headline Link
+            type: text
+            span: left
+
+        section_sizing:
+            label: Sizing
+            type: section
+            containerAttributes: ['ilume-toggle','ilume-hidden']
+        headline_size:
+            label: Size
+            type: dropdown
+            options:
+                1: H1
+                2: H2
+                3: H3
+                4: H4
+                5: H5
+                6: H6
+            span: left
+            default: 1
+        headline_h_spacing:
+            label: Horizontal Spacing (Left / Right)
+            type: number
+            span: right
+            default: 0
+        section_headline_font_weight:
+            label: Font Weight
+            type: balloon-selector
+            span: left
+            options:
+                normal: Normal
+                bold: Bold
+            default: normal
+        section_headline_custom_weight:
+            label: Headline Weight
+            type: number
+            span: right
+            default: 100
+            trigger:
+                action: show
+                field: section_headline_font_weight
+                condition: value[custom]
+
+        section_coloring:
+            label: Coloring
+            type: section
+            containerAttributes: ['ilume-toggle','ilume-hidden']
+        blocks_use_custom_color:
+            label: Use custom colors
+            type: checkbox
+            default: 0
+            span: left
+        section_headline_color:
+            label: Headline Color
+            type: colorpicker
+            availableColors: ["default-theme", "#000", "#fff"]
+            default: "default-theme"
+            span: right
+            trigger:
+                action: show
+                field: blocks_use_custom_color
+                condition: checked

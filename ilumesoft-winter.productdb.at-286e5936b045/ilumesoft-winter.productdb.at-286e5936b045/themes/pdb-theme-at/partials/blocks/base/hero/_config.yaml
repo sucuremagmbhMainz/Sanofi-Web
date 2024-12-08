@@ -1,0 +1,95 @@
+hero:
+    name: Hero
+    description: Header Block with Background Img
+    icon: icon-picture-o
+    fields:
+        section_head:
+            label: Hero
+            type: section
+            containerAttributes:
+                data-icon: icon-picture-o
+
+        section_title:
+            label: Title
+            type: section
+            span: full
+            containerAttributes: ['ilume-toggle']
+
+        blocks_use_custom_color:
+            label: Use custom colors
+            type: checkbox
+            default: 0
+            span: left
+        title_color:
+            type: colorpicker
+            availableColors: ["default-theme", "#000", "#fff", "#fb7eca", "#009ee3"]
+            default: "default-theme"
+            span: full
+            trigger:
+                action: show
+                field: blocks_use_custom_color
+                condition: checked
+
+        title_align_h:
+            label: Title Alignment (Horizontal)
+            type: balloon-selector
+            options:
+                left: Left
+                center: Centered
+                right: Right
+            span: left
+            default: center
+        title_align_v:
+            label: Title Alignment (Vertical)
+            type: balloon-selector
+            options:
+                flex-start: Top
+                space-around: Middle
+                flex-end: Bottom
+            span: right
+            default: space-around
+        hero_title:
+            label: Title
+            type: text
+            span: left
+        title_size:
+            label: Size
+            type: dropdown
+            options:
+                h1: H1
+                h2: H2
+                h3: H3
+                h4: H4
+                h5: H5
+                h6: H6
+            span: right
+            default: h1
+        section_img:
+            label: Hero Image
+            type: section
+            span: full
+            containerAttributes: ['ilume-toggle']
+        bg_img_positioning:
+            label: Image Positioning
+            type: balloon-selector
+            options:
+                left: Left
+                center: Center
+                right: Right
+            span: left
+            default: center
+        bg_img:
+            label: Hero Background Image
+            type: mediafinder
+            comment: JPG, PNG
+            mode: image
+            span: right
+            imageWidth: 100
+            imageHeight: 100
+        image_max_height:
+            label: Max. Image Height (%)
+            type: number
+            min: 1;
+            max: 100;
+            default: 100
+            span: left

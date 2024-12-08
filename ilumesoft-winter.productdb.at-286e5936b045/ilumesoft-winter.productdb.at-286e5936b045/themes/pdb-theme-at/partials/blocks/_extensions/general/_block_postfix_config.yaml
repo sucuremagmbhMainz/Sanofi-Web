@@ -1,0 +1,186 @@
+section_block_post_size:
+    label: Block Size / Spacing
+    type: section
+    span: full
+    containerAttributes: [ 'ilume-toggle','ilume-hidden' ]
+block_container_size:
+    label: Block Size
+    type: balloon-selector
+    options:
+        container: Container
+        container-fluid: Full Browser Width
+    span: left
+    default: container
+section_block_size_split:
+    label: ""
+    type: section
+    cssClass: 'section-split'
+    span: full
+block_spacing_top:
+    label: Inner Spacing - Top (<value> em)
+    type: number
+    min: 0
+    span: left
+    default: 1
+    comment: A value of 1 em equals 16px on Desktop Screen Size
+block_spacing_bot:
+    label: Inner Spacing - Bot (<value> em)
+    type: number
+    min: 0
+    span: right
+    default: 1
+    comment: A value of 1 em equals 16px on Desktop Screen Size
+block_spacing_outer_top:
+    label: Outer Spacing - Top (<value> em)
+    type: number
+    min: 0
+    span: left
+    default: 0
+    comment: A value of 1 em equals 16px on Desktop Screen Size
+block_spacing_outer_bot:
+    label: Outer Spacing - Bot (<value> em)
+    type: number
+    min: 0
+    span: right
+    default: 0
+    comment: A value of 1 em equals 16px on Desktop Screen Size
+
+section_block_bg:
+    label: Block Background
+    type: section
+    span: full
+    containerAttributes: ['ilume-toggle','ilume-hidden']
+block_bg_color_width:
+    label: Block Background Size
+    type: balloon-selector
+    options:
+        container: Block Only
+        container-fluid: Full Browser Width
+    span: left
+    default: container-fluid
+section_block_bg_split_1:
+    label: ""
+    type: section
+    cssClass: 'section-split'
+    span: full
+block_bg_color_type:
+    label: Background Color
+    type: balloon-selector
+    options:
+        none: No Color
+        single: Single Color
+        double: Two Colors
+    span: left
+    default: none
+bg_color_single:
+    label: BG Color
+    type: colorpicker
+    span: right
+    availableColors: ["default-theme", "#000", "#fafafa"]
+    default: "default-theme"
+    trigger:
+        action: show
+        field: block_bg_color_type
+        condition: value[single]
+    showAlpha: true
+bg_color_double_a:
+    label: BG Color Top
+    type: colorpicker
+    span: right
+    availableColors: ["default-theme", "#000", "#fafafa"]
+    default: "default-theme"
+    trigger:
+        action: show
+        field: block_bg_color_type
+        condition: value[double]
+    showAlpha: true
+block_bg_color_double_split:
+    label: Color Switch Pos (% from Top)
+    type: number
+    span: left
+    trigger:
+        action: show
+        field: block_bg_color_type
+        condition: value[double]
+    showAlpha: true
+bg_color_double_b:
+    label: BG Color Bot
+    type: colorpicker
+    span: right
+    availableColors: ["default-theme", "#000", "#fafafa"]
+    default: "default-theme"
+    trigger:
+        action: show
+        field: block_bg_color_type
+        condition: value[double]
+    showAlpha: true
+section_block_bg_split_2:
+    label: ""
+    type: section
+    cssClass: 'section-split'
+    span: full
+block_bg_use_image:
+    label: Background Image
+    type: balloon-selector
+    options:
+        no-bg-image: No Image
+        use-bg-image: With Background Image
+        use-fixed-bg-image: With fixed Background Image
+    span: left
+    default: no-bg-image
+block_bg_image_size:
+    label: Background Sizing
+    type: balloon-selector
+    options:
+        auto: Auto
+        contain: Contain
+        cover: Cover
+    span: left
+    default: auto
+    trigger:
+        action: show
+        field: block_bg_use_image
+        condition: value[use-bg-image]|value[use-fixed-bg-image]
+block_bg_pos_x:
+    label: Background Attach X
+    type: balloon-selector
+    options:
+        left: Left
+        center: Center
+        right: Right
+    default: center
+    span: right
+    trigger:
+        action: show
+        field: block_bg_use_image
+        condition: value[use-bg-image]|value[use-fixed-bg-image]
+block_bg_image:
+    label: Background Image
+    type: mediafinder
+    span: left
+    trigger:
+        action: show
+        field: block_bg_use_image
+        condition: value[use-bg-image]|value[use-fixed-bg-image]
+block_bg_pos_y:
+    label: Background Attach Y
+    type: balloon-selector
+    options:
+        top: Top
+        center: Center
+        bottom: Bottom
+    default: center
+    span: right
+    trigger:
+        action: show
+        field: block_bg_use_image
+        condition: value[use-bg-image]|value[use-fixed-bg-image]
+block_bg_image_title:
+    label: 'Image - Title Tag'
+    type: text
+    span: full
+    trigger:
+        action: show
+        field: block_bg_use_image
+        condition: value[use-bg-image]|value[use-fixed-bg-image]
+

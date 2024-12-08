@@ -1,0 +1,13 @@
+fields:
+    is_active:
+        label: Aktiv
+        span: auto
+        default: 1
+        type: switch
+        comment: 'Wichtig: Wenn ein Anwendungsbereich deaktiviert wird - werden alle zugehörigen Produkte im Frontend ausgeblendet !'
+    name:
+        label: Bezeichnung
+        span: full
+        type: richeditor
+        toolbarButtons: 'subscript,superscript,|||,clearFormatting'
+        size: small

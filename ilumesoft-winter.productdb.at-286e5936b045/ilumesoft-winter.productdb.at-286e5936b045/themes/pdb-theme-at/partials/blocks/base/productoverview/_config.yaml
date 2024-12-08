@@ -1,0 +1,124 @@
+productoverview:
+    name: Product Overview
+    description: A Product Overview
+    icon: icon-eye
+    fields:
+        section_productoverview_section:
+            label: Product Overview
+            type: section
+            containerAttributes:
+                data-icon: icon-eye
+        switch_to_mobile_bp:
+            label: Mobile Breakpoint
+            type: balloon-selector
+            options:
+                md: "<768 Px"
+                lg: "<991 Px"
+            span: left
+            default: md
+
+        section_header:
+            label: Header
+            span: full
+            type: section
+        section_header_align:
+            label: Header Alignment
+            type: balloon-selector
+            options:
+                left: Left
+                center: Center
+                right: Right
+            span: left
+            default: center
+        section_header_size:
+            label: Header Size
+            type: balloon-selector
+            options:
+                h1: H1
+                h2: H2
+                h3: H3
+                h4: H4
+                h5: H5
+                h6: H6
+            span: right
+            default: h1
+        section_productoverview_header:
+            label: Header
+            type: text
+            span: full
+
+        section_subheader:
+            label: Subheader
+            span: full
+            type: section
+            containerAttributes: ['ilume-toggle', 'ilume-hidden']
+        section_subheader_align:
+            label: Subheader Alignment
+            type: balloon-selector
+            options:
+                left: Left
+                center: Center
+                right: Right
+            span: left
+            default: center
+        section_productoverview_subheader:
+            label: Subheader
+            type: text
+            span: full
+
+        section_images_head:
+            label: Images
+            span: full
+            type: section
+            containerAttributes: ['ilume-toggle', 'ilume-hidden']
+        section_productoverview_image:
+            label: Desktop Image
+            type: mediafinder
+            mode: image
+            span: left
+        section_productoverview_image_mobile:
+            label: Mobile Image (Optional)
+            type: mediafinder
+            mode: image
+            span: right
+        section_productoverview_img_desktop_width:
+            label: Desktop Image Width (%)
+            type: number
+            span: left
+            default: 80
+        section_productoverview_img_desktop_v_spacing:
+            label: Desktop Image Vertical Spacing (Px)
+            type: number
+            span: right
+            default: 0
+        section_productoverview_img_mobile_width:
+            label: Mobile Image Width (%)
+            type: number
+            span: left
+            default: 80
+        section_productoverview_img_mobile_v_spacing:
+            label: Mobile Image Vertical Spacing (Px)
+            type: number
+            span: right
+            default: 0
+
+        section_properties_head:
+            label: Product Property Entries
+            span: full
+            type: section
+            containerAttributes: ['ilume-toggle', 'ilume-hidden']
+        section_productoverview_properties:
+            type: repeater
+            span: full
+            prompt: Add a property text
+            form:
+                fields:
+                    section_property_head:
+                        label: Property Entry
+                        span: full
+                        type: section
+                        containerAttributes:
+                            data-icon: icon-circle-o
+                    section_productoverview_property_caption:
+                        label: Caption
+                        type: text

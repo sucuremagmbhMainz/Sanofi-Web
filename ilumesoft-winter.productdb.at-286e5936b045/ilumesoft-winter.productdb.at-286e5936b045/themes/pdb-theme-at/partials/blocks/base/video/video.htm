@@ -1,0 +1,37 @@
+description = "Video Section"
+
+[viewBag]
+==
+
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+{% if data.section_video_popup == 1 %}
+<section class="video-promo" style="padding: 20px; background-color: {{ data.section_video_bg }}">
+    <div class="video {{ data.section_video_container }}">
+        <div class="video-promo-content text-center">
+            <img src="{{ data.section_video_poster|media }}" width="{{ data.section_video_width }}%" height="auto">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <a href="{{ data.section_video_file|media }}" class="video-popup">
+                    <i class="fa fa-play"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+<section  style="padding: 20px; background-color: {{ data.section_video_bg }}">
+    <div class="video {{ data.section_video_container }}" style="background-color: {{ data.section_video_bg }}">
+        <div class="video-item text-center">
+            <video {% if data.section_video_poster and data.section_video_poster|length > 0 %}poster="{{ data.section_video_poster|media }}"{% endif %} width="{{ data.section_video_width }}%" height="auto"
+                {% if data.section_video_autoplay == 1 %} autoplay {% endif %}
+                {% if data.section_video_controls == 1 %} controls {% endif %}
+                {% if data.section_video_loop == 1 %} loop {% endif %}
+                {% if data.section_video_muted == 1 %} muted {% endif %}>
+                <source src="{{ data.section_video_file|media }}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
+{% endif %}
+

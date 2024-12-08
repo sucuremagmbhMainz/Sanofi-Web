@@ -1,0 +1,149 @@
+description = "Slider"
+
+[viewBag]
+==
+
+{{ [_self|prepBlockJS]|theme|embedJS }}
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+{% set sliderId = "unique-slider"|uniqueID %}
+
+<style>
+    /* Basic Slider Item MinHeight (desktop only) */
+    @media (min-width: 992px) {
+        #{{ blockId }} .carousel-item {
+            min-height: {{ data.desktop_item_minheight|default(350) }}px;
+        }
+    }
+</style>
+
+<div class="sliderarea">
+    <div id="{{ sliderId }}" class="slider-inner late-carousel-initializer slide {% if data.section_bottom_nav_overlap == 'yes' %} overlap-bot-nav{% endif %}" data-ride="carousel" data-interval="{% if data.section_slider_autospin == 0 %}false{% else %}8000{% endif %}">
+        <ol class="carousel-indicators">
+            {% for fields in data.section_carousel %}
+            <li data-target="#{{ sliderId }}" data-slide-to="{{ loop.index0 }}"class="{% if loop.index0 == 0 %}active{% endif %} {{ data.section_bottom_nav_style }}"></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            {% for fields in data.section_carousel %}
+            <div class="carousel-item active" {% if fields.section_carousel_background_check %}style="background-image: url('/storage/app/media{{ fields.section_carousel_image }}');"){% endif %}>
+                <div class="row">
+                    {% if data.section_slider_container == 'container-fluid' %}
+                    <div class="col-md-1 col-sm-12 col-xs-12"></div>
+                    {% endif %}
+                    {% if fields.section_carousel_align == 'right' %}
+                    <div class="col-lg-{{ data.section_slider_container == 'container-fluid' ? '5' : '6'}} col-md-12 col-sm-12 col-xs-12 product-img-holder mobile-hidden">
+
+                        {% if fields.section_carousel_image and not fields.section_carousel_background_check %}
+                        <a href="{{ fields.section_carousel_button_url }}">
+                            <img class="img-fluid" src="{{ fields.section_carousel_image|media }}" alt="{{ fields.section_carousel_title }}">
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-{{ data.section_slider_container == 'container-fluid' ? '5' : '6'}} col-md-12 col-sm-12 col-xs-12 caption-holder">
+                        <div class="carousel-caption">
+                            {% if fields.section_carousel_background_check %}
+                            <a class="bg-link" href="{{ fields.section_carousel_button_url }}">
+                                <span>&nbsp;</span>
+                            </a>
+                            {% endif %}
+                            {% if fields.section_carousel_image and not fields.section_carousel_background_check %}
+                            <a href="{{ fields.section_carousel_button_url }}">
+                                <img class="img-fluid mobile-visible" src="{{ fields.section_carousel_image|media }}" alt="{{ fields.section_carousel_title }}">
+                            </a>
+                            {% endif %}
+                            <div class="right-sub-content">
+                            <a href="{{ fields.section_carousel_button_url }}">
+                                <h{{ fields.headline_size|default(2) }}>{{ fields.section_carousel_title }}</h{{ fields.headline_size|default(2) }}>
+                            </a>
+                            {% if fields.section_carousel_subtitle and fields.section_carousel_subtitle|length > 0 %}
+                            <p class="mobile-hidden">{{ fields.section_carousel_subtitle }}</p>
+                            {% endif %}
+                            <a class="btn btn-lg btn-common mobile-inline-hidden" href="{{ fields.section_carousel_button_url }}">
+                                <i class="{{ fields.section_carousel_button_icon }}"></i>
+                                {{ fields.section_carousel_button_label }}
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% elseif fields.section_carousel_align == 'bottom-center' %}
+                    <div class="col-lg-{{ data.section_slider_container == 'container-fluid' ? '11' : '12'}} col-md-12 col-sm-12 col-xs-12 caption-holder bottom-caption">
+                        <div class="carousel-caption">
+                            {% if fields.section_carousel_background_check %}
+                            <a class="bg-link" href="{{ fields.section_carousel_button_url }}">
+                                <span>&nbsp;</span>
+                            </a>
+                            {% endif %}
+                            {% if fields.section_carousel_image and not fields.section_carousel_background_check %}
+                            <a href="{{ fields.section_carousel_button_url }}">
+                                {% if fields.section_carousel_image %}
+                                <img class="img-fluid bottom-caption" src="{{ fields.section_carousel_image|media }}" alt="{{ fields.section_carousel_title }}">
+                                {% endif %}
+                            {% endif %}
+                            </a>
+                            <div class="bottom-sub-content">
+                                <a href="{{ fields.section_carousel_button_url }}">
+                                    <h{{ fields.headline_size|default(2) }}>{{ fields.section_carousel_title }}</h{{ fields.headline_size|default(2) }}>
+                                </a>
+                                {% if fields.section_carousel_subtitle and fields.section_carousel_subtitle|length > 0 %}
+                                <p class="mobile-hidden">{{ fields.section_carousel_subtitle }}</p>
+                                {% endif %}
+                                <a class="btn btn-lg btn-common mobile-inline-hidden" href="{{ fields.section_carousel_button_url }}">
+                                    <i class="{{ fields.section_carousel_button_icon }}"></i>
+                                    {{ fields.section_carousel_button_label }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-lg-{{ data.section_slider_container == 'container-fluid' ? '5' : '6'}} col-md-12 col-sm-12 col-xs-12 caption-holder">
+                        <div class="carousel-caption">
+                            {% if fields.section_carousel_background_check %}
+                            <a class="bg-link" href="{{ fields.section_carousel_button_url }}">
+                                <span>&nbsp;</span>
+                            </a>
+                            {% endif %}
+                            {% if fields.section_carousel_image and not fields.section_carousel_background_check %}
+                            <a href="{{ fields.section_carousel_button_url }}">
+                                <img class="img-fluid mobile-visible" src="{{ fields.section_carousel_image|media }}" alt="{{ fields.section_carousel_title }}">
+                            </a>
+                            {% endif %}
+                            <div class="left-sub-content">
+                                <a href="{{ fields.section_carousel_button_url }}">
+                                    <h{{ fields.headline_size|default(2) }}> {{ fields.section_carousel_title }}</h{{ fields.headline_size|default(2) }}>
+                                </a>
+                                {% if fields.section_carousel_subtitle and fields.section_carousel_subtitle|length > 0 %}
+                                <p class="mobile-hidden">{{ fields.section_carousel_subtitle }}</p>
+                                {% endif %}
+                                <a class="btn btn-lg btn-common mobile-inline-hidden" href="{{ fields.section_carousel_button_url }}">
+                                    <i class="{{ fields.section_carousel_button_icon }}"></i>
+                                    {{ fields.section_carousel_button_label }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-{{ data.section_slider_container == 'container-fluid' ? '5' : '6'}} col-md-12 col-sm-12 col-xs-12 product-img-holder mobile-hidden">
+                        <a href="{{ fields.section_carousel_button_url }}">
+                            {% if fields.section_carousel_image and not fields.section_carousel_background_check%}
+                                <img class="img-fluid" src="{{ fields.section_carousel_image|media }}" alt="{{ fields.section_carousel_title }}">
+                            {% endif %}
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if data.section_slider_container == 'container-fluid' %}
+                    <div class="col-md-1 col-sm-12 col-xs-12"></div>
+                    {% endif %}
+                </div>
+                {% if fields.section_carousel_background_check %}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev {{ data.section_left_arrow_alignment }}" href="#{{ sliderId }}" role="button" data-slide="prev">
+            <img class="chevron svg" src="/themes/pdb-theme-at/assets/images/arrow-right.svg"/>
+        </a>
+        <a class="carousel-control-next {{ data.section_right_arrow_alignment }}" href="#{{ sliderId }}" role="button" data-slide="next">
+            <img class="chevron svg" src="/themes/pdb-theme-at/assets/images/arrow-right.svg"/>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,217 @@
+comparisontable:
+    name: Comparison Table
+    description: A comparison table for products
+    icon: icon-table
+    fields:
+        section_productcomparison_section:
+            label: Comparison Table
+            type: section
+            containerAttributes:
+                data-icon: icon-table
+        section_productcomparison_head_title:
+            label: Main Title
+            type: text
+            mode: image
+            span: full
+
+        section_product_compare_groups:
+            label: Comparison Sections
+            type: section
+            containerAttributes: ['ilume-toggle','ilume-hidden']
+        comparison_group_count:
+            label: Number of visible comparison sections
+            type: balloon-selector
+            options:
+                1: 1
+                2: 2
+                3: 3
+                4: 4
+                5: 5
+                6: 6
+                7: 7
+                8: 8
+            span: left
+            default: 1
+        comparison_group_title_1:
+            label: "Comparison Title - Section #1"
+            type: text
+            span: full
+        comparison_group_title_2:
+            label: "Comparison Title - Section #2"
+            type: text
+            span: full
+            trigger:
+                action: show
+                field: comparison_group_count
+                condition: value[2]|value[3]|value[4]|value[5]|value[6]|value[7]|value[8]
+        comparison_group_title_3:
+            label: "Comparison Title - Section #3"
+            type: text
+            span: full
+            trigger:
+                action: show
+                field: comparison_group_count
+                condition: value[3]|value[4]|value[5]|value[6]|value[7]|value[8]
+        comparison_group_title_4:
+            label: "Comparison Title - Section #4"
+            type: text
+            span: full
+            trigger:
+                action: show
+                field: comparison_group_count
+                condition: value[4]|value[5]|value[6]|value[7]|value[8]
+        comparison_group_title_5:
+            label: "Comparison Title - Section #5"
+            type: text
+            span: full
+            trigger:
+                action: show
+                field: comparison_group_count
+                condition: value[5]|value[6]|value[7]|value[8]
+        comparison_group_title_6:
+            label: "Comparison Title - Section #6"
+            type: text
+            span: full
+            trigger:
+                action: show
+                field: comparison_group_count
+                condition: value[6]|value[7]|value[8]
+        comparison_group_title_7:
+            label: "Comparison Title - Section #7"
+            type: text
+            span: full
+            trigger:
+                action: show
+                field: comparison_group_count
+                condition: value[7]|value[8]
+        comparison_group_title_8:
+            label: "Comparison Title - Section #8"
+            type: text
+            span: full
+            trigger:
+                action: show
+                field: comparison_group_count
+                condition: value[8]
+
+        section_product_entries:
+            label: Product Entries
+            type: section
+            containerAttributes: ['ilume-toggle','ilume-hidden']
+        section_productcomparison_repeater:
+            type: repeater
+            prompt: Add Product Entry
+            name: Product Entry
+            form:
+                fields:
+                    section_productcomparison_entry_section:
+                        label: Product Entry
+                        type: section
+                        containerAttributes:
+                            data-icon: icon-circle-o
+                    section_productcomparison_title:
+                        label: Title
+                        type: text
+                        span: left
+                    section_productcomparison_img:
+                        label: Product Image
+                        type: mediafinder
+                        span: right
+                    comparison_group_desc_1:
+                        label: "Comparison Description (Section #1)"
+                        type: richeditor
+                        span: full
+                        size: small
+                        containerAttributes: ['ilume-toggle','ilume-hidden']
+                        toolbarButtons: fullscreen|color|||bold|italic|underline|strikeThrough|subscript|superscript|||formatOL|formatUL|-|undo|redo|||clearFormatting|selectAll|||align|outdent|indent|||html
+                    comparison_group_desc_2:
+                        label: "Comparison Description (Section #2)"
+                        type: richeditor
+                        span: full
+                        size: small
+                        containerAttributes: ['ilume-toggle','ilume-hidden']
+                        toolbarButtons: fullscreen|color|||bold|italic|underline|strikeThrough|subscript|superscript|||formatOL|formatUL|-|undo|redo|||clearFormatting|selectAll|||align|outdent|indent|||html
+                    comparison_group_desc_3:
+                        label: "Comparison Description (Section #3)"
+                        type: richeditor
+                        span: full
+                        size: small
+                        containerAttributes: ['ilume-toggle','ilume-hidden']
+                        toolbarButtons: fullscreen|color|||bold|italic|underline|strikeThrough|subscript|superscript|||formatOL|formatUL|-|undo|redo|||clearFormatting|selectAll|||align|outdent|indent|||html
+                    comparison_group_desc_4:
+                        label: "Comparison Description (Section #4)"
+                        type: richeditor
+                        span: full
+                        size: small
+                        containerAttributes: ['ilume-toggle','ilume-hidden']
+                        toolbarButtons: fullscreen|color|||bold|italic|underline|strikeThrough|subscript|superscript|||formatOL|formatUL|-|undo|redo|||clearFormatting|selectAll|||align|outdent|indent|||html
+                    comparison_group_desc_5:
+                        label: "Comparison Description (Section #5)"
+                        type: richeditor
+                        span: full
+                        size: small
+                        containerAttributes: ['ilume-toggle','ilume-hidden']
+                        toolbarButtons: fullscreen|color|||bold|italic|underline|strikeThrough|subscript|superscript|||formatOL|formatUL|-|undo|redo|||clearFormatting|selectAll|||align|outdent|indent|||html
+                    comparison_group_desc_6:
+                        label: "Comparison Description (Section #6)"
+                        type: richeditor
+                        span: full
+                        size: small
+                        containerAttributes: ['ilume-toggle','ilume-hidden']
+                        toolbarButtons: fullscreen|color|||bold|italic|underline|strikeThrough|subscript|superscript|||formatOL|formatUL|-|undo|redo|||clearFormatting|selectAll|||align|outdent|indent|||html
+                    comparison_group_desc_7:
+                        label: "Comparison Description (Section #7)"
+                        type: richeditor
+                        span: full
+                        size: small
+                        containerAttributes: ['ilume-toggle','ilume-hidden']
+                        toolbarButtons: fullscreen|color|||bold|italic|underline|strikeThrough|subscript|superscript|||formatOL|formatUL|-|undo|redo|||clearFormatting|selectAll|||align|outdent|indent|||html
+                    comparison_group_desc_8:
+                        label: "Comparison Description (Section #8)"
+                        type: richeditor
+                        span: full
+                        size: small
+                        containerAttributes: ['ilume-toggle','ilume-hidden']
+                        toolbarButtons: fullscreen|color|||bold|italic|underline|strikeThrough|subscript|superscript|||formatOL|formatUL|-|undo|redo|||clearFormatting|selectAll|||align|outdent|indent|||html
+
+        section_colors:
+            label: Coloring
+            type: section
+            containerAttributes: ['ilume-toggle','ilume-hidden']
+        blocks_use_custom_color:
+            label: Use custom colors
+            type: checkbox
+            default: 0
+            span: full
+        section_productcomparison_block_head_bg_color:
+            label: Comparison Topic BG Color
+            type: colorpicker
+            availableColors: ["default-theme","#1b2f70"]
+            default: "default-theme"
+            span: storm
+            cssClass: "col-xs-4"
+            trigger:
+                action: show
+                field: blocks_use_custom_color
+                condition: checked
+        section_productcomparison_block_head_fg_color:
+            label: Comparison Topic Text Color
+            type: colorpicker
+            availableColors: ["default-theme","#000","#fff"]
+            default: "default-theme"
+            span: storm
+            cssClass: "col-xs-4"
+            trigger:
+                action: show
+                field: blocks_use_custom_color
+                condition: checked
+        section_productcomparison_block_content_fg_color:
+            label: Comparison Content Text Color
+            type: colorpicker
+            availableColors: ["default-theme","#000","#fff"]
+            default: "default-theme"
+            span: storm
+            cssClass: "col-xs-4"
+            trigger:
+                action: show
+                field: blocks_use_custom_color
+                condition: checked

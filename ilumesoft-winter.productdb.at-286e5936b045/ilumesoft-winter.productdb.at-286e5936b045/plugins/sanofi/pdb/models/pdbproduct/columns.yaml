@@ -1,0 +1,15 @@
+columns:
+    is_visible:
+        label: 'Sichtbar'
+        type: switch
+    name:
+        label: 'Bezeichnung'
+        type: text
+        searchable: true
+    area_relation:
+        label: 'Anwendungsbereich'
+        type: area_name
+        sortable: false
+    updated_at:
+        label: 'Zuletzt bearbeitet'
+        type: datetime

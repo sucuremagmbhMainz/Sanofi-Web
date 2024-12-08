@@ -1,0 +1,39 @@
+description = "Media Section"
+
+[viewBag]
+==
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+<style>
+    #{{ blockId }} .hero-content {
+        justify-content: {{ data.block_align|default('flex-start') }};
+    }
+    #{{ blockId }} .hero-content .bg-content {
+        background-image: url('{{ data.bg_img | media}}');
+        background-position-x: {{ data.bg_img_positioning }};
+        justify-content: {{ data.title_align_v }};
+        {% if data.image_max_height %}
+        background-size: auto {{ data.image_max_height|default(100) }}%;
+        {% endif %}
+    }
+    #{{ blockId }} .hero-content .normal-title {
+        text-align:{{ data.title_align_h }};
+    }
+    {% if data.blocks_use_custom_color == 1 %}
+        #{{ blockId }} .hero-content .normal-title,
+        #{{ blockId }} .mobile-title {
+            color:{{ data.title_color }};
+        }
+    {%endif%}
+</style>
+
+<div class="hero-block hero block">
+    <div class="hero-content">
+        <div class="bg-content">
+            <{{ data.title_size }} class="normal-title">{{ data.hero_title }}</{{ data.title_size }}>
+        </div>
+    </div>
+    <{{ data.title_size }} class="mobile-title">{{ data.hero_title }}</{{ data.title_size }}>
+</div>
+

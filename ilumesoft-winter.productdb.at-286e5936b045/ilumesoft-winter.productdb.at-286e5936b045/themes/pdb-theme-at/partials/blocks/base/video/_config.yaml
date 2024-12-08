@@ -1,0 +1,78 @@
+video:
+    name: Video
+    description: Video
+    icon: icon-file-video-o
+    fields:
+        section_video_section:
+            label: Video
+            type: section
+            containerAttributes:
+                data-icon: icon-file-video-o
+        section_video_file:
+            label: Video
+            type: mediafinder
+            comment: MP4, Ogv, Webm Videos Supported
+            mode: file
+            span: left
+        section_video_poster:
+            label: Video Poster
+            type: mediafinder
+            comment: Jpg, Png Image Supported
+            mode: file
+            span: right
+        section_video_width:
+            label: Video Width
+            type: dropdown
+            options:
+                100: 100%
+                75: 75%
+                50: 50%
+                25: 25%
+            span: left
+            defaut: 100
+
+        section_controls_head:
+            label: Video Controls
+            span: full
+            type: section
+            containerAttributes: ['ilume-toggle', 'ilume-hidden']
+        section_video_controls:
+            label: Controls
+            type: balloon-selector
+            options:
+                1: Controls
+                0: No Controls
+            span: left
+            default: 1
+        section_video_autoplay:
+            label: Autoplay
+            type: balloon-selector
+            options:
+                1: yes
+                0: no
+            span: left
+            default: 0
+        section_video_loop:
+            label: Loop
+            type: balloon-selector
+            options:
+                1: yes
+                0: no
+            span: right
+            default: 0
+        section_video_muted:
+            label: Muted
+            type: balloon-selector
+            options:
+                1: yes
+                0: no
+            span: left
+            default: 0
+        section_video_popup:
+            label: PopUp
+            type: balloon-selector
+            options:
+                1: yes
+                0: no
+            span: right
+            default: 0

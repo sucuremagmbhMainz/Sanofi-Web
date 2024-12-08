@@ -1,0 +1,13 @@
+
+@media (max-width: 768px) {
+    .comparison-table .product-entry.col-data:first-child,
+    .comparison-table .product-entry.col-data:last-child,
+    .comparison-table .product-entry.col-head:first-child,
+    .comparison-table .product-entry.col-head:last-child {
+        border: none;
+    }
+
+    .comparison-table .col-head {
+        height: auto;
+    }
+}

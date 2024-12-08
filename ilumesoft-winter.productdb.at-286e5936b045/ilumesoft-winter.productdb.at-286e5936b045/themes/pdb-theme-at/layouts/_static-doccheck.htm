@@ -1,0 +1,59 @@
+description = "Static layout (DocCheck)"
+
+[session]
+security = "all"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[seo]
+
+
+==
+<!DOCTYPE html>
+<html lang="{{ this.theme.site_locale }}">
+    <head>
+        {% partial "site/meta" %}
+        {% partial "site/css"%}
+
+        <!-- Custom JS / Google Analytics -->
+        {{ this.theme.custom_js|raw }}
+
+        <!-- Page specific Custom JS / Google Analytics -->
+        {{ page.custom_js|raw }}
+    </head>
+
+    <body class="page-{{ this.page.title }} layout-{{ this.page.layout }}" style="background-color: {{page.bg_colorpick_value }};">
+        <div class="page-container">
+            <div id="content-wrap">
+
+                <header id="site-header">
+                    {% partial 'site/site-header-company' %}
+                </header>
+
+                <div class="page-sections-wrapper">
+                    <!-- Page -->
+                    {# Important Note: This part is required to render standard pages like error (e.g. 404, etc.) #}
+                    <section class="page-section">
+                        <div class="{{ this.theme.layout_container|default('container') }}">
+                            {% page %}
+                        </div>
+                    </section>
+                </div>
+
+                <footer>
+                    {% partial "site/" ~ footerlayout|default('site-footer') %}
+                </footer>
+
+                <!-- Loader -->
+                {% partial "site/loader" %}
+
+                <!-- Scripts -->
+                {% partial "site/scripts" %}
+
+            </div>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,103 @@
+description = "Static layout (Microsite)"
+
+[session]
+security = "all"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[seo]
+==
+<?php
+    use \Sanofi\Pdb\Classes\PDBDocCheck;
+    use Cms\Classes\Controller;
+    use \Sanofi\Pdb\Classes\PDBDetailsPage;
+
+    function onStart() {
+        if (isset($this->page->apiBag['staticPage']->viewBag['is_doccheck_active']) && ($this->page->apiBag['staticPage']->viewBag['is_doccheck_active'] == 1)) {
+            if (!PDBDocCheck::hasDocCheckLogin()) {
+                PDBDocCheck::storePageForLogin($this);
+
+                return PDBDocCheck::showDocCheckLogin();
+            }
+        }
+
+        PDBDetailsPage::feedParamData(get());
+        $this['is_preview'] = PDBDetailsPage::hasParam('preview') && (BackendAuth::getUser() != null);
+    }
+?>
+==
+<!DOCTYPE html>
+<html lang="{{ this.theme.site_locale }}">
+    <head>
+        {% partial "site/meta" %}
+        {% partial "site/css"%}
+
+        <!-- Custom JS / Google Analytics -->
+        {{ this.theme.custom_js|raw }}
+
+        <!-- Page specific Custom JS / Google Analytics -->
+        {{ page.custom_js|raw }}
+        <style>
+            :root {
+                --microsite-color-base: {{ page.theme_color_base|default('var(--theme_sanofi_purple_miracle)') }};
+                --microsite-color-highlight: {{ page.theme_color_highlight|default('var(--theme_sanofi_black)') }};
+            }
+        </style>
+
+        <link href="{{ ['assets/scss/pdb/pdb-microsite.scss',
+                        'assets/scss/pdb/pdb-microsite-responsive.scss']|theme }}" rel="stylesheet">
+    </head>
+
+    <body class="page-{{ this.page.title }} layout-{{ this.page.layout }}" style="background-color: {{page.bg_colorpick_value }};">
+        <div class="page-container">
+            <div id="content-wrap">
+
+                <header id="site-header">
+                    {% partial 'site/site-header' %}
+                </header>
+
+                <div class="page-sections-wrapper">
+                    <!-- Repeater blocks in the backend -->
+                    {ilumerepeater
+                        name="sections"
+                        tab="Block Inhalte"
+                        blockSrcFolders="base"}
+                        {# Throws error, if empty #}
+                    {/ilumerepeater}
+
+                    <!-- Page -->
+                    <section class="page-section">
+                        <div class="page-section-content microsite-content {{ this.page.block_container_size }}">
+                            <!-- Render blocks in the frontend -->
+                            {% partial 'site/blocks-structure/blocks-frontend' sections=sections %}
+                        </div>
+                    </section>
+
+                    <!-- Page -->
+                    {# Important Note: This part is required to render standard pages like error (e.g. 404, etc.) #}
+                    <section class="page-section">
+                        <div class="{{ this.theme.layout_container|default('container') }}">
+                            {% page %}
+                        </div>
+                    </section>
+                </div>
+
+                <footer>
+                    {% partial "site/" ~ footerlayout|default('site-footer') %}
+                </footer>
+
+                <!-- Scroll to top -->
+                {% partial "site/scrolltop" %}
+
+                <!-- Loader -->
+                {% partial "site/loader" %}
+
+                <!-- Scripts -->
+                {% partial "site/scripts" %}
+            </div>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,114 @@
+<div id="pdb-product-toolbar">
+    <div class="pdb-tool-link space-left"
+         data-toggle="tooltip"
+         title="Öffnet die intern gespeicherte Version des Produkts">
+        <a href="/pdb/details?product=<?= $model->id ?>&preview=1"
+           target="_blank">
+            Vorschau
+        </a>
+    </div>
+    <div class="pdb-tool-link space-left"
+         data-toggle="tooltip"
+         title="Öffnet die veröffentlichte Version des Produkts">
+        <a href="/pdb/details?product=<?= $model->id ?>"
+           target="_blank">
+            Live
+        </a>
+    </div>
+<!--    <div class="pdb-tool-link space-left">-->
+<!--        <button-->
+<!--            style="float: right;"-->
+<!--            type="button" class="btn btn-primary" data-disposable="">-->
+<!--            Produktivstand anzeigen-->
+<!--        </button>-->
+<!--    </div>-->
+    <div
+        id="inactive-publish-btn"
+        class="space-left"
+        data-toggle="tooltip"
+        title="Das Produkt muss zunächst gespeichert werden"
+        style="float: right; display: inline-block;"
+    >
+        <button
+            style="float: right;"
+            disabled
+            type="button" class="btn btn-default" data-disposable="">
+            Veröffentlichen
+        </button>
+    </div>
+    <button
+        id="active-publish-btn"
+        style="float: right; display: none;"
+        class="btn btn-primary space-left"
+        type="submit" data-request="onPublishRequest" data-request-data="redirect:0" data-hotkey="ctrl+p, cmd+p" data-load-indicator="Wird veröffentlicht..." data-disposable="">
+        Veröffentlichen
+    </button>
+</div>
+
+
+<?php if (isset($model) && isset($model->id)): ?>
+<input type="hidden" name="productId" value="<?= $model->id ?>">
+<?php endif ?>
+
+<script>
+
+    function updatePublishBtnVisibility(show = false) {
+        if (show) {
+            $('#inactive-publish-btn').hide();
+            $('#active-publish-btn').show();
+        } else {
+            $('#inactive-publish-btn').show();
+            $('#active-publish-btn').hide();
+        }
+    }
+
+    function enablePublish() {
+        updatePublishBtnVisibility(true);
+    }
+
+    function disablePublish() {
+        $formElement = $('form').first();
+        let isNewProduct = $formElement.attr('action').includes('create');
+
+        updatePublishBtnVisibility(false);
+    }
+
+    $(document).ready(function() {
+
+        $formElement = $('form').first();
+        let isNewProduct = $formElement.attr('action').includes('create');
+
+        if (isNewProduct) {
+            disablePublish();
+
+            // Deactivate Creation of Productvariants
+            $toolbarElement = $('#Form-field-PDBProduct-variants-group').find('.toolbar-primary').first();
+            if ($toolbarElement !== null && $toolbarElement !== undefined) {
+                let replacementHtml = '<h3>Bitte speichern Sie das Produkt einmalig um Produktvarianten anlegen zu können </h3>';
+                $toolbarElement.html(replacementHtml);
+            }
+
+        } else {
+            enablePublish();
+        }
+
+        $formElement.on('change', function() {
+            disablePublish();
+        })
+
+        $formElement.on('change.oc.formwidget', function() {
+            disablePublish();
+        })
+
+        $(document).on('changeForm', function() {
+            disablePublish();
+        });
+    });
+
+    $(document).on('ajaxSuccess', function(event, context, data) {
+        var $form = $(event.target);
+        if (context.handler == 'onSave') {
+            enablePublish();
+        }
+    });
+</script>

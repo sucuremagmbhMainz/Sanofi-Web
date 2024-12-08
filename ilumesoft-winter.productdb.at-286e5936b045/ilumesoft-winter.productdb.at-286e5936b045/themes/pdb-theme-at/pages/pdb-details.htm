@@ -1,0 +1,137 @@
+title = "Produktdetails"
+url = "/pdb/details"
+layout = "_static-base"
+is_hidden = 0
+==
+<?php
+    use \Sanofi\Pdb\Classes\PDBDetailsPage;
+    use Winter\Storm\Support\Facades\Input;
+    use Cms\Classes\Controller;
+
+    function onStart() {
+        PDBDetailsPage::feedParamData(get());
+
+        if (!PDBDetailsPage::hasParam('tx_products_products[product]') && !PDBDetailsPage::hasParam('product')) {
+            return Redirect::to('/pdb/list/show');
+        }
+
+        $productDetails = PDBDetailsPage::fetchProductDetails();
+
+        if ($productDetails == null) {
+            return App::make(Controller::class)->setStatusCode(404)->run('/404');
+        }
+
+        $this['productDetails'] = $productDetails;
+
+        $this['is_preview'] = PDBDetailsPage::hasParam('preview') && (BackendAuth::getUser() != null);
+    }
+?>
+==
+<link href="{{ ['assets/scss/pdb/pdb-details.scss',
+                'assets/scss/pdb/pdb-details-responsive.scss']|theme }}" rel="stylesheet">
+<script type="text/javascript" src="{{ 'assets/js/pdb-details.js'|theme }}"></script>
+
+<style>
+    :root {
+        --product-color-base: {{ productDetails.color_main|default('var(--theme_color_dark)') }};
+        --product-color-highlight: {{ productDetails.color_sub|default('var(--theme_sanofi_purple_miracle)') }};
+    }
+
+    .page-section .page-section-top {
+        background: var(--product-color-base);
+    }
+    .product-details-section-title,
+    .product-details-section-title {
+        color: var(--product-color-base);
+    }
+
+    footer .footer-menu-wrapper #footer-menu {
+        /*background: var(--product-color-base);*/
+    }
+
+</style>
+
+<div id="preview-overlay">
+    <div class="image-wrapper">
+    </div>
+    <i class="fa fa-times preview-close"></i>
+</div>
+
+<!-- Style tags are placeholders for customization options -->
+<div class="product-details">
+    <div class="page-section-top">
+        <h1 class="product-details-title" style="color: white;">{{ productDetails.name|replace({'®' : '<sup>®</sup>'})|raw }} </h1>
+    </div>
+
+    <div class="page-section-content product-information">
+        <div class="product-details-text">
+            <div class="product-details-section">
+                <h2 class="product-details-section-title">Anwendungsbereich</h2>
+                <p>{{ productDetails.areaName|raw }}</p>
+            </div>
+            <div class="product-details-section">
+                    <h2 class="product-details-section-title">
+                        {% if productDetails.ingredient_type == 3 %}
+                            Indikation
+                        {% elseif productDetails.ingredient_type == 2 %}
+                            Wirkstoffe
+                        {% else %}
+                            Inhaltstoffe
+                        {% endif %}
+                    </h2>
+                <ul class="product-details-list">
+                    {% for ingredient in productDetails.ingredients %}
+                    <li>{{ ingredient.name|raw }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% if productDetails.description %}
+            <div class="product-details-section">
+                <h2 class="product-details-section-title">Allgemeine Informationen</h2>
+                {{ productDetails.description|raw }}
+            </div>
+            {% endif %}
+        </div>
+        <div class="product-details-carousel">
+            <div id="product-slider" class="product-details-image-placeholder" style="width: 300px;">
+                {% for path in productDetails.imagePaths %}
+                <div class="item-wrapper">
+                    <div class="item">
+                        <img src="{{ path }}" style="max-width: 100%; max-height: 100%">
+                    </div>
+                </div>
+                {% endfor %}
+
+                <i class="fa fa-search-plus item-magnifier"></i>
+            </div>
+
+        </div>
+    </div>
+    {% if productDetails.variants|length > 0 %}
+    <div class="page-section-content product-variants">
+        <h2 class="product-details-section-title head">Produkte und Darreichungsformen</h2>
+
+        {% for variant in productDetails.variants %}
+            {% partial "site/page-details-variant" variant=variant%}
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if productDetails.footNoteEntries is defined and productDetails.footNoteEntries is not empty %}
+    <div class="page-section-content foot-notes">
+        <div class="content">
+            <table>
+                {% for footNote in productDetails.footNoteEntries %}
+                    <tr>
+                        <td valign="top" class="entry-index">
+                            <sup>{{ loop.index }}</sup>
+                        </td>
+                        <td>
+                            {{ footNote|raw }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>

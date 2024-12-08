@@ -1,0 +1,10 @@
+description = "Blocks Frontend Render"
+
+[viewBag]
+==
+{% set availableBlockPaths = getAvailableBlockPaths("pdb-theme-at/partials/blocks", "base") %}
+{% for section in sections %}
+    {% if availableBlockPaths[section._group] is defined %}
+        {% partial "blocks/block-wrapper" wrappedBlock=section._group wrappedBlockPath=availableBlockPaths[section._group] data=section availableBlockPaths=availableBlockPaths %}
+    {% endif %}
+{% endfor %}

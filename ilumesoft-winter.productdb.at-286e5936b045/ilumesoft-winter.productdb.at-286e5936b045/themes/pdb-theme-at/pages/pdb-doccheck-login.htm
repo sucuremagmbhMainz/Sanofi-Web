@@ -1,0 +1,32 @@
+title = "Produktdetails"
+url = "/login/check"
+layout = "_static-doccheck"
+is_hidden = 0
+==
+<?php
+    use \Sanofi\Pdb\Classes\PDBDocCheck;
+    use Cms\Classes\Controller;
+
+    function onStart() {
+        if (!PDBDocCheck::hasDocCheckPageRef()) {
+            return Redirect::to('/');
+        } else if (PDBDocCheck::hasDocCheckLogin()) {
+            return PDBDocCheck::showLastDocCheckPageRef();
+        }
+    }
+?>
+==
+<div class="doc-check-holder">
+    {% set doccheckRef = '2000000018620' %}
+
+    {% if this.environment == 'development'%}
+        {% set doccheckRef = '2000000018529' %}
+    {% elseif this.environment == 'staging' %}
+        {% set doccheckRef = '2000000018619' %}
+    {% endif %}
+
+    <iframe align="left" frameborder="0" scrolling="no" width="467" height="231" name="dc_login_iframe" id="dc_login_iframe"
+            src="https://login.doccheck.com/code/de/{{ doccheckRef }}/login_xl/" >
+        <a href="https://login.doccheck.com/code/de/{{ doccheckRef }}/login_xl/" target="_blank">LOGIN</a>
+    </iframe>
+</div>

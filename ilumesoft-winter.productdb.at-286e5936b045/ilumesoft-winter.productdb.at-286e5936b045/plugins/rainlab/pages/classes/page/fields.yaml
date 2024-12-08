@@ -1,0 +1,94 @@
+
+fields:
+    viewBag[title]:
+        span: left
+        label: rainlab.pages::lang.editor.title
+        placeholder: rainlab.pages::lang.editor.new_title
+        attributes:
+            default-focus: 1
+
+    viewBag[url]:
+        span: right
+        placeholder: /
+        label: rainlab.pages::lang.editor.url
+        preset:
+            field: viewBag[title]
+            type: url
+            prefixInput: input[data-parent-url]
+
+    toolbar:
+        type: partial
+        path: page_toolbar
+        cssClass: collapse-visible
+
+tabs:
+    cssClass: master-area
+    fields:
+        viewBag[theme_color_base]:
+            tab: cms::lang.editor.settings
+            span: left
+            label: ilume.backend::lang.editor.product_primary_color
+            type: colorpicker
+            availableColors: ["transparent", "#ffffff","#000000", "#acb317"]
+            default: "#acb317"
+        viewBag[theme_color_highlight]:
+            tab: cms::lang.editor.settings
+            span: right
+            label: ilume.backend::lang.editor.product_secondary_color
+            type: colorpicker
+            availableColors: ["transparent", "#ffffff","#000000", "#acb317"]
+            default: "#bca36a"
+        viewBag[microsite_logo]:
+            tab: cms::lang.editor.settings
+            label: Logo
+            type: mediafinder
+            mode: file
+            span: left
+            comment: JPG, PNG
+        viewBag[bg_colorpick_value]:
+            tab: cms::lang.editor.settings
+            span: right
+            label: ilume.backend::lang.editor.bg_colorpick
+            type: colorpicker
+            availableColors: [ "transparent", "#ffffff","#000000", "#acb317" ]
+            default: "#ffffff"
+
+        viewBag[custom_css]:
+            tab: Code / Analytics
+            label: Custom CSS
+            type: codeeditor
+            size: huge
+            language: css
+        viewBag[custom_js]:
+            tab: Code / Analytics
+            label: Custom JS / Analytics
+            type: codeeditor
+            size: huge
+            language: javascript
+
+        viewBag[is_hidden]:
+            tab: ilume.backend::lang.editor.security
+            span: left
+            label: "Verstecken"
+            type: checkbox
+            comment: rainlab.pages::lang.editor.hidden_comment
+        viewBag[is_doccheck_active]:
+            tab: ilume.backend::lang.editor.security
+            span: right
+            label: "DocCheck aktivieren"
+            comment: 'Wenn DocCheck aktiv ist, wird beim Aufruf der Seite ein DocCheck Login eingeblendet'
+            type: checkbox
+#        viewBag[layout]:
+#            tab: cms::lang.editor.layout
+#            label: rainlab.pages::lang.page.layout
+#            type: dropdown
+#            options: getLayoutOptions
+#            span: left
+#        viewBag[groups_access_restriction]:
+#            tab: ilume.backend::lang.editor.security
+#            label: ilume.backend::lang.editor.groups_access_restriction
+#            span: right
+#            type: taglist
+#            options:
+#                getGroupAccessOptions
+#            customTags: false

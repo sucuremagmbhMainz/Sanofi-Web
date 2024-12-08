@@ -1,0 +1,10 @@
+/* Clear of custom content image limitation */
+.custom-content img {
+    max-width: inherit;
+}
+
+@media (max-width: 551px) {
+    .container-fluid > .custom-content {
+        padding: 0 15px;
+    }
+}

@@ -1,0 +1,14 @@
+{% if this.environment is defined and
+      this.environment == 'development' %}
+    <script src="{{ [
+       'assets/js/react/development/react.development.js',
+       'assets/js/react/development/react-dom.development.js',
+   ]|theme }}"></script>
+{% else %}
+    <script src="{{ [
+       'assets/js/react/production/react.production.min.js',
+       'assets/js/react/production/react-dom.production.min.js|theme',
+   ]|theme }}"></script>
+{% endif %}
+
+<script type="module" src="{{ 'assets/js/react/reactProjectCompiled.js'|theme }}"></script>

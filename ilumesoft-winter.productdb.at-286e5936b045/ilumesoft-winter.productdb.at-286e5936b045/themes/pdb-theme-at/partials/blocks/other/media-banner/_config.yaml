@@ -1,0 +1,71 @@
+media-banner:
+    name: Media Banner
+    description: Allows to show media
+    icon: icon-picture-o
+    fields:
+        section_customcontent_section:
+            label: Media Banner
+            type: section
+            containerAttributes:
+                data-icon: icon-picture-o
+        banner_img:
+            label: Banner Image
+            type: mediafinder
+            comment: JPG, PNG
+            mode: image
+            span: left
+            imageWidth: 100
+            imageHeight: 100
+        display_type:
+            label: Display-Type
+            type: balloon-selector
+            options:
+                normal: Normal
+                parallax-fixed: Parallax
+               # steady: Steady Height
+            span: left
+            default: normal
+        block_align:
+            label: Block Alignment
+            type: balloon-selector
+            options:
+                flex-start: Left
+                space-around: Centered
+                flex-end: Right
+            span: left
+            default: flex-start
+
+        section_styling:
+            label: Styling
+            type: section
+            span: full
+            containerAttributes: ['ilume-toggle','ilume-hidden']
+        width:
+            label: Block Width (%)
+            type: number
+            max: 100
+            min: 1
+            default: 100
+            span: left
+#        image_content_align:
+#            label: Image Content Alignment
+#            type: balloon-selector
+#            options:
+#                left: Left
+#                center: Centered
+#                right: Right
+#            span: left
+#            trigger:
+#                action: show
+#                field: display_type
+#                condition: value[steady]
+#            comment: "Steady keeps the original height, but moves the content along the x axis"
+        parallax_height_fixed:
+            label: Fixed Parallax Height (Px)
+            type: text
+            default: 300
+            span: left
+            trigger:
+                action: show
+                field: display_type
+                condition: value[parallax-fixed]

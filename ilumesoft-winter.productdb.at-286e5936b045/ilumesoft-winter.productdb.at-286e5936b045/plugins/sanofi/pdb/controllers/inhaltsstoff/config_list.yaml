@@ -1,0 +1,12 @@
+list: $/sanofi/pdb/models/pdbingredient/columns.yaml
+modelClass: Sanofi\Pdb\Models\PDBIngredient
+title: Inhaltsstoff
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'sanofi/pdb/inhaltsstoff/update/:id'

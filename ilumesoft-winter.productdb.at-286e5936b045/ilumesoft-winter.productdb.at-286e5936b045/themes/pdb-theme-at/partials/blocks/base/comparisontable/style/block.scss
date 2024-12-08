@@ -1,0 +1,106 @@
+.comparison-table {
+    * {
+        text-align: center;
+    }
+    .table-head, .col-head, .col-head-sub, .col-data {
+        background-color: var(--microsite-color-base);
+        color: white;
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .table-head, .col-head, .col-head-sub, .col-data p {
+        padding: 15px;
+        margin: 0;
+        color: inherit;
+    }
+    .table-head {
+        font-size: 2.2rem;
+    }
+
+    .col-head {
+        font-size: 1.8rem;
+    }
+
+    .col-data {
+        border-right: 2px solid transparent;
+        background-color: transparent;
+        color: dimgray;
+        font-weight: normal;
+        img {
+            max-width: 200px;
+        }
+        &:last-of-type {
+            border: 0;
+        }
+    }
+
+    .column-holder {
+        .product-entry {
+            flex-basis: 0;
+            flex-grow: 1;
+        }
+    }
+
+    .column-holder.mobile-flex-visible {
+        margin: 0 50px;
+    }
+
+    .content-row {
+        display: flex;
+        width: 100%;
+    }
+
+    .product-entry.col-head-sub:nth-child(n+2) span {
+        color: transparent;
+    }
+
+    .slick-prev:before, .slick-next:before {
+        color: var(--microsite-color-base);
+    }
+
+    .flex-vertical {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+
+    .comparison-prev, .comparison-next {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        z-index: 999;
+
+        &:hover {
+            .st0 {
+                stroke: var(--microsite-color-highlight) !important;
+            }
+        }
+    }
+
+    .comparison-prev {
+        left: 15px;
+
+        .chevron {
+            transform: scaleX(-1);
+            padding-left: 5px;
+        }
+    }
+
+    .comparison-next {
+        right: 15px;
+
+        .chevron {
+            padding: 0 2.5px;
+        }
+    }
+}
+
+
+

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="<?= App::getLocale() ?>" class="no-js <?= $this->makeLayoutPartial('browser_detector') ?>">
+    <head>
+        <?= $this->makeLayoutPartial('head') ?>
+        <?= $this->fireViewEvent('backend.layout.extendHead', ['layout' => 'default.htm']) ?>
+    </head>
+    <body class="<?= $this->bodyClass ?>">
+        <div id="layout-canvas">
+            <?php if (\BackendAuth::isImpersonator()) : ?>
+                <div class="global-notice">
+                    <div class="notice-content">
+                        <span class="notice-text">
+                            <span class="notice-icon wn-icon icon-exclamation-triangle"></span>
+                            <?= e(trans('backend::lang.account.impersonating', [
+                                'impersonator' => \BackendAuth::getImpersonator()->email,
+                                'impersonatee' => \BackendAuth::getUser()->email,
+                            ])); ?>
+                        </span>
+                    </div>
+                    <a href="<?= Backend::url('backend/auth/signout') ?>" class="notice-action btn btn-secondary">
+                        <?= e(trans('backend::lang.account.stop_impersonating')) ?>
+                    </a>
+                </div>
+            <?php endif; ?>
+
+            <div class="layout">
+
+                <script>
+                    function prepareExportToolbar(uniqueId) {
+                        let contextActionHolder = document.querySelector('body');
+                        let saveButton = document.querySelector('a[data-save-btn="' + uniqueId + '"]');
+
+                        let pushToProdBtn = document.querySelector('a[data-push-prod-btn="' + uniqueId + '"]');
+
+                        let toolbarTabPane = saveButton.closest('.tab-pane');
+
+                        if (contextActionHolder && saveButton && toolbarTabPane) {
+                            if (pushToProdBtn) {
+                                prepareToolbarButton(toolbarTabPane, contextActionHolder, saveButton, pushToProdBtn, uniqueId);
+                            }
+                        }
+                    }
+
+                    function prepareToolbarButton(toolbarTabPane, contextActionHolder, saveButton , toolbarButton, uniqueId) {
+                        toolbarButton.addEventListener('click', function(event) {
+                            contextActionHolder.setAttribute('data-after-save-action-type', toolbarButton.getAttribute('data-toolbar-action'));
+                            contextActionHolder.setAttribute('data-after-save-action', 'data-' + toolbarButton.getAttribute('data-toolbar-action') + '-btn=' + '"' + uniqueId + '"');
+
+                            if (toolbarTabPane.hasAttribute('data-modified')) {
+                                saveButton.click();
+                            } else {
+                                resolveToolbarAction();
+                            }
+                        });
+                    }
+
+                    function resolveToolbarAction() {
+                        let pageBody = document.querySelector('body');
+                        if (pageBody) {
+                            let nextActionElementRef = pageBody.getAttribute('data-after-save-action');
+                            if (nextActionElementRef) {
+                                let nextActionElement = document.querySelector('[' + nextActionElementRef + ']');
+                                pageBody.removeAttribute('data-after-save-action');
+
+                                if (nextActionElement) {
+                                    let nextActionParentTab = nextActionElement.closest('.tab-pane');
+                                    let currentTab = document.querySelector('#pages-master-tabs > .tab-content > .tab-pane.active');
+
+                                    if (pageBody && nextActionParentTab && nextActionParentTab == currentTab) {
+                                        let nextActionType = pageBody.getAttribute('data-after-save-action-type');
+                                        let targetUrl = nextActionElement.getAttribute('data-target-url');
+
+                                        if (targetUrl && targetUrl != '') {
+                                            switch (nextActionType) {
+                                                case 'push-prod':
+                                                    $.ajax({
+                                                        url: targetUrl,
+                                                        type: 'GET',
+                                                        success: function (responseData) {
+                                                            var response;
+                                                            try {
+                                                                response = $.parseJSON(responseData);
+                                                            } catch (e) {
+                                                                $.oc.flashMsg({
+                                                                    'text': 'The system response couln\'t be parsed. => ' + responseData,
+                                                                    'class': 'error',
+                                                                    'interval': 6
+                                                                });
+                                                                return;
+                                                            }
+
+                                                            if (response.result === undefined ||
+                                                                response.msg === undefined) {
+
+                                                                $.oc.flashMsg({
+                                                                    'text': 'The system response couln\'t be parsed.',
+                                                                    'class': 'error',
+                                                                    'interval': 6
+                                                                })
+                                                                return;
+                                                            } else {
+                                                                $.oc.flashMsg({
+                                                                    'text': response.msg,
+                                                                    'class': response.result,
+                                                                    'interval': 6
+                                                                })
+                                                                return;
+                                                            }
+                                                        },
+                                                        error: function (response) {
+                                                            $.oc.flashMsg({
+                                                                'text': 'The system didn\'t respond properly.',
+                                                                'class': 'error',
+                                                                'interval': 6
+                                                            })
+                                                            return;
+                                                        }
+                                                    });
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    $(document).on('ajaxSuccess', function(event, context, data) {
+                        if (context.handler == 'onSave') {
+                            resolveToolbarAction();
+                        }
+                    });
+                </script>
+
+                <!-- Main Menu -->
+                <div class="layout-row min-size">
+                    <?= $this->makeLayoutPartial('mainmenu') ?>
+                </div>
+
+                <?php $flyoutContent = Block::placeholder('sidepanel-flyout') ?>
+
+                <div class="layout-row">
+                    <div class="layout flyout-container"
+                        <?php if ($flyoutContent): ?>
+                            data-control="flyout"
+                            data-flyout-width="400"
+                            data-flyout-toggle="#layout-sidenav"
+                        <?php endif ?>
+                    >
+                        <?php if ($flyoutContent): ?>
+                            <div class="layout-cell flyout"> <?= $flyoutContent ?></div>
+                        <?php endif ?>
+
+                        <!-- Side Navigation -->
+                        <?= $this->makeLayoutPartial('sidenav') ?>
+
+                        <!-- Side panel -->
+                        <?php if ($sidePanelContent = Block::placeholder('sidepanel')): ?>
+                            <div class="layout-cell w-350 hide-on-small" id="layout-side-panel" data-control="layout-sidepanel">
+                                <?= $sidePanelContent ?>
+                            </div>
+                        <?php endif ?>
+
+                        <!-- Content Body -->
+                        <div class="layout-cell layout-container" id="layout-body">
+                            <div class="layout-relative">
+
+                                <div class="layout">
+                                    <?php if ($breadcrumbContent = Block::placeholder('breadcrumb')): ?>
+                                        <!-- Breadcrumb -->
+                                        <div class="control-breadcrumb">
+                                            <?= $breadcrumbContent ?>
+                                        </div>
+                                    <?php endif ?>
+
+                                    <!-- Content -->
+                                    <div class="layout-row">
+                                        <?= Block::placeholder('body') ?>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Flash Messages -->
+        <div id="layout-flash-messages"><?= $this->makeLayoutPartial('flash_messages') ?></div>
+
+    </body>
+</html>

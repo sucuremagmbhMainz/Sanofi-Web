@@ -1,0 +1,94 @@
+description = "Product Teaser"
+
+[viewBag]
+==
+
+{{ [_self|prepBlockSCSS]|theme|embedCSS }}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+<div class="product-teaser-grid">
+    <div class="row">
+        {% for element in data.section_productgrid_elements %}
+
+        <!-- Padding-Start-Entries -->
+        {% if (data.section_productgrid_elementperrow == 2 and ((loop.length % 2) == 1) and (loop.index == loop.length)) or
+        (data.section_productgrid_elementperrow == 3 and ((loop.length % 3) == 1) and (loop.index == loop.length)) %}
+        <div class="col-md-3">
+        </div>
+        {% elseif data.section_productgrid_elementperrow == 3 %}
+        {% if ((loop.length % 3) == 2) and (loop.index == (loop.length - 1))%}
+        <div class="col-md-2">
+        </div>
+        {% elseif (((loop.length % 3) == 1) and (loop.index == loop.length)) or
+        (((loop.length % 3) == 1) and (loop.index == loop.length)) %}
+        <div class="col-md-4">
+        </div>
+        {% endif %}
+        {% endif %}
+
+        {% if data.section_productgrid_elementperrow == 1 %}
+        <div class="col-md-12 entry">
+        {% elseif data.section_productgrid_elementperrow == 2 %}
+        <div class="col-md-6 entry">
+        {% elseif data.section_productgrid_elementperrow == 3 %}
+        {% if ((loop.length % 3) == 1) and (loop.index == loop.length) %}
+        <div class="col-md-6 entry">
+        {% elseif ((loop.length % 3) == 2) and (loop.index == (loop.length - 1)) %}
+        <div class="col-md-4 entry">
+        {% elseif ((loop.length % 3) == 2) and (loop.index == loop.length) %}
+        <div class="col-md-4 entry">
+        {% elseif ((loop.length % 3) == 1) and (loop.index == loop.length) %}
+        <div class="col-md-4 entry">
+        </div>
+        {% else %}
+        <div class="col-md-4 entry">
+            {% endif %}
+            {% endif %}
+            <a href="{{ element.section_grid_element_button_url }}">
+                <div class="img-block">
+                    <img src="{{ element.section_grid_element_image|media }}">
+                </div>
+                {%if element.section_grid_element_title %}
+                <div class="caption-block">
+                    <h{{ element.headline_size|default(2) }}>{{ element.section_grid_element_title }}</h{{ element.headline_size|default(2) }}>
+                </div>
+                {%endif%}
+                {% if element.section_grid_element_desc %}
+                <p>{{ element.section_grid_element_desc }}</p>
+                {% endif %}
+            </a>
+            {% if element.section_grid_element_sub_properties %}
+            <div class="sub-content">
+
+                <ul>
+                    {% for property in element.section_grid_element_sub_properties %}
+                    <li>{{ property.section_grid_element_property }}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            {% endif %}
+            {% if element.section_grid_element_button_label %}
+            <a href="{{ element.section_grid_element_button_url }}" class="teaser-link">
+                {{ element.section_grid_element_button_label }}
+            </a>
+            {% endif %}
+        </div>
+
+        <!-- Padding-End-Entries -->
+        {% if (data.section_productgrid_elementperrow == 2 and ((loop.length % 2) == 1) and (loop.index == loop.length)) or
+        (data.section_productgrid_elementperrow == 3 and ((loop.length % 3) == 1) and (loop.index == loop.length)) %}
+        <div class="col-md-3">
+        </div>
+        {% elseif data.section_productgrid_elementperrow == 3 and ((loop.length % 3) == 2) and (loop.index == loop.length) %}
+        <div class="col-md-2">
+        </div>
+        {% elseif data.section_productgrid_elementperrow == 3 and ((loop.length % 3) == 1) and (loop.index == loop.length) %}
+        <div class="col-md-4">
+        </div>
+        {% endif %}
+
+        {% endfor %}
+    </div>
+</div>
+

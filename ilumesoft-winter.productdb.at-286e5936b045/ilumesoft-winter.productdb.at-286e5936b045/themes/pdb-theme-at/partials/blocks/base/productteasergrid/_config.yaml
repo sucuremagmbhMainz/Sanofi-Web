@@ -1,0 +1,77 @@
+productteasergrid:
+    name: Product Teaser Grid
+    description: Product Teaser Grid
+    icon: icon-cubes
+    fields:
+        section_productgrid_section:
+            label: Product Teaser Grid
+            type: section
+            containerAttributes:
+                data-icon: icon-cubes
+        section_productgrid_elementperrow:
+            label: Elements per Row (max 3)
+            type: number
+            min: 1
+            max: 3
+            default: 1
+            span: left
+
+        section_product_entries_head:
+            label: Teaser Grid Entries
+            span: full
+            type: section
+            containerAttributes: ['ilume-toggle', 'ilume-hidden']
+        section_productgrid_elements:
+            type: repeater
+            prompt: Add Product Element
+            minItems: 1
+            form:
+                fields:
+                    section_grid_element_line:
+                        label: Product Teaser Element
+                        type: section
+                        containerAttributes:
+                            data-icon: icon-circle-o
+                    section_grid_element_image:
+                        label: Image
+                        type: mediafinder
+                        mode: image
+                        span: left
+                    section_grid_element_title:
+                        label: Title
+                        type: text
+                        span: left
+                    headline_size:
+                        label: Size
+                        type: dropdown
+                        options:
+                            1: H1
+                            2: H2
+                            3: H3
+                            4: H4
+                            5: H5
+                            6: H6
+                        span: right
+                        default: 1
+                    section_grid_element_button_label:
+                        label: Button Label
+                        type: text
+                        span: left
+                    section_grid_element_desc:
+                        label: Description
+                        type: text
+                        span: right
+                    section_grid_element_button_url:
+                        label: Button Url
+                        type: text
+                        span: full
+                    section_grid_element_sub_properties:
+                        type: repeater
+                        prompt: Add Product Property
+                        minItems: 0
+                        form:
+                            fields:
+                                section_grid_element_property:
+                                    label: Property
+                                    type: text
+                                    span: full

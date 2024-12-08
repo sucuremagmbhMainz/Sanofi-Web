@@ -1,0 +1,90 @@
+description = "Tab Buttons"
+
+[viewBag]
+==
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+{% set blockId = "tabs"|uniqueID %}
+<style>
+    #{{ blockId }} .tabbutton-section.top {
+        padding-top: {{ data.block_spacing_top|default(0) }}em;
+    }
+
+    #{{ blockId }} .tabbutton-section.bottom {
+        padding-bottom: {{ data.block_spacing_bot|default(0) }}em;
+    }
+
+    @media (max-width: 1200px) {
+        #{{ blockId }} .tabbutton-section.top {
+            padding-top: calc(0.5 * {{ data.block_spacing_top|default(0) }}em);
+        }
+
+        #{{ blockId }} .tabbutton-section.bottom {
+            padding-bottom: calc(0.5 * {{ data.block_spacing_bot|default(0) }}em);
+        }
+    }
+
+    @media (max-width: 600px) {
+        #{{ blockId }} .tabbutton-section.top {
+            padding-top: calc(0.25 * {{ data.block_spacing_top|default(0) }}em);
+        }
+
+        #{{ blockId }} .tabbutton-section.bottom {
+            padding-bottom: calc(0.25 * {{ data.block_spacing_bot|default(0) }}em);
+        }
+    }
+</style>
+
+<div id="{{ blockId }}" class="block-bg {% if data.block_bg_color_width == 'block-only' %}{{ data.container|default('container') }}{% else %}container-fluid{% endif %}"
+     style="
+     {% if data.block_bg_color_type == 'single' %}
+        background-color: {{ data.bg_color_single }}
+     {% endif %}">
+
+    <!-- Block Content Start -->
+    <div class="tabbutton-section top"
+         style="background-color: {{ data.section_tabbuttons_bg }};
+         {% if data.block_bg_color_type != 'single' %}
+            background-color: {{ data.bg_color_double_a }}
+         {% endif %}">
+        <div class="{{ data.section_tabbuttons_container|default('container') }}">
+            <div id="default-tab" class="mt-10" style="">
+                <ul class="nav nav-tabs" role="tablist">
+                    {% for fields in data.section_tabbuttons %}
+                    <li>
+                        <a {% if loop.index0 == 0 %} class="nav-link active" {% else %} class="nav-link" {% endif %} data-toggle="tab" href="#tab-{{ fields.section_tabs_title|slug }}" role="tab" style="border-radius: {{ data.section_tabbuttons_type }} !important;" aria-controls="{{ fields.section_tabs_title|slug }}">{{ fields.section_tabs_title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tabbutton-section bottom"
+         style="background-color: {{ data.section_tabcontent_bg }}; min-height: {{ data.section_tabbuttons_min_height }}px ;
+         {% if data.block_bg_color_type != 'single' %}
+            background-color: {{ data.bg_color_double_b }}
+         {% endif %}">
+        <div class="{{ data.section_tabbuttons_container|default('container') }}">
+            <div class="tab-content">
+                {% for key, dataEntry in data.section_tabbuttons %}
+                <div class="tab-pane {% if loop.first %}active{% endif %}" id="tab-{{ dataEntry.section_tabs_title|slug }}" role="tabpanel">
+                    {% for dataEntry in dataEntry.section_tabbuttoncontent %}
+                    {% if dataEntry._group in ["collapsable", "comparosontable", "comparisontable", "customcontent", "pageanchor", "featureblock", "multiblock", "panoramateaser", "headline", "video", "hero", "media-banner", "tabbuttons"] %}
+                    {% partial 'blocks/october.blocks.core/' ~ dataEntry._group ~ '/' ~ dataEntry._group data=dataEntry %}
+                    {% elseif dataEntry._group in ["balloons","phototiles","pinboardwithdetails","productoverview","productteasergrid", "producttrio", "slider"]%}
+                    {% partial 'blocks/october.blocks.sanofi.at/' ~ dataEntry._group ~ '/' ~ dataEntry._group data=dataEntry %}
+                    {% else %}
+                    {% partial 'blocks/' ~ dataEntry._group ~ '/' ~ dataEntry._group data=dataEntry %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+            <br/>
+            <p style="text-align:right;"><a href="#{{ blockId }}">Nach oben</a></p>
+        </div>
+    </div>
+    <!-- Block Content End -->
+
+</div>

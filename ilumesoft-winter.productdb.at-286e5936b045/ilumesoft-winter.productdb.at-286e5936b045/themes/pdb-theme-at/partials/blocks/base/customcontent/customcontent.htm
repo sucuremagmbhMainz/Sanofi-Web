@@ -1,0 +1,15 @@
+description = "Custom Content"
+
+[viewBag]
+==
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+<div class="custom-content">
+    <div>
+        {{ data.section_custom_content|raw }}
+    </div>
+</div>
+
+
+

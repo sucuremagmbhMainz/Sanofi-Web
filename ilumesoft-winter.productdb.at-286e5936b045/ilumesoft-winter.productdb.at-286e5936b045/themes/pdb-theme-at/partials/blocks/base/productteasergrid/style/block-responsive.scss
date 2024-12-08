@@ -1,0 +1,27 @@
+@media (max-width: 1200px) {
+    .product-teaser-grid .entry .sub-content {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    .product-teaser-grid .entry .sub-content {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .product-teaser-grid .entry {
+        padding-top: 2rem;
+        border-top: 2px solid var(--microsite-color-highlight);
+    }
+
+    .product-teaser-grid .entry:first-child {
+        border: none;
+    }
+
+    .product-teaser-grid .entry:first-child .img-block {
+        margin-top: 0px;
+    }
+}

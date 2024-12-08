@@ -1,0 +1,15 @@
+list: $/sanofi/pdb/models/pdbarea/columns.yaml
+modelClass: Sanofi\Pdb\Models\PDBArea
+title: Anwendungsbereich
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 50
+defaultSort:
+    column: name
+    direction: ASC
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'sanofi/pdb/anwendungsbereich/update/:id'

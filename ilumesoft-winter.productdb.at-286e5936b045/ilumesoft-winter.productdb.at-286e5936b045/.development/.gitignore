@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.storage_app_media.zip
+!.storage_app_uploads.zip
+!.old-db
+!.old-db/*
+!.pdf_uploads_protected.zip
+!.products.json
+!.README.md
+!.winter_pdb_at.sql

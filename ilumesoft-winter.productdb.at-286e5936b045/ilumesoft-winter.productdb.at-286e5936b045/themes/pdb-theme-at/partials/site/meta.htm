@@ -1,0 +1,29 @@
+description = "Meta Data"
+
+[viewBag]
+==
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ this.page.meta_description|default(this.theme.site_description) }}">
+<meta name="keywords" content="{{ this.page.meta_keywords|default(this.theme.site_keywords) }}">
+<meta name="title" content="{{ this.page.meta_title|default(this.page.title) }} - {{ this.theme.site_name }}">
+<meta name="author" content="{{ this.theme.site_author }}">
+<meta name="robots" content="{{ this.page.robots | default('index, follow')}}">
+<meta name="generator" content="{{ this.theme.site_name }}" />
+<title>{{ this.page.meta_title|default(this.page.title) }} - {{ this.theme.site_name }}</title>
+{% if this.page.canonical %}
+<link rel="canonical" href="{{ this.page.canonical }}"/>
+{% endif %}
+{% if this.theme.settings_favicon %}
+<link rel="icon" type="image/png" href="{{ this.theme.settings_favicon|media }}" />
+{% endif %}
+
+<meta property="og:title" content="{{ this.page.meta_title|default(this.page.title) }} - {{ this.theme.site_name }}" />
+<meta property="og:url" content="{{ this.page.seo_url | default(''|page) }}" />
+<meta property="og:site_name" content="{{ this.theme.site_name }}" />
+<meta property="og:description" content="{{ this.page.meta_description|default(this.theme.site_description) }}" />
+{% if this.page.seo_image %}
+<meta property="og:image" content="{{ this.page.seo_image|media }}" />
+{% endif %}

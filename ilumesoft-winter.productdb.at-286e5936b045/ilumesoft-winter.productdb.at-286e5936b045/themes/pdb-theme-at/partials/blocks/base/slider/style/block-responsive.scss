@@ -1,0 +1,177 @@
+@media only screen and (min-width: 992px) {
+  .sliderarea .slider-inner {
+    padding-bottom: 60px;
+    margin-bottom: 0px;
+
+    &.overlap-bot-nav {
+      padding-bottom: 0px;
+    }
+  }
+
+  .sliderarea .carousel-indicators {
+    bottom: 0px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+
+  .sliderarea > div {
+    width: 100% !important;
+    max-width: unset;
+  }
+
+  .sliderarea {
+
+    .mobile-visible {
+      display: block !important;
+    }
+
+    .mobile-hidden {
+      display: none !important;
+    }
+
+    .mobile-inline-hidden {
+      display: none !important;
+    }
+  }
+
+  /* Making Slider use full width */
+  .sliderarea .slider-inner{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .sliderarea .slider-inner img{
+    padding: 0 5%;
+  }
+
+  .slider-inner .carousel-inner .carousel-item .row .caption-holder{
+    margin: 0;
+    padding: 0;
+  }
+
+  .sliderarea .carousel-item .img-fluid{
+    padding: 0;
+  }
+
+  .sliderarea .carousel-indicators {
+    bottom: -65px;
+  }
+
+  /* Arrows next to title */
+  .sliderarea .carousel-control-prev.middle, .sliderarea .carousel-control-next.middle{
+    top: unset;
+    bottom: -70px;
+  }
+
+  .sliderarea .carousel-control-prev.middle .sliderarea .carousel-control-next.middle{
+    //margin-left: 5%
+  }
+
+  .sliderarea .carousel-control-prev.middle, .sliderarea .carousel-control-next.middle{
+    //margin-right: 5%;
+  }
+
+  /* Fixes the right arrow being too far to the center */
+  .sliderarea .carousel-control-next {
+    right: 0 ;
+  }
+
+  /* Makes the slider use full width */
+  .sliderarea .container {
+    padding: 0;
+  }
+
+  /* amount-points getting closer to the content */
+  .sliderarea .carousel-item {
+    min-height: 250px;
+  }
+
+  .carousel-control-prev {
+    left: 0;
+  }
+
+  .carousel-control-next {
+    right: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sliderarea .carousel-item .carousel-caption {
+    margin-top: 5em;
+  }
+}
+
+@media (max-width: 1200px) {
+  .sliderarea .carousel-item .carousel-caption {
+    margin-top: 3em;
+  }
+
+  .packshot-teaser .img-block {
+    width: 100%;
+    height: 180px;
+  }
+
+  .product-teaser-grid .sub-content {
+    max-width: 80%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sliderarea .carousel-item .carousel-caption {
+    margin-top: 3em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .sliderarea .carousel-item .carousel-caption {
+    margin-top: 2em;
+  }
+}
+
+@media (max-width: 991px) {
+
+  .slider-inner {
+    .carousel-inner .carousel-item .row .caption-holder .carousel-caption {
+      vertical-align: top;
+    }
+  }
+
+  .sliderarea .carousel-item .carousel-caption {
+    margin-top: 0;
+    display:none;
+  }
+
+  .sliderarea .carousel-item .product-img-holder {
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .sliderarea .carousel-item .img-fluid {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 300px;
+  }
+
+  .sliderarea .carousel-item .img-fluid.bottom-caption {
+    max-width: 70%;
+  }
+
+  .slider-inner .carousel-item .carousel-caption{
+
+    h1, h2, h3, h4, h5, h6{
+      margin-top: 35px;
+      font-size: 22px;
+      line-height: 27px;
+    }
+  }
+
+  .sliderarea .carousel-item .row {
+    padding: 0;
+  }
+}

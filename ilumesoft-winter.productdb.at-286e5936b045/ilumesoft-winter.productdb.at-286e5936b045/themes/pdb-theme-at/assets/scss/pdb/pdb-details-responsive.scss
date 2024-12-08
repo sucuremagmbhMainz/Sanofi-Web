@@ -1,0 +1,25 @@
+@media (max-width: 991px) {
+    .product-details-variant-files {
+        flex-direction: column;
+
+        .pdf-file-ref {
+            margin: 5px 0 !important;
+        }
+    }
+
+    .part-size {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .page-section {
+        > .container {
+            padding: 0;
+        }
+
+        .page-section-top {
+            border-radius: 0;
+        }
+    }
+}

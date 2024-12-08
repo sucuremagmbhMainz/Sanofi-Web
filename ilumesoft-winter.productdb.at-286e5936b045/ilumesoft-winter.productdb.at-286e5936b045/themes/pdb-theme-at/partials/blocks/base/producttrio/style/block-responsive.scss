@@ -1,0 +1,16 @@
+@media (max-width: 768px) {
+    .product-trio {
+        max-width: 80%;
+        margin: auto;
+    }
+
+    .producttrio-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .trio-slick {
+            max-width: calc(100% - 120px);
+        }
+    }
+}

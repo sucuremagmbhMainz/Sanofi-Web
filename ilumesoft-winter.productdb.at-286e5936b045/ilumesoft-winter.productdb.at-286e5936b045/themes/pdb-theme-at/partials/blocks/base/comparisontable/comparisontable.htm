@@ -1,0 +1,91 @@
+description = "Product Comparison"
+
+[viewBag]
+==
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+{{ [_self|prepBlockJS]|theme|embedJS}}
+
+<style>
+    {% if data.blocks_use_custom_color == 1 %}
+        #{{ blockId }} .table-head {
+            {% if data.section_productcomparison_block_head_bg_color != 'default-theme' %}background-color: {{ data.section_productcomparison_block_head_bg_color }};{% endif %}
+        }
+
+        #{{ blockId }} .table-head span {
+            {% if data.section_productcomparison_block_head_fg_color %}color: {{ data.section_productcomparison_block_head_fg_color }};{% endif %}
+        }
+
+        #{{ blockId }} .product-entry.col-head {
+            {% if data.section_productcomparison_block_head_bg_color != 'default-theme' %}background-color: {{ data.section_productcomparison_block_head_bg_color }};{% endif %}
+        }
+        #{{ blockId }} .product-entry.col-head .flex-vertical > span {
+            {% if data.section_productcomparison_block_head_fg_color %}color: {{ data.section_productcomparison_block_head_fg_color }};{% endif %}
+        }
+
+        #{{ blockId }} .product-entry.col.col-head-sub {
+            {% if data.section_productcomparison_block_head_bg_color != 'default-theme' %}background-color: {{ data.section_productcomparison_block_head_bg_color }};{% endif %}
+        }
+
+        #{{ blockId }} .product-entry.col.col-head-sub .flex-vertical span {
+            {% if data.section_productcomparison_block_head_fg_color %}color: {{ data.section_productcomparison_block_head_fg_color }};{% endif %}
+        }
+
+        #{{ blockId }} .product-entry.col-data .flex-vertical {
+            {% if data.section_productcomparison_block_content_fg_color %}color: {{ data.section_productcomparison_block_content_fg_color }};{% endif %}
+        }
+
+        #{{ blockId }} {
+            {% if data.section_productcomparison_block_head_bg_color != 'default-theme' %}border-bottom: 3rem solid {{ data.section_productcomparison_block_head_bg_color }};{% endif %}
+        }
+    {% endif %}
+</style>
+
+<div class="comparison-table">
+    {% if data.section_productcomparison_head_title %}
+    <div class="table-head">
+        <span>{{ data.section_productcomparison_head_title }}</span>
+    </div>
+    {% endif %}
+    <div class="column-holder">
+        <div class="content-row forSlick slick-inactive slickGroup noSlickControl">
+            {% for dataEntry in data.section_productcomparison_repeater %}
+            <div class="product-entry col-head">
+                <div class="flex-vertical">
+                    <span>{{ dataEntry.section_productcomparison_title|raw }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="content-row forSlick slick-inactive slickGroup">
+            {% for dataEntry in data.section_productcomparison_repeater %}
+            <div class="product-entry col-data">
+                <div class="flex-vertical">
+                    <img src="{{ dataEntry.section_productcomparison_img|media }}">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% for i in 1..8 %}
+            {% if data.comparison_group_count >=  i %}
+            <div class="content-row">
+                <div class="product-entry col col-head-sub">
+                    <div class="flex-vertical">
+                        <span>{{ data['comparison_group_title_' ~ i] }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-row forSlick slick-inactive slickGroup noSlickControl">
+                {% for dataEntry in data.section_productcomparison_repeater %}
+                <div class="product-entry col-data">
+                    <div class="flex-vertical">
+                        {{ dataEntry['comparison_group_desc_' ~ i]|raw }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

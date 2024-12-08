@@ -1,0 +1,11 @@
+description = "Scroll to top"
+
+[viewBag]
+==
+{% if this.theme.scrolltop_js %}
+{% if this.theme.fonts_lineicons %}
+<a href="#" class="scroll-to-top {{ this.theme.scrolltop_js_form }}"><i class="lnr lnr-chevron-up"></i></a>
+{% else %}
+<a href="#" class="scroll-to-top"><i class="fa fa-chevron-up"></i></a>
+{% endif %}
+{% endif %}

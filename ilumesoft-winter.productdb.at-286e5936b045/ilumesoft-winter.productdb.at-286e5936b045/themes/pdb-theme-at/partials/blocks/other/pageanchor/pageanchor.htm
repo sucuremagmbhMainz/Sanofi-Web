@@ -1,0 +1,14 @@
+description = "Page Anchor"
+
+[viewBag]
+==
+
+{% set blockId = "unique-block"|uniqueID %}
+
+<div id="{{ blockId }}" class="collapsable-block block-bg {% if data.block_bg_color_width == 'block-only' %}{{ data.container|default('container') }}{% else %}container-fluid{% endif %}">
+    <!-- Block Content Start -->
+
+    <div class="block" id="{{ data.section_section_id}}"></div>
+
+    <!-- Block Content End -->
+</div>

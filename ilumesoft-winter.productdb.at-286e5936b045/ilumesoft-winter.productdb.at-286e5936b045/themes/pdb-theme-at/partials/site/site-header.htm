@@ -1,0 +1,47 @@
+description = "Site header"
+
+[viewBag]
+==
+{% partial "site/site-header-company" %}
+
+<div id="header-bottom" class="">
+    <div class="{{ this.theme.layout_container|default('container') }}">
+        <div id="dummyheader"></div>
+        <div id="fixedheader">
+            {%if this.page.layout == 'static-microsite'%}
+                {% if page.microsite_logo != empty %}
+                    <div id="microsite-logo" class="{{ this.theme.layout_container|default('container') }}">
+                             <img id="microsite-logo-image" src="{{ page.microsite_logo|media }}" alt="{{ this.page.title }} logo" title="{{ this.page.title }} logo">
+
+                    </div>
+                {%endif%}
+            {% endif %}
+            <div class="header-menu-wrapper {{ this.theme.layout_container|default('container') }}">
+                <ul id="header-menu" class="site-menu">
+                    {% if this.page.title == 'Produktfinder' %}
+                    <li>
+                        <a class="menu-entry" href="{{ item.url }}{{ is_preview ? '?preview=1' : ''}}">
+                            <div class="text-wrapper">
+                                <p>{{ this.page.title }}</p>
+                            </div>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a class="back-entry" href="/{{ is_preview ? '?preview=1' : ''}}">
+                            <div class="icon-wrapper">
+                                <i class="fa fa-arrow-left"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="inactive-entry">
+                            <p style="text-transform: uppercase">{{ this.page.title }}</p>
+                        </div>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

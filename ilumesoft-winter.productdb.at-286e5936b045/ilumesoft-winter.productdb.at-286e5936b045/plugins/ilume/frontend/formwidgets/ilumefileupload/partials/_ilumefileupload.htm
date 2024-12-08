@@ -1,0 +1,78 @@
+<?php if ($this->previewMode): ?>
+
+    <?= $this->makePartial('file_single') ?>
+
+<?php else: ?>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(){
+            // Handler when all assets (including images) are loaded
+
+            var elementId = "<?= $this->getId('input') ?>";
+            var inputElement = document.querySelector('#' + 'file-upload-' + elementId);
+            var inputDataElement = document.querySelector('#' + 'file-upload-data-' + elementId);
+            var btnElement = document.querySelector('#' + 'file-upload-btn-' + elementId);
+            var labelElement = document.querySelector('#' + 'file-upload-label-' + elementId);
+            var maxFileSize = <?= isset($maxFilesize) ? $maxFilesize : 25 ?>;
+            var allowedTypes = <?= isset($acceptedFileTypes) ? ("'" . $acceptedFileTypes . "'") : 'undefined' ?>;
+            if (allowedTypes !== undefined) {
+                allowedTypes = allowedTypes.replaceAll('.', '*.');
+            }
+
+            btnElement.onclick = function() {
+               inputElement.click();
+            };
+
+            // You will receive the Base64 value every time a user selects a file from his device
+            // As an example I selected a one-pixel red dot GIF file from my computer
+            inputElement.onchange = function () {
+                var file = inputElement.files[0],
+                    reader = new FileReader();
+
+                if (file !== undefined) {
+                    var fileSize = file.size / 1024 / 1024;
+
+                    if (fileSize <= maxFileSize) {
+                        const fileName = file.name;
+
+                        reader.onloadend = function () {
+                            // Since it contains the Data URI, we should remove the prefix and keep only Base64 string
+                            var b64 = reader.result;
+
+                            inputDataElement.value = b64 + '|' + fileName;
+
+                            labelElement.textContent = fileName;
+                        };
+
+                        reader.readAsDataURL(file);
+                    } else {
+                        sweetAlert("Die maximale Dateigröße wurde überschritten (max. " + maxFileSize + "Mb)");
+                    }
+                } else {
+                    inputElement.nextElementSibling.value = '';
+                    labelElement.textContent = '>' + (allowedTypes !== undefined ? (' ' + allowedTypes) : '') + ' (max. ' + maxFileSize + 'Mb)';
+                }
+            };
+        });
+    </script>
+
+    <input
+        type="file"
+        id="file-upload-<?= $this->getId('input') ?>"
+        class="form-control"
+    />
+    <input
+        type="hidden"
+        id="file-upload-data-<?= $this->getId('input') ?>"
+        name="<?= $name ?>"
+        class="form-control"
+    />
+
+    <div class="file-label-holder">
+        <span class="file-upload-label" id="file-upload-label-<?= $this->getId('input') ?>">&gt;<?= isset($acceptedFileTypes) && !empty($acceptedFileTypes) ? (' ' . str_replace('.', '*.', $acceptedFileTypes)) : '' ?> (max. <?= isset($maxFilesize) ? $maxFilesize : 20 ?>Mb)</span>
+    </div>
+    <div class="file-upload-split"></div>
+    <div class="upload-file-btn" id="file-upload-btn-<?= $this->getId('input') ?>">Datei auswählen</div>
+
+
+<?php endif ?>

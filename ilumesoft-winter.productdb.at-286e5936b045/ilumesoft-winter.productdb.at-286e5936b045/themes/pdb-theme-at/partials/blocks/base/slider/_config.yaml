@@ -1,0 +1,126 @@
+slider:
+    name: Slider
+    description: Slider
+    icon: icon-camera-retro
+    fields:
+        section_carousel_section:
+            label: Slider
+            type: section
+            containerAttributes:
+                data-icon: icon-camera-retro
+        section_slider_autospin:
+            label: Auto. Rotation
+            type: switch
+            default: true
+            span: left
+
+        section_style_head:
+            label: Styling
+            span: full
+            type: section
+            containerAttributes: ['ilume-toggle', 'ilume-hidden']
+        section_bottom_nav_style:
+            label: Bottom Nav Style
+            type: balloon-selector
+            options:
+                stroke: Line
+                circle: Circle
+            span: left
+            default: stroke
+        section_bottom_nav_overlap:
+            label: Overlap Content with bottom Nav
+            type: balloon-selector
+            options:
+                no: No
+                yes: Yes
+            default: no
+            span: right
+        section_left_arrow_alignment:
+            label: Left Arrow Align.
+            type: balloon-selector
+            options:
+                bottom: Bottom
+                middle: Middle
+                top: Top
+            span: left
+            default: middle
+        section_right_arrow_alignment:
+            label: Right Arrow Align.
+            type: balloon-selector
+            options:
+                bottom: Bottom
+                middle: Middle
+                top: Top
+            span: right
+            default: middle
+        desktop_item_minheight:
+            label: Minimum Content Px Height (Desktop)
+            type: number
+            default: 350
+            span: left
+
+        section_entries_head:
+            label: Entries
+            span: full
+            type: section
+            containerAttributes: ['ilume-toggle', 'ilume-hidden']
+        section_carousel:
+            type: repeater
+            prompt: Add Slide
+            form:
+                fields:
+                    section_carousel_line:
+                        label: Slide
+                        type: section
+                        containerAttributes:
+                            data-icon: icon-circle-o
+                    section_carousel_align:
+                        label: Text Alignment
+                        type: balloon-selector
+                        options:
+                            left: Left
+                            bottom-center: Center Bottom
+                            right: Right
+                        span: left
+                    section_carousel_image:
+                        label: Image
+                        type: mediafinder
+                        mode: image
+                        span: left
+                    section_carousel_background_check:
+                        label: Image as Background
+                        type: checkbox
+                        span: right
+                        default: false
+                    section_carousel_title:
+                        label: Title
+                        type: text
+                        span: left
+                    headline_size:
+                        label: Size
+                        type: dropdown
+                        options:
+                            1: H1
+                            2: H2
+                            3: H3
+                            4: H4
+                            5: H5
+                            6: H6
+                        span: right
+                        default: 6
+                    section_carousel_subtitle:
+                        label: Subtitle
+                        type: text
+                        span: full
+                    section_carousel_button_label:
+                        label: Button Label
+                        type: text
+                        span: left
+                    section_carousel_button_icon:
+                        label: Button Icon
+                        type: text
+                        span: right
+                    section_carousel_button_url:
+                        label: Button Url
+                        type: text
+                        span: full

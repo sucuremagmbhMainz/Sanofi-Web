@@ -1,0 +1,14 @@
+{
+	   "compileOnSave": true,
+	   "compilerOptions": {
+			"noImplicitAny" : true,
+			"target": "es5",
+			"module": "commonjs",
+			"outFile": "../assets/js/ilume-backend.js",
+			"sourceMap": true
+		},
+		"include": [
+			"*.ts"
+		]
+
+}

@@ -1,0 +1,16 @@
+description = "Site footer menu"
+
+[viewBag]
+
+[staticMenu]
+code = "footer-menu"
+==
+<div class="container">
+    <div class="footer-menu-wrapper">
+        <ul id="footer-menu" class="site-menu">
+            {% for item in staticMenu.menuItems if not item.viewBag.isHidden %}
+                <li><a class="" href="{{ item.url }}{{ is_preview ? ('?' in item.url ? '&' : '?') ~ 'preview=1' : '' }}" {{ item.viewBag.isExternal ? 'target="_blank"' }}>{{ item.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

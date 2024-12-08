@@ -1,0 +1,20 @@
+Produktvariante:
+    label:
+    showSorting: false
+    view:
+        list: $/sanofi/pdb/models/pdbproductvariant/columns.yaml
+        toolbarButtons: create|delete
+        defaultSort:
+            column: sort_order
+            direction: asc
+        showSorting: false
+    manage:
+        form: $/sanofi/pdb/models/pdbproductvariant/fields.yaml
+        list: $/sanofi/pdb/models/pdbproductvariant/columns.yaml
+        defaultSort:
+            column: sort_order
+            direction: asc
+        showSorting: false
+    defaultSort:
+        column: sort_order
+        direction: asc

@@ -1,0 +1,35 @@
+columns:
+    sort_order_handle:
+        label: " "
+        type: partial
+        path: $/sanofi/pdb/models/pdbproductvariant/_reorder_handle.htm
+        sortable: false
+        width: 20px
+    sort_order:
+        invisible: true
+        type: number
+        sortable: true
+    is_visible:
+        label: 'Sichtbar'
+        type: switch
+        sortable: false
+    name:
+        label: 'Bezeichnung'
+        type: text
+        sortable: false
+    is_prescription_required:
+        label: 'Rezeptpflichtig'
+        type: switch
+        sortable: false
+    is_pharmacy_required:
+        label: 'Apothekenpflichtig'
+        type: switch
+        sortable: false
+    is_cosmetic:
+        label: 'Kosmetikum'
+        type: switch
+        sortable: false
+    is_medicine:
+        label: 'Medizin'
+        type: switch
+        sortable: false

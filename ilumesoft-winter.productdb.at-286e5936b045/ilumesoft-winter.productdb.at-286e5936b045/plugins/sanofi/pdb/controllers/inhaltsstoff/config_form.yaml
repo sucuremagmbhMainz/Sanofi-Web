@@ -1,0 +1,10 @@
+name: Inhaltsstoff
+form: $/sanofi/pdb/models/pdbingredient/fields.yaml
+modelClass: Sanofi\Pdb\Models\PDBIngredient
+defaultRedirect: sanofi/pdb/inhaltsstoff
+create:
+    redirect: 'sanofi/pdb/inhaltsstoff/update/:id'
+    redirectClose: sanofi/pdb/inhaltsstoff
+update:
+    redirect: sanofi/pdb/inhaltsstoff
+    redirectClose: sanofi/pdb/inhaltsstoff

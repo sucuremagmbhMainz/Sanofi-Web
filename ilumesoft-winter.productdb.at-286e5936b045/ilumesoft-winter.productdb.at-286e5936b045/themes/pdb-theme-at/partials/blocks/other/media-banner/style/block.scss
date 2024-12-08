@@ -1,0 +1,45 @@
+.media-banner {
+    display: flex;
+    flex-direction: row;
+
+    .banner-element {
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+
+        &.media-steady{
+            background-size: cover;
+        }
+    }
+
+    .media-parallax-fixed {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .mobile-image-static {
+        width: 100%;
+        display: none;
+        height: auto;
+    }
+}
+
+
+/* CSS specific to iOS devices */
+@media only screen and (max-device-width: 768px) {
+    @supports (-webkit-touch-callout: none) {
+        .media-banner {
+            display: inline-block;
+            flex-direction: inherit;
+            justify-content: inherit;
+
+            .media-parallax-fixed {
+                display: none;
+            }
+
+            .mobile-image-static {
+                display: block;
+            }
+        }
+    }
+}

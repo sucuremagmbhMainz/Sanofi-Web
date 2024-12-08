@@ -1,0 +1,37 @@
+<?php if (count($types)): ?>
+<div class="list-preview list-flush">
+    <div class="control-list">
+        <table class="table data" data-control="rowlink">
+            <thead>
+            <tr>
+                <th><span>Menge</span></th>
+                <th><span>PZN</span></th>
+                <th style="width: 10%"><span></span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($types as $item): ?>
+            <tr>
+                <td>
+                    <?= e($item->package_size) ?> x
+                </td>
+                <td>
+                    <?= e($item->pzn) ?>
+                </td>
+                <td class="nolink text-right">
+                    <a
+                        href="javascript:;"
+                        data-request="onDeleteItem"
+                        data-request-data="record_id: '<?= $item->id ?>'"
+                        data-request-confirm="Delete this item?"
+                        class="oc-icon-remove"
+                        data-toggle="tooltip"
+                        title="Remove"></a>
+                </td>
+            </tr>
+            <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<?php endif ?>

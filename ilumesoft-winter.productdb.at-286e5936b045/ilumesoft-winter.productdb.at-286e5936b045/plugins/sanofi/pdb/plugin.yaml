@@ -1,0 +1,34 @@
+plugin:
+    name: 'sanofi.pdb::lang.plugin.name'
+    description: 'sanofi.pdb::lang.plugin.description'
+    author: Sanofi
+    icon: oc-icon-database
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Referenzdaten
+        url: sanofi/pdb/anwendungsbereich
+        icon: icon-database
+        sideMenu:
+            side-menu-item:
+                label: Anwendungsbereiche
+                url: sanofi/pdb/anwendungsbereich
+                icon: icon-sitemap
+            side-menu-item2:
+                label: Inhaltsstoffe
+                url: sanofi/pdb/inhaltsstoff
+                icon: icon-sitemap
+    main-menu-item2:
+        label: Produktdaten
+        url: sanofi/pdb/produkt
+        icon: icon-star
+permissions:
+    sanofi.pdb.area:
+        tab: Produktdatenbank
+        label: Anwendungsbereiche
+    sanofi.pdb.ingredients:
+        tab: Produktdatenbank
+        label: Inhaltsstoffe
+    sanofi.pdb.products:
+        tab: Produktdatenbank
+        label: Produkte

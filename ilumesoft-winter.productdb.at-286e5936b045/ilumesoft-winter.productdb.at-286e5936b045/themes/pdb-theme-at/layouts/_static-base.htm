@@ -1,0 +1,76 @@
+description = "Static layout (Base)"
+
+[session]
+security = "all"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[seo]
+
+
+==
+<!DOCTYPE html>
+<html lang="{{ this.theme.site_locale }}">
+    <head>
+        {% partial "site/meta" %}
+        {% partial "site/css"%}
+
+        <!-- Custom JS / Google Analytics -->
+        {{ this.theme.custom_js|raw }}
+
+        <!-- Page specific Custom JS / Google Analytics -->
+        {{ page.custom_js|raw }}
+    </head>
+
+    <body class="page-{{ this.page.title }} layout-{{ this.page.layout }}">
+        <div class="page-container">
+            <div id="load-overlay" class="container" style="position: absolute;">
+                <div style="width: 100%; height: 100%;">
+                <div class="bg">
+                    <i class="fa fa-spin fa-cog load-icon"></i>
+                </div>
+                </div>
+            </div>
+            <div id="content-wrap">
+
+                <header id="site-header">
+                    {% partial 'site/site-header' %}
+                </header>
+
+                <div class="page-sections-wrapper">
+                    <!-- Repeater blocks in the backend -->
+                    {ilumerepeater
+                        name="sections"
+                        tab="Block Inhalte"
+                        blockSrcFolders="base"}
+                        {# Throws error, if empty #}
+                    {/ilumerepeater}
+
+                    <!-- Page -->
+                    <section class="page-section">
+                        <div class="{{ this.theme.layout_container|default('container') }}">
+                            {% page %}
+                        </div>
+                    </section>
+                </div>
+
+                <footer>
+                    {% partial "site/" ~ footerlayout|default('site-footer') %}
+                </footer>
+
+                <!-- Scroll to top -->
+                {% partial "site/scrolltop" %}
+
+                <!-- Loader -->
+                {% partial "site/loader" %}
+
+                <!-- Scripts -->
+                {% partial "site/scripts" %}
+
+            </div>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,85 @@
+description = "block-wrapper"
+
+[viewBag]
+==
+{% set blockId = "unique-block"|uniqueID %}
+
+<style>
+    #{{ blockId }} { width: 100%; height: 100%; }
+
+    /* Block Spacing Style */
+    #{{ blockId }} { margin-top: {{ data.block_spacing_outer_top|default(0) }}em; margin-bottom: {{ data.block_spacing_outer_bot|default(0) }}em; }
+    #{{ blockId }} > .block-bg { padding-top: {{ data.block_spacing_top|default(0) }}em; padding-bottom: {{ data.block_spacing_bot|default(0) }}em; }
+    @media (max-width: 1200px) {
+        #{{ blockId }} { margin-top: calc(0.75 * {{ data.block_spacing_outer_top|default(0) }}em); marign-bottom: calc(0.75 * {{ data.block_spacing_outer_bot|default(0) }}em); }
+        #{{ blockId }} > .block-bg { padding-top: calc(0.75 * {{ data.block_spacing_top|default(0) }}em); padding-bottom: calc(0.75 * {{ data.block_spacing_bot|default(0) }}em); }
+    }
+    @media (max-width: 600px) {
+        #{{ blockId }} { margin-top: calc(0.5 * {{ data.block_spacing_outer_top|default(0) }}em); margin-bottom calc(0.5 * {{ data.block_spacing_outer_bot|default(0) }}em); }
+        #{{ blockId }} > .block-bg { padding-top: calc(0.5 * {{ data.block_spacing_top|default(0) }}em); padding-bottom: calc(0.5 * {{ data.block_spacing_bot|default(0) }}em); }
+    }
+
+    /* Block Background Image Style */
+    {% if data.block_bg_use_image == 'use-bg-image' or data.block_bg_use_image == 'use-fixed-bg-image' %}
+    #{{ blockId }} > .block-bg {
+        {% if data.block_bg_color_type == 'double' %}
+           background: linear-gradient(180deg, {{ data.bg_color_double_a == 'default-theme' ? 'transparent' : data.bg_color_double_a|default('transparent') }} {{ data.block_bg_color_double_split is defined and data.block_bg_color_double_split is not empty ? data.block_bg_color_double_split ~ '%' }}, {{ data.bg_color_double_b == 'default-theme' ? 'transparent' : data.bg_color_double_b|default('transparent') }} {{ data.block_bg_color_double_split is defined and data.block_bg_color_double_split is not empty ? data.block_bg_color_double_split ~ '%' }}), url('{{ data.block_bg_image | media }}');
+        {% else %}
+           background: url('{{ data.block_bg_image | media }}');
+        {% endif %}
+        background-position-x: {{ data.block_bg_pos_x|default('center') }};
+        background-position-y: {{ data.block_bg_pos_y|default('center') }};
+        background-size: {{ data.block_bg_image_size|default('auto') }};
+        background-repeat: no-repeat;
+        {% if data.block_bg_use_image == 'use-fixed-bg-image' %}
+        background-attachment: fixed;
+        {% endif %}
+    }
+    {% else %}
+        /* Block Background Color Style */
+        {% if data.block_bg_color_type == 'single' %}
+        #{{ blockId }} > .block-bg { background-color: {{ data.bg_color_single == 'default-theme' ? 'transparent' : data.bg_color_single|default('transparent') }}; }
+        {% elseif data.block_bg_color_type == 'double' %}
+        #{{ blockId }} > .block-bg { background: linear-gradient(180deg, {{ data.bg_color_double_a == 'default-theme' ? 'transparent' : data.bg_color_double_a|default('transparent') }} {{ data.block_bg_color_double_split is defined and data.block_bg_color_double_split is not empty ? data.block_bg_color_double_split ~ '%' }}, {{ data.bg_color_double_b == 'default-theme' ? 'transparent' : data.bg_color_double_b|default('transparent') }} {{ data.block_bg_color_double_split is defined and data.block_bg_color_double_split is not empty ? data.block_bg_color_double_split ~ '%' }}); }
+        {% endif %}
+    {% endif %}
+
+    {% if spacing is defined %}
+        #{{ blockId }} .block {
+            padding: {{ spacing }}px;
+        }
+    {% endif %}
+</style>
+
+{# Setup container styles for the background-wrapper-div (background) & the content-wrapper-div (block) #}
+{% if data.block_bg_color_width == 'container-fluid' %}
+    {% if data.block_container_size|default('container') == 'container-fluid' %}
+        {% set outerBlockSize = "container-fluid" %}
+        {% set innerBlockSize = "" %}
+    {% else %}
+        {% set outerBlockSize = "container-fluid" %}
+        {% set innerBlockSize = "container" %}
+    {% endif %}
+{% else %}
+    {% if data.block_container_size|default('container') == 'container-fluid' %}
+        {% set outerBlockSize = "container-fluid" %}
+        {% set innerBlockSize = "" %}
+    {% else %}
+        {% set outerBlockSize = "container" %}
+        {% set innerBlockSize = "" %}
+    {% endif %}
+{% endif %}
+
+<div {{ (data.section_block_id is defined and data.section_block_id is not empty) ? 'id=' ~ data.section_block_id : '' }}>
+    <div id="{{ blockId }}" class="blockAnchorPos block-outer {{ outerBlockSize }}">
+        <div class="block-bg" title="{{ data.block_bg_image_title }}">
+            <div class="{{ wrappedBlock }}-block block {{ innerBlockSize }}">
+                <!-- Block Content Start -->
+
+                {% partial wrappedBlockPath data=data blockId=blockId availableBlockPaths=availableBlockPaths %}
+
+                <!-- Block Content End -->
+            </div>
+        </div>
+    </div>
+</div>

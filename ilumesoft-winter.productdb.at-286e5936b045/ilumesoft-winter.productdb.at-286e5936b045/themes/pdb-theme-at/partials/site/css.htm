@@ -1,0 +1,96 @@
+description = "Css"
+
+[viewBag]
+==
+<!-- Vendor CSS -->
+<link href="{{ [
+   'assets/vendor/bootstrap/css/bootstrap.min.css',
+   'assets/vendor/owl-carousel/css/owl.carousel.min.css',
+   'assets/vendor/owl-carousel/css/owl.theme.default.min.css',
+   'assets/vendor/magnific-popup/css/magnific-popup.css',
+   'assets/vendor/slick/slick.css',
+   'assets/vendor/slick/slick-theme.css'
+   ]|theme }}" rel="stylesheet">
+
+<!-- Fonts -->
+{% if this.theme.fonts_googlefonts %}
+<link href="https://fonts.googleapis.com/css?family={{ this.theme.fonts_google_fontfamily }}" rel="stylesheet">
+{% endif %}
+{% if this.theme.fonts_fontawesome %}
+<link href="{{ 'assets/vendor/font-awesome/css/font-awesome.min.css'|theme }}" rel="stylesheet">
+{% endif %}
+{% if this.theme.fonts_lineicons %}
+<link href="{{ 'assets/vendor/line-icons/style.css'|theme }}" rel="stylesheet">
+{% endif %}
+{% if this.theme.fonts_lineicons %}
+<link href="{{ 'assets/vendor/font-lineicons/lineIcons.css'|theme }}" rel="stylesheet">
+{% endif %}
+
+<!-- Addon CSS -->
+{% if this.theme.animate_css %}
+<link href="{{ 'assets/vendor/animate/animate.css'|theme }}" rel="stylesheet">
+{% endif %}
+{% if this.theme.aos_js %}
+<link href="{{ 'assets/vendor/aos/css/aos.css'|theme }}" rel="stylesheet">
+{% endif %}
+{% if this.theme.normalize_css %}
+<link href="{{ 'assets/vendor/normalize/normalize.css'|theme }}" rel="stylesheet">
+{% endif %}
+
+<!-- Page specific theme-colors -->
+<style>
+    :root {
+    --theme_color_base: {{ theme_color_base|default('#bca36a') }};
+    --theme_color_dark: {{ theme_color_highlight|default('#acb317') }};
+    }
+</style>
+
+<!-- Main SCSS -->
+{% set stylefilepath = 'assets/scss/style-base.scss' %}
+<link href="{{ [stylefilepath]|theme }}" rel="stylesheet">
+
+<!-- Container Width -->
+{% if this.theme.layout_container == 'container' %}
+{% if this.theme.layout_container_width %}
+<style>
+@media (min-width: 1440px) {
+    {{ '.container { max-width:' ~ this.theme.layout_container_width ~ 'px; }' }};
+}
+</style>
+{% endif %}
+{% endif %}
+
+<!-- Core CSS -->
+{% styles %}
+
+
+<!-- Page Menu Footer -->
+{% if this.theme.footer_menu_color and this.theme.footer_menu_color == 'custom' %}
+<style>
+    footer .theme-bg {
+        background-color: {{ this.theme.footer_menu_bg_color }};
+    }
+
+    footer .theme-bg ul li a {
+        color: {{ this.theme.footer_menu_text_color_base }};
+    }
+
+    footer .theme-bg ul li a:hover {
+        color: {{ this.theme.footer_menu_text_color_hover }};
+    }
+</style>
+{% endif %}
+
+<!-- Custom CSS -->
+{% if this.theme.custom_css %}
+<style>
+    {{ this.theme.custom_css | raw }}
+</style>
+{% endif %}
+
+<!-- Page specficic Custom CSS -->
+{% if page.custom_css %}
+<style>
+    {{ page.custom_css | raw }}
+</style>
+{% endif %}

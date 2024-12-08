@@ -1,0 +1,21 @@
+/* 01. General */
+/* ================================================================================================================== */
+
+a:active, a:active, a:focus, a:focus-visible {
+    box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* 02. Scroll to top */
+/* ================================================================================================================== */
+
+.scroll-to-top {
+    background-color: var(--microsite-color-base);
+    border: 3px solid var(--microsite-color-base);
+
+    &:hover {
+        border: 3px solid var(--microsite-color-base);
+        background: var(--microsite-color-highlight);
+    }
+}

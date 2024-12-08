@@ -1,0 +1,21 @@
+description = "Product Trio"
+
+[viewBag]
+==
+
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+{{ [_self|prepBlockJS]|theme|embedJS}}
+
+
+<div class="slider trio-slick slick-slider slick-inactive">
+    {% for element in data.section_producttrio_carousel %}
+    {% if loop.index < 4 %}
+    <div class="slider-item" style="background-image: url('{{ element.section_carousel_image|media }}'); min-height: {{ data.section_visible_img_height | default('300') }}px;">
+        <h5 style="color: {{ element.section_carousel_title_color|default('#FFF')}}">{{ element.section_carousel_title }}</h5>
+        <a href="{{ element.section_carousel_button_url }}" class="btn btn-primary">mehr erfahren</a>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

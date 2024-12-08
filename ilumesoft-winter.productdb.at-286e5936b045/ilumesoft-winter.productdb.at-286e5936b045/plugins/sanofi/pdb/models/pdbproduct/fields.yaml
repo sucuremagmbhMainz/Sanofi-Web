@@ -1,0 +1,96 @@
+fields:
+    is_visible:
+        label: 'Sichtbar'
+        span: left
+        default: 1
+        type: switch
+        comment: 'Wichtig: Versteckte Produkte werden im Frontend ausgeblendet ! (Änderung muss auch veröffentlicht werden)'
+    product_toolbar:
+        span: right
+        type: partial
+        path: field_product_toolbar
+tabs:
+    fields:
+        name:
+            label: 'Bezeichnung'
+            span: full
+            required: 1
+            type: text
+            tab: Allgemeines
+        area_id:
+            label: 'Anwendungsbereich'
+            showSearch: true
+            span: full
+            required: 1
+            type: dropdown
+            tab: Allgemeines
+        description:
+            label: 'Allgemeine Informationen'
+            size: large
+            span: full
+            type: richeditor
+            tab: Allgemeines
+            cssClass: "rich-extended"
+            toolbarButtons: 'paragraphFormat,align,|||,formatUL,formatOL,|||,insertLink,|||,bold,italic,underline,strikeThrough,|||,subscript,superscript|||,color,|||,clearFormatting'
+        raw_images:
+            label: 'Produktbilder (Raw)'
+            type: repeater
+            span: full
+            tab: Produktbilder
+            maxItems: 15
+            form:
+                fields:
+                    path:
+                        label: 'Produktbild'
+                        span: full
+                        mode: image
+                        imageHeight: 200
+                        imageWidth: 200
+                        type: mediafinder
+        ingredient_type:
+            label: 'Art der Inhalte'
+            showSearch: true
+            span: full
+            required: 1
+            type: dropdown
+            tab: Inhalt
+        ingredients:
+            label: 'Inhalte'
+            span: full
+            type: checkboxlist
+            tab: Inhalt
+            quickSelectAll: false
+            trigger:
+                action: show
+                field: ingredient_type
+                condition: value[1] | value[2]
+        variants:
+            type: partial
+            tab: Produktvarianten
+            path: field_product_variants
+            context: update
+        footnotes:
+            type: repeater
+            span: full
+            tab: Fußnoten
+            prompt: 'Neue Fußnote hinzufügen'
+            form:
+                fields:
+                    text:
+                        label: Beschreibung (Fußnote)
+                        type: richeditor
+                        span: full
+                        size: small
+                        toolbarButtons: 'bold,italic,underline,strikeThrough,|||,color'
+        color_main:
+            label: Hauptfarbe
+            type: colorpicker
+            span: full
+            tab: Farben
+        color_sub:
+            label: Nebenfarbe
+            type: colorpicker
+            span: full
+            tab: Farben
+
+

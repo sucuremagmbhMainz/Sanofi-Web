@@ -1,0 +1,111 @@
+@media (max-width: 550px) {
+    body {
+        font-size: 1.2rem;
+    }
+
+    #load-overlay {
+        padding: 0;
+    }
+
+    .page-section {
+        .page-section-top {
+            border-radius: 0;
+        }
+
+        .container {
+            padding: 0;
+        }
+    }
+
+    #pdb-list {
+        .toolbar-base {
+            .filter-by-type {
+                flex-direction: row;
+                margin: 0;
+                margin-bottom: 15px;
+
+                >div {
+                    padding: 12px;
+                    flex-grow: 1;
+                    text-align: center;
+                }
+            }
+
+            .fa-undo {
+                padding: 11px;
+            }
+
+            .search-term-wrapper {
+                height: 100%;
+
+                .search-term-input {
+                    padding: 10px 8px;
+                }
+
+                .fa.fa-search {
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+
+            &.first {
+                flex-direction: column;
+            }
+        }
+
+        #letter-list {
+            .letter-btn {
+            }
+        }
+    }
+
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        .product-item-wrapper {
+            flex: 0 calc(100% - 10px);
+            max-width: calc(100% - 10px);
+            margin: 5px;
+        }
+    }
+}
+
+@media (min-width: 551px) {
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        .product-item-wrapper {
+            flex: 0 calc(100% - 10px);
+            max-width: calc(100% - 10px);
+            margin: 5px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .product-list {
+        .product-item-wrapper {
+            flex: 0 calc(50% - 20px);
+            max-width: calc(50% - 20px);
+            margin: 10px;
+
+            overflow: hidden;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .product-list {
+        .product-item-wrapper {
+            flex: 0 calc(33.3% - 20px);
+            max-width: calc(33.3% - 20px);
+            margin: 10px;
+
+            overflow: hidden;
+        }
+    }
+}

@@ -1,0 +1,328 @@
+/* General Backend Styling */
+
+.form-group.section-field {
+    margin-top: 4px;
+}
+
+.form-group.section-field[ilume-toggle] {
+    margin-top: 14px;
+}
+
+.field-repeater-form > .form-group.section-field:first-of-type h4 {
+    font-size: 28px;
+    padding: 8px 0 8px 5px;
+    color: #e67e22;
+}
+
+.field-repeater li.field-repeater-item:hover .field-repeater-form .form-group.section-field:first-of-type h4 {
+    color: #0181b9;
+}
+
+.field-repeater .form-group label {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.control-treeview ol >li >div >ul.submenu {
+    height: 38px;
+}
+
+.field-section > h4 {
+    font-weight: bold;
+}
+
+/* layout fix for the richeditor separator line */
+.fr-separator.fr-hs {
+    width: calc(100% - 4px) !important;
+}
+
+/* Add some spacing to every subsequent section inside a tab panel */
+.tab-pane > .form-group.section-field:not(:first-child) {
+    margin-top: 25px;
+}
+
+:focus {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+/* Ilume Custom Toggle Styling ********************************************************************************* */
+.form-group.hasToggle i:hover,
+.form-group.hasToggle label:hover {cursor:pointer}
+
+.field-repeater li.field-repeater-item .repeater-item-collapse {left:5px;width:auto !important;}
+
+/* Block Head Focus Fix **************************************************************************************** */
+.repeater-item-collapse a:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+/* Special Focus Styling for the Block Elements **************************************************************** */
+
+.field-repeater-form  h4 {
+    font-size: 18px;
+}
+
+.field-repeater-form  h4, .field-repeater-form label {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.field-repeater-form label {
+    cursor: pointer;
+}
+
+.field-repeater-form h4 .icon {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 15px;
+    display: inline-block;
+}
+
+.field-repeater-form h4 .icon.icon-chevron-right {
+    margin-left: 8px;
+    width: 12px;
+}
+
+.section-field[toggle-key-main] {
+    cursor: pointer;
+}
+
+.section-field[toggle-key-main]:hover .field-section h4 {
+    color: rgba(0,0,0,0.4);
+}
+
+.section-field[toggle-key-main].ilume-toggle-open .field-section h4 {
+    color: #0181b9;
+}
+
+.form-group, .form-group.layout-item {
+    padding-bottom: 0 !important;
+    margin-bottom: 20px !important;
+}
+
+.form-group .field-section .list-icon,
+.repeater-item-collapsed-title .list-icon {
+    margin-right: 8px;
+}
+
+.form-group .p-a, .form-group .m-y, .form-group .control-scrollpanel {
+    padding: 0 0 20px 0 !important;
+    margin: 0 !important;
+    background-color: inherit !important;;
+}
+
+.field-repeater li.field-repeater-item .repeater-item-handle:hover,
+.field-repeater li.field-repeater-item.dragged .repeater-item-handle{
+    background-color: #0181b9 !important;
+    color: white !important;
+}
+
+.field-repeater li.field-repeater-item:not(.collapsed) {
+    border: 1px solid #e67e22;
+}
+
+.field-repeater li.field-repeater-item.collapsed:hover {
+    border: 1px solid #0181b9;
+}
+
+.field-repeater li.field-repeater-item.collapsed {
+    border: 1px solid #bbb;
+}
+
+.field-repeater li.field-repeater-item:hover {
+    background-color: #edf6fa;
+    border: 1px solid #0181b9 !important;
+}
+
+.field-repeater .field-repeater li.field-repeater-item:hover {
+    background-color: #dceef5;
+}
+
+.field-repeater .field-repeater .field-repeater li.field-repeater-item:hover {
+    background-color: #cde6f1;
+}
+
+.field-repeater li.field-repeater-item .repeater-item-collapse:hover a,
+.field-repeater li.field-repeater-item .repeater-item-collapse:hover + .repeater-item-collapsed-title {
+    color: #0181b9 !important;
+    font-weight: bold;
+}
+
+.field-repeater li.field-repeater-item.collapsed .repeater-item-remove .close:hover {
+    color: #0181b9;
+    opacity: 1;
+}
+
+.field-repeater .field-repeater-add-item:not(:hover) {
+    border: 2px dotted #b0b0b0 !important;
+}
+
+.field-repeater .field-repeater-add-item >a:not(:hover) {
+    color: #b0b0b0 !important;
+}
+
+/* Colorpicker Styling **************************************************************************************** */
+.field-colorpicker span {
+    position: relative;
+}
+
+.field-colorpicker .tooltip div {
+    text-indent: 0;
+}
+
+.bg-transparent:before, .bg-transparent:after {
+    content: " ";
+    width: 2px;
+    height: 100%;
+    background-color: #f008;
+    position: absolute;
+    left: calc(50% - 2px);
+}
+
+.bg-transparent:before {
+    transform: rotate(45deg);
+}
+
+.bg-transparent:after {
+    transform: rotate(-45deg);
+}
+
+.field-colorpicker .sp-clear-display {
+    background-image: none;
+}
+
+.tooltip-inner {
+    max-width: 400px !important;
+}
+
+/* Ilume Backend Preview ********************************************************************************* */
+.frame-holder {
+    width: 100%;
+    height: 0%;
+    position: absolute;
+    transition: height 1s ;
+    bottom: 0em;
+    overflow: hidden;
+    background-color: black;
+}
+
+.frame-holder-bar {
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px;
+    border-color: gray;
+    border-style: solid;
+    background-color: #eaeaea;
+}
+
+.frame-holder iframe {
+    width: 100%;
+    height: calc(100% - 50px);
+    max-height: calc(100% - 50px);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-style: solid;
+    border-color: gray;
+}
+
+
+#layout-canvas {
+    transition: height 1s ;
+}
+
+.preview-close-btn{
+    right: 5px;
+}
+
+.normal-btn {
+    left: 5px;
+}
+
+.tablet-btn {
+    left: 50px;
+}
+
+.mobile-btn{
+    left: 86px;
+}
+
+.new-tab-btn{
+    right: 65px;
+}
+/*/////////////////////////Resize needs rework ///////////////////////////////////////////////////*/
+.preview-vert-dragline {
+    height: 5px;
+    width: 100%;
+    background-color: grey;
+    position: absolute;
+    top: 0;
+    /*cursor: ns-resize; */
+}
+
+.mobile-btn, .tablet-btn, .preview-close-btn, .normal-btn, .new-tab-btn, .resize-IFrame-Btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    /*background-color: white;*/
+    /*border-radius: 50%;*/
+    text-align: center;
+    font-size: 30px;
+    top: 5px;
+    cursor: pointer;
+    color: gray;
+}
+
+.mobile-btn:hover, .tablet-btn:hover, .preview-close-btn:hover, .normal-btn:hover, .new-tab-btn:hover {
+    color: #444;
+}
+
+.mobile-btn:active, .tablet-btn:active, .preview-close-btn:active, .normal-btn:active, .new-tab-btn:active {
+    color: black;
+}
+
+
+/*  **************************************************************************************** */
+
+.textarea-highlight .form-control::placeholder {
+    color: #666 !important;
+    font-weight: bold;
+}
+.section-field.section-split {
+    margin-top: -10px;
+}
+
+.section-field.section-split .field-section {
+    border-bottom-style: dashed;
+}
+
+.taglist.restrict-usage .selection li {
+    color: darkgray !important;
+}
+
+/* Richeditor specific color reset */
+.component-backend-richeditor .fr-box.fr-basic .fr-element.fr-view a {
+    color: inherit !important;
+}
+
+.field-colorpicker .colorpicker-container {
+    max-width: inherit !important;
+}
+
+
+/* toolbar link spacing */
+.form-group[data-field-name="toolbar"] .form-buttons a, .form-group[data-field-name="toolbar"] .form-buttons button {
+    margin-bottom: 15px;
+}

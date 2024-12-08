@@ -1,0 +1,35 @@
+description = "Media Section"
+
+[viewBag]
+==
+{{ [_self|prepBlockJS]|theme|embedJS }}
+{{ [_self|prepBlockSCSS]|theme|embedCSS}}
+{{ [_self|prepBlockResponsiveSCSS]|theme|embedCSS}}
+
+{% set blockId = "unique-block"|uniqueID %}
+
+{% set blockStyle = '' %}
+{% set blockStyle = blockStyle ~ 'width: ' ~ data.width|default('100') ~ '%;' %}
+{% set blockStyle = blockStyle ~ 'background-image: url(' ~ data.banner_img | media ~ ');' %}
+
+{% if data.display_type == 'steady' %}
+    {% set blockStyle = blockStyle ~ 'background-position: ' ~ data.image_content_align ~ ';' %}
+{% endif %}
+
+{% if data.display_type == 'parallax-fixed' %}
+    {% set blockStyle = blockStyle ~ 'height: ' ~ data.parallax_height_fixed|default('500') ~ 'px;' %}
+{% endif %}
+
+<div id="{{ blockId }}" class="collapsable-block block-bg {% if data.block_bg_color_width == 'block-only' %}{{ data.container|default('container') }}{% else %}container-fluid{% endif %}">
+    <!-- Block Content Start -->
+
+    <div class="block {{ data.container|default('container') }}">
+        <div class="media-banner" style="justify-content: {{ data.block_align|default('flex-start') }};">
+            <div class="banner-element media-{{ data.display_type }}" style="{{ blockStyle }}"></div>
+            <img class="mobile-image-static media-{{ data.display_type }}" src="{{ data.banner_img | media}}">
+        </div>
+    </div>
+
+    <!-- Block Content End -->
+</div>
+

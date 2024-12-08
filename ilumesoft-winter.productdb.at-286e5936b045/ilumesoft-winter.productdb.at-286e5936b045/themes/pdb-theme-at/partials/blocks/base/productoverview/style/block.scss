@@ -1,0 +1,110 @@
+/* ================================================================= */
+/* 9. Product Overview                                               */
+/* ================================================================= */
+
+.product-head {
+    display: inline-block;
+    width: 100%;
+
+    .product-title {
+        padding: 0 0 1.5em 0;
+    }
+
+    .product-title, .sub-header {
+        width: 100%;
+
+        h1 {
+            font-size: 3em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        h3 {
+            font-size: 1.6em;
+        }
+
+        h4 {
+            font-size: 1.4em;
+        }
+
+        h5 {
+            font-size: 1.25em;
+        }
+
+        h6 {
+            font-size: 1.15em;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--microsite-color-base);
+            font-weight: 600;
+        }
+    }
+
+    .col-md-6, .col-lg-6 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .overview-img {
+        object-fit: contain;
+    }
+
+    .show-mobile-img {
+        display: none;
+    }
+
+    .hide-mobile-img {
+        display: flex;
+    }
+
+    .sub-header {
+        display: none;
+        padding: 1.2em;
+    }
+
+    .product-short {
+        display: block;
+        text-align: center;
+        span {
+            display: block;
+            font-size: 25px;
+            margin-bottom: 0.5em;
+            color: var(--microsite-color-base);
+        }
+    }
+
+    .product-properties ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            color: #72858e;
+
+            margin-left: 20px;
+            padding-left: 1.3em;
+            font-size: 1.15em;
+            line-height: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        li::before {
+            content: " ";
+            background-image: url(/themes/pdb-theme-at/assets/images/check-icon2.svg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position-y: 1px;
+            margin: auto 12px auto -40px;
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            vertical-align: middle;
+            border: 0.1875em solid var(--microsite-color-base);
+            border-radius: 100%;
+            background-color: var(--microsite-color-base);
+        }
+    }
+}

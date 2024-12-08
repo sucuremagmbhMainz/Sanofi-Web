@@ -1,0 +1,17 @@
+description = "Site header menu"
+
+[viewBag]
+
+[staticMenu]
+code = "header-menu"
+==
+
+{% for item in staticMenu.menuItems if not item.viewBag.isHidden %}
+<li>
+    <a class="menu-entry" href="{{ item.url }}{{ is_preview ? '?preview=1' : ''}}">
+        <div class="text-wrapper">
+            <p>{{ item.title }}</p>
+        </div>
+    </a>
+</li>
+{% endfor %}

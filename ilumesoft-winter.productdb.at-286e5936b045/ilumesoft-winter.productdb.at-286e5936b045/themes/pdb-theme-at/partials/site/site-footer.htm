@@ -1,0 +1,19 @@
+description = "Footer"
+
+[viewBag]
+
+==
+<div id="footer-disclaimer" class="container">
+    <p>
+        {{ this.theme.footer_text }}
+    </p>
+    <br/>
+    <p class="note">
+        Über Wirkung und mögliche unerwünschte Wirkungen informieren Gebrauchsinformation, Arzt oder Apotheker.
+    </p>
+    <p class="note">
+        Über Wirkung und mögliche unerwünschte Wirkungen dieser Medizinprodukte informieren Gebrauchsanweisung, Arzt oder Apotheker.
+    </p>
+    <br/>
+    {% partial "site/site-footer-menu" %}
+</div>

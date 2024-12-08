@@ -1,0 +1,72 @@
+.product-teaser-grid {
+    .entry {
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 1rem;
+        .img-block {
+            margin-bottom: 1rem;
+            img {
+                max-width: 100%;
+                max-height: 300px;
+                display: block;
+                margin: auto;
+            }
+        }
+        p {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            text-align: center;
+            font-weight: bold;
+            color: var(--microsite-color-base);
+        }
+        .teaser-link {
+            margin-bottom: 1rem;
+            max-width: 50%;
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 2rem;
+            color: #fff;
+            font-size: 1rem;
+            background: var(--microsite-color-base);
+            text-decoration: none;
+            &:hover {
+                background: var(--microsite-color-highlight);
+                filter: brightness(110%);
+                transition-duration: 0.4s;
+            }
+        }
+    }
+
+    .caption-block {
+        line-height: 1.2rem;
+        font-size: 1.4rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        h2 {
+            margin: 0;
+        }
+    }
+
+    .sub-content {
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        ul {
+            margin: 0;
+            padding-inline-start: 0;
+            li {
+                font-size: 1rem;
+                color: var(--microsite-color-base);
+            }
+        }
+    }
+}
