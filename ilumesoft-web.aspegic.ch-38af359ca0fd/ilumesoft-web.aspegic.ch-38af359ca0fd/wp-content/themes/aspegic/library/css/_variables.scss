@@ -1,0 +1,56 @@
+/**
+ * Variables for the theme design
+ **/
+//Utility
+$max-width: 1280px;
+
+//Color
+$theme-color: #051858;
+$text-theme-color: #084887;
+//$theme-color: red;
+
+//$text-color: rgba(0, 0, 0, 0.65);
+//$text-light-color: rgba(255, 255, 255, 0.7);
+//$text-dark-color: rgba(0, 0, 0, 0.65);
+$text-color: #75818c;
+$text-light-color: #b4b4d8;
+$text-dark-color: #75818c;
+
+$white: rgba(255, 255, 255, 1);
+$black: rgba(0, 0, 0, 0.8);
+$purple: #ff00e4;
+$red: #ff0000;
+$link-color: rgba(255, 255, 255, 1);
+$highlight-color: rgba(255, 241, 0, 1);
+
+
+$gradient-shade-1: #1580b7;
+$gradient-shade-2: #02184e;
+$gradient-shade-3: #4f75bd;
+
+//Fonts
+$base-font-size: 14px !important;
+$top-menu-font-size: 18px;
+$base-line-height: 20px;
+$default-font-weight: 400;
+$light-font-weight: 300;
+$bold-font-weight: 600;
+$header-font-weight: 400;
+$base-font-size-value: 14;
+$base-line-height-value: 16;
+
+$base-font-family: "Kula", sans-serif;
+$cursive-font-family: "Courgette", cursive;
+//$base-font-family: "Source Sans Pro", serif;
+//$cursive-font-family: "Allura", cursive;
+
+//Custom Mixins
+@mixin p($value) {
+  padding-left: $value;
+  padding-right: $value;
+}
+
+@mixin m($value) {
+  margin-left: $value;
+  margin-right: $value;
+}

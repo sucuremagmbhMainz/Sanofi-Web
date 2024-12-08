@@ -1,0 +1,11 @@
+/**
+ * Define the font family for Aspegic theme
+ *
+ * @author Ashiqur Rahman
+ * @url http://choobs.com
+ **/
+
+@include font-face('Source Sans Pro', '../fonts/SourceSansPro/sourcesanspro-regular', 400);
+@include font-face('Source Sans Pro', '../fonts/SourceSansPro/sourcesanspro-it', 400, 'italic');
+@include font-face('Source Sans Pro', '../fonts/SourceSansPro/sourcesanspro-bold', 600);
+@include font-face('Source Sans Pro', '../fonts/SourceSansPro/sourcesanspro-boldit', 600, 'italic');

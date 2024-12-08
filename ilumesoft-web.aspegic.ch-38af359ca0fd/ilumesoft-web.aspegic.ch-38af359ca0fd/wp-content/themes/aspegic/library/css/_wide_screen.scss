@@ -1,0 +1,792 @@
+/**
+ * Styles to handle wide screen styles
+ *
+ * @author Ashiqur Rahman
+ * @url http://choobs.com
+ **/
+
+@media screen and (min-width: 780px) {
+  //TOOLS
+  .mobile-only {
+    display: none !important;
+  }
+
+  .wide-only {
+    display: initial !important;
+  }
+
+  //HEADER
+  header#aspegic_top_header {
+    height: 280px;
+    //Small sanofi logo at the top right side
+    .sanofi-logo {
+      position: absolute;
+      right: 0;
+      top: 20px;
+    }
+
+    //Language switcher at the top-right corner
+    .language-switcher {
+      position: absolute;
+      right: 0;
+      top: 60px;
+
+      ul {
+        list-style: none;
+        display: inline;
+
+        li {
+          list-style: none;
+          display: inline;
+          padding: 0 5px;
+          box-sizing: border-box;
+          text-transform: uppercase;
+          font-size: #{$base-font-size-value - 2}px;
+          font-weight: $bold-font-weight;
+
+          &.active {
+            font-weight: $default-font-weight;
+          }
+
+          &:first-child {
+            padding-left: 0;
+            border-right: 1px solid;
+          }
+
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+
+    //Main logo
+    .logo {
+      margin-top: -80px;
+    }
+
+    .top-menu {
+
+      .top-menu-wrap {
+        position: relative;
+        background: none;
+        padding: 0;
+        top: 0;
+        box-shadow: none;
+
+        &.toggle-hidden {
+          display: block;
+        }
+      }
+
+      ul.menu {
+        list-style: none;
+        font-family: $cursive-font-family;
+        font-size: $top-menu-font-size;
+        text-align: center;
+
+        li {
+          list-style: none;
+          display: inline-block;
+          text-align: center;
+          border: none;
+          margin: 5px;
+          //padding: 0;
+
+          padding: 0px 60px;
+
+          a {
+            //display: block;
+            //padding: 5px 75px;
+          }
+
+          &:first-child {
+            border-top: none;
+            a {
+              padding-left: 0;
+            }
+          }
+
+          &:last-child {
+            a {
+              padding-right: 0;
+            }
+          }
+
+          &.current {
+            a {
+              color: $highlight-color;
+            }
+          }
+          a:hover {
+            color: $highlight-color;
+          }
+        }
+      }
+
+    }
+  }
+
+  section#excuse {
+    .section-content {
+      p.intro {
+        //@include p(20vw);
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      #generate_excuse {
+        font-size: 34px;
+      }
+
+      #excuse_holder {
+        #excuse_response {
+          @include m(15vw);
+        }
+      }
+    }
+  }
+
+  section#products {
+    .section-content {
+      h1 {
+        padding-left: 100px;
+      }
+
+      .slider-wrapper {
+
+        .product-slider-image {
+          img {
+            max-height: 365px !important;
+          }
+        }
+
+      }
+    }
+  }
+
+  section#pain {
+    .section-content {
+      .tab-contents {
+        .tab-content {
+          @include p(120px);
+        }
+      }
+    }
+  }
+
+  // FOOTER
+  footer#aspegic_footer {
+
+    .footer-content {
+      &.footer-top {
+        .footer-logo {
+          background-image: radial-gradient(circle 200px at 200px 100px, $gradient-shade-1, $gradient-shade-2 60%);
+          width: 300px;
+          min-height: 160px;
+          padding-right: 100px;
+          float: left;
+
+          img {
+            width: auto;
+            max-width: 300px;
+            height: auto;
+            max-height: 200px;
+            margin: 0 auto;
+          }
+        }
+
+        .footer-menu {
+          margin: 95px 0 0;
+          float: right;
+
+          ul.menu {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+
+            li {
+              display: inline;
+              margin: 0;
+              padding: 0 35px;
+
+              a {
+                color: $text-light-color;
+              }
+
+              &.current-menu-item {
+                a {
+                  color: $highlight-color;
+                }
+              }
+              a:hover {
+                color: $highlight-color;
+              }
+            }
+          }
+
+          i.fa {
+            padding-left: 35px;
+          }
+        }
+      }
+
+      &.footer-bottom {
+        color: $text-light-color;
+        .copyright {
+          padding-top: 20px;
+          padding-bottom: 20px;
+          font-size: #{$base-font-size-value - 3}px;
+          p {
+            margin: 2px auto;
+
+            .highlight {
+              //color: $purple;
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+
+    .warning-banner {
+      display: block !important;
+      background: $white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .scroll-top {
+      width: 50px;
+      height: 50px;
+
+      a {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+      }
+    }
+  }
+
+  section#page_content {
+    .section-content {
+      h2 {
+        &.contact-header {
+          margin: 50px 150px;
+        }
+      }
+
+      .contact-intro {
+        margin: 50px 150px;
+      }
+
+      address {
+        float: left;
+      }
+
+      .contact-form {
+        float: right;
+        width: 50%;
+      }
+    }
+  }
+}
+
+//ML correction
+section#excuse{
+  //height: 680px;
+  //min-height: 680px;
+}
+
+
+
+@media screen and (max-width: 779px) {
+  section#home {
+    height: 1050px;
+
+    .fullwidthbanner-container,
+    .fullwidthbanner-container .fullwidthabanner
+    {
+      height: 1050px!important;
+    }
+    h1.tp-caption {
+      font-size: 34px!important;
+    }
+    h2.tp-caption {
+      font-size: 22px!important;
+      white-space: normal!important;
+      min-width: 700px!important;
+      line-height: 1.3!important;
+    }
+    p {
+      position: static!important;
+      font-size: 14px!important;
+      line-height: 18px!important;
+    }
+    .slider-a {
+      font-size: 14px!important;
+      position: relative!important;
+      top: 50px!important;
+    }
+  }
+  section#excuse {
+    min-height: 470px;
+    padding-top: 50px;
+  }
+  section#products{
+    min-height: 800px;
+    h2 {
+      font-size: 18px!important;
+      line-height: 20px!important;
+    }
+    .paragraph, .section-content a {
+      position: static!important;
+      font-size: 14px !important;
+      line-height: 1.3!important;
+    }
+  }
+}
+@media screen and (max-width: 736px) {
+  section#home {
+    height: 1000px;
+
+    .fullwidthbanner-container,
+    .fullwidthbanner-container .fullwidthabanner
+    {
+      height: 1000px!important;
+    }
+    h2.tp-caption {
+      min-width: 700px!important;
+    }
+    .slider-a {
+      top: 40px!important;
+    }
+  }
+  section#benefits{
+    .paragraph {
+      position: static!important;
+      font-size: 14px !important;
+      line-height: 1.3!important;
+    }
+  }
+}
+@media screen and (max-width: 668px) {
+  section#home {
+    height: 950px;
+
+    .fullwidthbanner-container,
+    .fullwidthbanner-container .fullwidthabanner
+    {
+      height: 950px!important;
+    }
+    h2.tp-caption {
+      min-width: 600px!important;
+      font-size: 17px!important;
+    }
+    .slider-a {
+      top: 65px!important;
+    }
+  }
+  section#excuse {
+    min-height: 500px;
+  }
+}
+@media screen and (max-width: 568px) {
+  section#home {
+    height: 735px;
+
+    .fullwidthbanner-container,
+    .fullwidthbanner-container .fullwidthabanner
+    {
+      height: 735px!important;
+    }
+    h2.tp-caption {
+      min-width: 500px!important;
+    }
+    .slider-a {
+      top: 65px!important;
+    }
+  }
+  section#excuse {
+    min-height: 530px;
+  }
+  section#benefits{
+    min-height:400px;
+
+    .fullwidthbanner-container .fullwidthabanner {
+      min-height:400px;
+    }
+  }
+  section#products{
+    min-height: 630px;
+
+    .tp-parallax-wrap:last-of-type {
+      top: 210px!important;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  section#home {
+    height: 735px;
+
+    .fullwidthbanner-container,
+    .fullwidthbanner-container .fullwidthabanner
+    {
+      height: 735px!important;
+    }
+    h2.tp-caption {
+      min-width: 460px!important;
+    }
+    .slider-a {
+      top: 110px!important;
+    }
+  }
+  section#excuse {
+    min-height: 550px;
+  }
+  section#benefits{
+    min-height:410px;
+
+    .fullwidthbanner-container .fullwidthabanner {
+      min-height:410px;
+    }
+  }
+  section#products{
+    min-height: 550px;
+  }
+}
+@media screen and (max-width: 425px) {
+  section#home {
+    height: 735px;
+
+    .fullwidthbanner-container,
+    .fullwidthbanner-container .fullwidthabanner
+    {
+      height: 735px!important;
+    }
+    h2.tp-caption {
+      min-width: 380px!important;
+    }
+    .slider-a {
+      top: 45px!important;
+    }
+  }
+  section#excuse {
+    min-height: 570px;
+  }
+  section#benefits{
+    min-height:510px;
+
+    .fullwidthbanner-container .fullwidthabanner {
+      min-height:510px;
+    }
+  }
+  section#products {
+    .tp-parallax-wrap:last-of-type {
+      top: 270px!important;
+    }
+  }
+}
+@media screen and (max-width: 375px) {
+  section#home {
+    height: 735px;
+
+    .fullwidthbanner-container,
+    .fullwidthbanner-container .fullwidthabanner
+    {
+      height: 735px!important;
+    }
+    h2.tp-caption {
+      min-width: 320px!important;
+    }
+    .slider-a {
+      top: 100px!important;
+    }
+  }
+  section#excuse {
+    min-height: 640px;
+  }
+  section#benefits{
+    min-height:560px;
+
+    .fullwidthbanner-container .fullwidthabanner {
+      min-height:560px;
+    }
+  }
+
+}
+@media screen and (max-width: 320px) {
+  section#home {
+    height: 700px;
+
+    .fullwidthbanner-container,
+    .fullwidthbanner-container .fullwidthabanner
+    {
+      height: 700px!important;
+    }
+    h2.tp-caption {
+      min-width: 280px!important;
+    }
+
+    .slider-a {
+      top: 150px!important;
+    }
+  }
+  section#excuse {
+    min-height: 730px;
+
+    .section-content #excuse_holder #generate_excuse {
+      white-space: normal;
+    }
+    .section-content #excuse_holder #excuse_response {
+      z-index: 9;
+      top: 90px;
+    }
+  }
+  section#products,section#products .section-content {
+    min-height: 600px;
+
+    .slider-wrapper, .fullwidthbanner-container,
+    .fullwidthbanner-container .fullwidthabanner{
+      min-height: 600px;
+    }
+    .tp-parallax-wrap:last-of-type {
+      top: 300px!important;
+    }
+  }
+
+}
+
+
+
+@media screen and (max-width: 779px) {
+  header#aspegic_top_header {
+    padding: 0 0 20px 0;
+    height: 160px;
+
+    .sanofi-logo {
+      right: 20px;
+      margin: 8px auto 14px;
+
+      img{
+        width: 70px;
+      }
+    }
+    .language-switcher {
+      right: 20px;
+    }
+    .logo {
+      margin: -60px auto 20px auto;
+      text-align: center;
+    }
+    .top-menu {
+      .top-menu-toggle {
+        top: 6px;
+        right: 25px;
+
+        .fa-2x {
+          font-size: 2.7em;
+        }
+      }
+    }
+  }
+  #home {
+    h1.tp-caption {
+      font-size: 34px!important;
+      //margin-top: 48px!important;
+      //line-height: 1!important;
+      //overflow: hidden;
+      //clear: both;
+    }
+    h2.tp-caption {
+      //font-size: 17px!important;
+      //margin-top: 44px!important;
+      //line-height: 2px!important;
+      //overflow: hidden;
+      //clear: both;
+    }
+    //div.tp-caption,
+    //p.tp-caption {
+    //  font-size: 14px!important;
+    //}
+  }
+  section#excuse{
+    //height: 680px;
+    //min-height: 680px;
+    //height: 585px;
+    //min-height: 585px;
+
+     .section-content {
+        padding-top: 30px;
+
+        p.intro {
+          padding-left: 2vw;
+          padding-right: 2vw;
+          margin-top: 0px;
+          margin-bottom: 18px;
+          line-height: 1.3;
+        }
+        p.intro:first-of-type {
+          margin-top: 34px;
+        }
+        p.intro:last-of-type{
+          //margin-bottom: 30px;
+          margin-bottom: 0px;
+        }
+        .button.big-button {
+          //padding: 5px 10px;
+          padding: 10px 15px;
+          border-radius: 5px;
+        }
+    }
+  }
+  section#products {
+    h2.tp-caption {
+      //margin-top: 0px!important;
+      //font-size: 24px!important;
+    }
+    .paragraph {
+      //font-size: 14px!important;
+      //line-height: 1.4!important;
+    }
+  }
+  section#benefits {
+    h1.tp-caption {
+      //font-size: 34px!important;
+      //margin-top: 0px!important;
+      //line-height: 1!important;
+      //overflow: hidden;
+      //clear: both;
+    }
+    .paragraph {
+      //font-size: 14px!important;
+      //line-height: 1.4!important;
+    }
+    .rev_slider_wrapper {
+      //min-height: 500px;
+      //min-height: 380px;
+    }
+    .fullwidthbanner-container .fullwidthabanner{
+      //min-height: 500px;
+      //min-height: 380px;
+    }
+  }
+  section#pain .section-content .tab-contents .tab-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.tp-parallax-wrap {
+  //position: static!important;
+}
+
+@media screen and (min-width: 780px) {
+  header#aspegic_top_header .logo {
+    margin: -60px auto 20px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    margin-left: -158px;
+    margin-top: -80px;
+  }
+  .top-menu {
+    margin-top: 58px;
+  }
+  section#home .section-content {
+    //padding-top: 0;
+    padding-top: 100px;
+  }
+  section#excuse .section-content {
+    padding-top: 130px;
+    padding-bottom: 196px;
+  }
+  section#excuse .section-content #excuse_holder #generate_excuse {
+    font-size: 30px;
+  }
+
+  header#aspegic_top_header .sanofi-logo img {
+    width: 73px;
+  }
+  header#aspegic_top_header .language-switcher,
+  header#aspegic_top_header .sanofi-logo {
+    right: 50px;
+  }
+  header#aspegic_top_header .language-switcher {
+    top: 25px;
+  }
+  header#aspegic_top_header .language-switcher ul li {
+    font-size: 11px;
+    padding: 0 10px;
+  }
+
+  header#aspegic_top_header .sanofi-logo {
+    top: -18px;
+  }
+  header#aspegic_top_header {
+    height: 185px;
+  }
+
+
+  //section#products {
+  //  .fullwidthbanner-container {
+  //    height: 500px !important;
+  //
+  //    .fullwidthabanner{
+  //      height: 500px !important;
+  //    }
+  //  }
+  //}
+}
+
+@media screen and (min-width: 780px) and (max-width: 1023px) {
+  header#aspegic_top_header .top-menu ul.menu li {
+    padding: 0px 10px;
+  }
+  section#products {
+    .fullwidthbanner-container {
+      height: 400px !important;
+
+      .fullwidthabanner{
+        height: 400px !important;
+      }
+    }
+  }
+  section#excuse {
+    height: 550px;
+    min-height: 550px;
+
+    .section-content {
+      padding-top: 40px;
+    }
+  }
+  section#benefits {
+    min-height: 360px;
+    height: 360px;
+    overflow: hidden;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1229px) {
+  header#aspegic_top_header .top-menu ul.menu li {
+    padding: 0px 30px;
+  }
+  section#products {
+    .fullwidthbanner-container {
+      height: 400px !important;
+
+      .fullwidthabanner{
+        height: 400px !important;
+      }
+    }
+  }
+  section#excuse {
+    height: 550px;
+    min-height: 550px;
+
+    .section-content {
+      padding-top: 40px;
+    }
+  }
+
+}
+@media screen and (min-width: 1230px) {}
